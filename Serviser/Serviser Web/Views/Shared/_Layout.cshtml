@@ -6,9 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("stylesheets", false)
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/Content/footer.css">
-
+    <link rel="stylesheet" href="~/Content/register.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
@@ -53,10 +54,10 @@
     </nav>
 
 
-        @RenderBody()
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Serviser</p>
-        </footer>
+    @RenderBody()
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Serviser</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -71,7 +72,7 @@
                     <div class="inner">
                         <div class="form-group">
                             <input name="formfields[nl_email]" id="nl_email" class="validate[required]" placeholder="Enter your email address" type="text" value="">
-                            <label for="nl_email" class="sr-only">Email Address</label> 
+                            <label for="nl_email" class="sr-only">Email Address</label>
                             <button type="submit" class="btn btn-motive">Join</button>
                         </div>
                     </div>
