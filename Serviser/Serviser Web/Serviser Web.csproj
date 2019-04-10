@@ -205,12 +205,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\mechanic-with-wrench-logo-1.svg" />
+    <Content Include="Assets\Images\mystic machanic.png" />
+    <Content Include="Assets\Images\mystic-mechanic-1.svg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Home\Index.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
