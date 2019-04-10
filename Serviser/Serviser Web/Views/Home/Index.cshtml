@@ -3,33 +3,56 @@
 }
 
 @section stylesheets {
-    
-<link href="~/Content/Home/Index.css" rel="stylesheet" />
 
-    }
+    <link href="~/Content/Home/Index.css" rel="stylesheet" />
+
+}
 
 
 <div class="container-fluid">
     <section class="row flex-lg-row-reverse">
         <div class="col-lg-6 d-flex align-items-center justify-content-center p-0">
             <object type="image/svg+xml" data="~/Assets/Images/mystic-mechanic-1.svg" class="art-part-img">
-                <img src="~/Assets/Images/mystic machanic.png" alt="An artwork of a mechanic" class="art-part-img"/>
+                <img src="~/Assets/Images/mystic machanic.png" alt="An artwork of a mechanic" class="art-part-img" />
             </object>
             <div class="art-part-bg"></div>
 
         </div>
-        <div class="col-lg-6 content-part">
+        <div class="col-lg-6 content-part-left d-flex justify-content-center flex-column">
+            <h1>Serviser</h1>
+            <h5>The service your vehicle needs</h5>
+            <p>
+                We provide <b>fast, convinient and affordable</b> services for your vehicles.
+            </p>
+            <p>
+                Have you ever found yourself in an unfortunate situation where your vehicle broke down suddenly, and you didn't know what to do?
+            </p>
+            <p>
+                If yes, then Serviser &copy; is for you!
+            </p>
 
         </div>
     </section>
     <section class="row flex-lg-row-reverse">
         <div class="col-lg-6 p-0">
+            <div class="content-part-right d-flex justify-content-center flex-column position-absolute">
+                <h1>We Fix Everything!</h1>
+                <h5>You Name It We Fix It</h5>
+                <p>
+                    Serviser provides all kinds of services.
+                    We change change oil, replace broken parts, fix tires, repair head light, anything you can think of!
+                </p>
+                <p>
+                    Our mechanics range from bicyle to truck experts! If there's a mechanic, there's a way.
+                </p>
+
+            </div>
             <div class="art-part-bg"></div>
         </div>
-            <div class="col-lg-6 d-flex align-items-center justify-content-center">
-                <object type="image/svg+xml" data="~/Assets/Images/car-artwork.svg" class="art-part-img">
-                    <img src="~/Assets/Images/car artwork.png" alt="Car and some parts" class="art-part-img"/>
-                </object>
+        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+            <object type="image/svg+xml" data="~/Assets/Images/car-artwork.svg" class="art-part-img">
+                <img src="~/Assets/Images/car artwork.png" alt="Car and some parts" class="art-part-img" />
+            </object>
         </div>
     </section>
     <section class="row flex-lg-row-reverse">
@@ -40,7 +63,16 @@
             <div class="art-part-bg"></div>
 
         </div>
-        <div class="col-lg-6 content-part">
+        <div class="col-lg-6 content-part-left d-flex justify-content-center flex-column">
+            <h1>There's an App!</h1>
+            <h5>Take Serviser wherever you go</h5>
+            <p>
+                Keep Serviser one touch away at all times. Our smooth and efficient app will make you life easier. Try it now!
+            </p>
+            <button class="app-download-button d-flex justify-content-center align-items-center">
+            <img src="~/Assets/Images/playstore.svg" alt="Playstore icon" width="20" height="20" />
+            DOWNLOAD
+            </button>
 
         </div>
     </section>

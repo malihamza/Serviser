@@ -113,3 +113,59 @@ section:nth-child(3) .art-part-bg {
     background: var(--soft-light-green);
 }
 
+
+/* Content Part */
+
+.content-part-left {
+    text-align: center;
+    text-justify: distribute;
+    padding: 20%;
+}
+
+.content-part-right {
+    text-align: center;
+    text-justify: distribute;
+    padding: 20%;
+    z-index: 5;
+    color: var(--soft-white)
+}
+
+
+
+@media only screen and (min-width : 992px) {
+
+    .content-part-left {
+        padding: 0 3%;
+        text-align: left;
+    }
+
+    .content-part-right {
+        text-align: left;
+        padding: 0 3%;
+        padding-left: 13%;
+        z-index: 5;
+        color: var(--soft-white)
+    }
+}
+
+.app-download-button {
+    padding: 10px 10px;
+    margin: 0;
+    background: var(--soft-light-green);
+    width: 70%;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    box-shadow: rgba(0, 0, 0, 0.20) 3px 3px 3px;
+    margin:0 auto;
+
+}
+
+.app-download-button:hover {
+
+    background: var(--soft-dark-green);
+}
+
+.app-download-button img {
+    margin: 0 10px;
+}
