@@ -1,14 +1,18 @@
-﻿section {
+﻿body {
+    margin-top: 55px;
+}
+
+section {
     height: 200vh;
     background: var(--soft-white);
-
+    
 }
 
 
-section > div {
-    height: 50%;
-    width: 50%;
-}
+    section > div {
+        height: 50%;
+        width: 50%;
+    }
 
 .slide {
     padding: 0;
@@ -20,11 +24,16 @@ section > div {
 }
 
 .art-part-img {
-    max-height:80%;
+    max-height: 80%;
     min-height: 70%;
     width: 70%;
     position: absolute;
-   z-index: 3;
+    z-index: 3;
+}
+
+#map-slide {
+    background: url("../../Assets/Images/Map pinned-100.jpg");
+    background-size: cover;
 }
 
 
@@ -34,29 +43,30 @@ section > div {
         overflow: hidden;
     }
 
-    section div {
-        height: 100%;
-        position: relative;
-    }
-
-    section:nth-child(odd) .art-part-bg {
-        transform-origin: center left;
-        transform: skewX(-20deg);
-        position: relative;
-        background: var(--soft-black);
-    }
-
-        section:nth-child(odd) .art-part-bg::after {
-            content: " ";
-            display: block;
+        section div {
             height: 100%;
-            width: 100%;
-            background: var(--soft-black);
-            position: absolute;
-            transform-origin: center left;
-            right: -50%;
-            transform: skewX(20deg);
+            position: relative;
         }
+
+        section:nth-child(odd) .art-part-bg {
+            transform-origin: center left;
+            transform: skewX(-20deg);
+            position: relative;
+            background: var(--soft-black);
+            z-index: 4;
+        }
+
+            section:nth-child(odd) .art-part-bg::after {
+                content: " ";
+                display: block;
+                height: 100%;
+                width: 100%;
+                background: var(--soft-black);
+                position: absolute;
+                transform-origin: center left;
+                right: -50%;
+                transform: skewX(20deg);
+            }
 
         section:nth-child(even) .art-part-bg {
             transform-origin: center left;
@@ -78,14 +88,17 @@ section > div {
             }
 
         section:nth-child(1) .art-part-bg::after {
+            background: var(--soft-dark-green);
+        }
+        section:nth-child(2) .art-part-bg::after {
             background: var(--soft-dark-blue);
         }
 
-        section:nth-child(2) .art-part-bg::after {
+        section:nth-child(3) .art-part-bg::after {
             background: var(--soft-dark-red);
         }
 
-        section:nth-child(3) .art-part-bg::after {
+        section:nth-child(4) .art-part-bg::after {
             background: var(--soft-light-green);
         }
 
@@ -96,38 +109,38 @@ section > div {
 
 
 
-
-
 section:nth-child(1) .art-part-bg {
+    background: var(--soft-dark-green);
+}
+
+section:nth-child(2) .art-part-bg {
     background: var(--soft-dark-blue);
 }
 
 
-section:nth-child(2) .art-part-bg {
+section:nth-child(3) .art-part-bg {
     background: var(--soft-dark-red);
 }
 
 
 
-section:nth-child(3) .art-part-bg {
+section:nth-child(4) .art-part-bg {
     background: var(--soft-light-green);
 }
 
 
-/* Content Part */
 
 .content-part-left {
     text-align: center;
-    text-justify: distribute;
     padding: 20%;
 }
 
 .content-part-right {
     text-align: center;
-    text-justify: distribute;
     padding: 20%;
     z-index: 5;
-    color: var(--soft-white)
+    color: var(--soft-white);
+    height: 100%;
 }
 
 
@@ -154,18 +167,47 @@ section:nth-child(3) .art-part-bg {
     background: var(--soft-light-green);
     width: 70%;
     border: none;
-    color: white;
+    color: var(--soft-white);
     font-size: 1.2em;
     box-shadow: rgba(0, 0, 0, 0.20) 3px 3px 3px;
-    margin:0 auto;
-
+    margin: 0 auto;
 }
 
-.app-download-button:hover {
+    .app-download-button:hover {
+        background: var(--soft-dark-green);
+    }
 
-    background: var(--soft-dark-green);
+    .app-download-button img {
+        margin: 0 10px;
+    }
+
+.book-button {
+    padding: 10px;
+    background: var(--soft-white);
+    width: 70%;
+    border: none;
+    color: var(--soft-dark-green);
+    font-size: 1.2em;
+    box-shadow: rgba(0, 0, 0, 0.20) 3px 3px 3px;
+    margin: 0 auto;
 }
 
-.app-download-button img {
-    margin: 0 10px;
+.book-button:hover {
+    background: var(--soft-light-green);
+    color: var(--soft-white);
+}
+
+    .content-part-left h1, .content-part-right h1{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 100;
+    }
+
+.content-part-left h5, .content-part-right h5 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 200;
+}
+
+.content-part-left p, .content-part-right p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
 }
