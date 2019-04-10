@@ -4,11 +4,12 @@
     --soft-dark-blue: #2980b9;
     --soft-dark-red: #c0392b;
     --soft-light-green: #21C7B1;
+    --soft-dark-green: #27ae60;
 }
 
 .serviser-navbar {
     background: var(--soft-white);
-    box-shadow: var(--soft-black) 0 -10px 20px;
+    box-shadow: rgba(0,0,0,0.4) 0 0 5px;
 }
 
 .serviser-navbar-logo {
