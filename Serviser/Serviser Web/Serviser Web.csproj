@@ -323,7 +323,7 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Register.cshtml" />
-    <Content Include="Views\Home\register_as_user.cshtml" />
+    <Content Include="Views\Home\RegisterAsUser.cshtml" />
     <Content Include="Views\Home\Booking.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
