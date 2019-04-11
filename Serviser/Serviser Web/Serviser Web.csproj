@@ -204,7 +204,20 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\bike.png" />
+    <Content Include="Assets\Images\car artwork.png" />
+    <Content Include="Assets\Images\car-artwork.svg" />
+    <Content Include="Assets\Images\car.png" />
+    <Content Include="Assets\Images\car.svg" />
+    <Content Include="Assets\Images\Map pinned-100.jpg" />
     <Content Include="Assets\Images\mechanic-with-wrench-logo-1.svg" />
+    <Content Include="Assets\Images\mystic machanic.png" />
+    <Content Include="Assets\Images\mystic-mechanic-1.svg" />
+    <Content Include="Assets\Images\phone-with-app.png" />
+    <Content Include="Assets\Images\phone-with-app.svg" />
+    <Content Include="Assets\Images\playstore.svg" />
+    <Content Include="Assets\Images\truck.png" />
+    <Content Include="Assets\Images\van.png" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -310,6 +323,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Regiter.cshtml" />
     <Content Include="Views\Home\register_as_user.cshtml" />
+    <Content Include="Views\Home\Booking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
