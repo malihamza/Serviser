@@ -26,7 +26,7 @@ namespace Serviser_Web.Controllers
 
             return View();
         }
-        public ActionResult Regiter()
+        public ActionResult Register()
         {
 
             return View();
