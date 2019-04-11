@@ -31,5 +31,10 @@ namespace Serviser_Web.Controllers
 
             return View();
         }
+        public ActionResult register_as_user()
+        {
+
+            return View();
+        }
     }
 }
