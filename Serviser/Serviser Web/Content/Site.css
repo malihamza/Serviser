@@ -5,6 +5,9 @@
     --soft-dark-red: #c0392b;
     --soft-light-green: #21C7B1;
     --soft-dark-green: #27ae60;
+    --soft-deep-dark-blue: #2c3e50;
+    --soft-black-pearl: #1e272e;
+    --soft-dracula-black: #2d3436;
 }
 
 .serviser-navbar {
@@ -33,44 +36,34 @@ hr {
 }
 
 .ct-footer {
-    background-color: #000;
-    padding-top: 70px;
-    margin-top: 20px;
+    background-color: var(--soft-dracula-black);
     position: relative;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ct-footer a {
+    color: white;
 }
 
 .ct-footer-post {
-    background: #000;
+    background: var(--soft-black);
     padding: 30px 0;
 }
-    .ct-footer-post a:hover {
-        color: #fff;
-        text-decoration: underline;
-    }
-    .ct-footer-post .inner-left,
-    .ct-footer-post .inner-right {
-        padding: 20px 0;
-    }
-    .ct-footer-post a {
-        color: #fff;
-    }
+.ct-footer-post a:hover {
+    text-decoration: underline;
+}
 
-    .ct-footer-post p {
-        color: #fff;
-    }
+
 address {
     color: #fff;
     display: inline-block;
 }
 
-    address span {
-        font-weight: 600;
-    }
+address span {
+    font-weight: 600;
+}
 
-    address a {
-        color: #fff;
-    }
-
-        address a:hover {
-            text-decoration: underline;
-        }
+address a:hover {
+    text-decoration: underline;
+}
