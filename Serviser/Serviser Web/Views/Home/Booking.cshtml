@@ -2,108 +2,72 @@
     ViewBag.Title = "Booking";
 }
 
-    <div style="margin-top:60px;height:600px;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d108848.8336126985!2d74.24696695820313!3d31.5097088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1554993727992!5m2!1sen!2s"
-                frameborder="0" style="border:0;height:100%;width:100%;position:absolute;cursor:pointer" allowfullscreen></iframe>
-                <br/><br /><br /><br /><br /><br />
-                           <div class="row" style="z-index:1000">
-                               <div class="col-1">
-                                   <br />
-                               </div>
-                               <div class="col-2 p-2">
-                                   <ul class="list-group">
-                                       <li class="list-group-item " style="background-color:#fff;color:#0e0e0e">
-                                           <div class="row">
-                                               <div class="col-8">
-                                                   <img height="30px;" src="~/Assets/Images/car.png" />
-                                               </div>
-                                               <div class="col-4">
-                                                   <span style="font-size:25px;">Cars</span>
-                                               </div>
-                                           </div>
-                                       </li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item" >
-                                               <button class="btn header-left-bottom" style="background:#000;color:#fff;">Submit</button> 
-                                       </li>
+@section stylesheets{
+    <link href="~/Content/Home/Booking.css" rel="stylesheet" />
+}
 
-                                   </ul>
-                               </div>
-                               <div class="col-2 p-2">
-                                   <ul class="list-group">
-                                       <li class="list-group-item " style="background-color:#fff;color:#0e0e0e">
-                                           <div class="row">
-                                               <div class="col-8">
-                                                   <img height="30px;" src="~/Assets/Images/bike.png" />
-                                               </div>
-                                               <div class="col-4">
-                                                   <span style="font-size:25px;">Bike</span>
-                                               </div>
-                                           </div>
-                                       </li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">
-                                           <button class="btn header-left-bottom" style="background:#000;color:#fff;">Submit</button>
-                                       </li>
+<script src="~/Scripts/angular-1.7.8/angular.min.js"></script>
+<script src="~/Scripts/angular-1.7.8/angular-animate.js"></script>
 
-                                   </ul>
-                               </div>
-                               <div class="col-2 p-2">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg-T5ErBSP7PrxppZiO9OPBA3HW4TXleo"></script>
+<script src="~/Scripts/Home/Booking.js"></script>
 
-                               </div>
-                               <div class="col-2 p-2">
-                                   <ul class="list-group">
-                                       <li class="list-group-item " style="background-color:#fff;color:#0e0e0e">
-                                           <div class="row">
-                                               <div class="col-8">
-                                                   <img height="30px;" src="~/Assets/Images/truck.png" />
-                                               </div>
-                                               <div class="col-3">
-                                                   <span style="font-size:25px;">Truck</span>
-                                               </div>
-                                               <div class="col-1"></div>
-                                           </div>
-                                       </li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">
-                                           <button class="btn header-left-bottom" style="background:#000;color:#fff;">Submit</button>
-                                       </li>
 
-                                   </ul>
-                               </div>
-                               <div class="col-2 p-2">
-                                   <ul class="list-group">
-                                       <li class="list-group-item " style="background-color:#fff;color:#0e0e0e">
-                                           <div class="row">
-                                               <div class="col-8">
-                                                   <img height="30px;" src="~/Assets/Images/van.png" />
-                                               </div>
-                                               <div class="col-4">
-                                                   <span style="font-size:25px;">Van</span>
-                                               </div>
-                                           </div>
-                                       </li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">Problem 1</li>
-                                       <li class="list-group-item">
-                                           <button class="btn header-left-bottom" style="background:#000;color:#fff;">Submit</button>
-                                       </li>
+<div class="container-fluid pt-5 min-vh-100 d-flex align-items-center bookin-page-container" ng-app="MechanicBookingApp">
 
-                                   </ul>
-                               </div>
-                           </div>
+    <div class="container mt-4 options-controller" ng-controller="OptionsSelectionController">
+        <div class="row">
+            <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 card p-3 form-container scrollbar" id="scrollbar-custom">
+                <div class="d-flex align-items-center steps-back-button" ng-click="previousStep()" ng-show="currentStep>1">
+                    <img src="~/Assets/Images/left-arrow.svg" alt="<" height="10" class="mr-1" /> <span>Back</span>
+                </div>
+                <div ng-if="currentStep==1" class="booking-step">
+                    <h3>Pick a Vehicle Type</h3>
+                    <ul class="list-group">
+                        <li ng-repeat="x in optionsData" class="list-group-item d-flex align-items-center" ng-click="step1Click($index)">
+                            <img src="{{x.ImageUrl}}" alt="Image Clipart of Vehicle" style="height:25px;" />
+                            <span class="mx-3">{{x.Name}}</span>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div ng-if="currentStep==2" class="booking-step">
+                    <h3>Select All Applicable Problems</h3>
+                    <ul class="list-group">
+                        <li ng-repeat="x in optionsData[selectedVehicleTypeIndex].Problems" class="list-group-item d-flex align-items-center" ng-click="step2ItemClick($index)">
+                            <img src="~/Assets/Images/check cirlce.svg" style="height:auto; max-width:15px;" class="mr-1" ng-if="selectedProblemsIndices[$index]" />
+                            <span>{{x.Title}}</span>
+                        </li>
+                    </ul>
+                    <button class="btn btn-success float-right step-next-button px-4 m-1" ng-click="nextStep()">Next - Option Description</button>
+                </div>
+
+                <div ng-if="currentStep==3" class="booking-step">
+                    <h3>Other Details or Description</h3>
+                    <textarea ng-model="descriptionOfProblem" class="form-control" rows="10" placeholder="Describe your problem here...">
+                            
+                    </textarea>
+                    <button class="btn btn-success float-right step-next-button px-4 m-1" ng-click="nextStep()">Next - Choose Location</button>
+                </div>
+
+                <div ng-if="currentStep==4" class="booking-step">
+                    <h3>Choose Your Location</h3>
+                    <p ng-bind="currentAddress"></p>
+                    <p>{{mapMarker.getPosition().lat() + " " + mapMarker.getPosition().lng()}}</p>
+
+                    <div class="d-flex justify-content-between">
+                        <div class="steps-back-button d-flex align-items-center" ng-click="pinCurrentLocation()">
+                            <img src="~/Assets/Images/position radar.svg" alt="O" width="20" class="mr-2" />
+                            <span>Fine Me</span>
+                        </div>
+                        <button class="btn btn-success float-right step-next-button px-4 m-1" ng-click="nextStep()">Submit</button>
+                    </div>
+
+                </div>
+                <div id="map" class="mt-1 .booking-step" ng-show="currentStep==4"></div>
+            </div>
+
+        </div>
     </div>
-<div class="container" style="position:relative">
-  
 </div>
