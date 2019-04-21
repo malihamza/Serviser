@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ced914f605664dc4a02862961bcc1710" Name="Diagram1">
+        <EntityTypeShape EntityType="ServiserDBModel.booking" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.bookingStatus" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.customerOffer" Width="1.5" PointX="1.5" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.customerProfile" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.mechanicOffers" Width="1.5" PointX="5.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.mechanicProfile" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.Mechanic_sNotification" Width="1.5" PointX="7.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.offerMechanicBridge" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.role" Width="1.5" PointX="5.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.user" Width="1.5" PointX="8" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.vehicleName" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.vehicleProblems" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.VehicleType" Width="1.5" PointX="1.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ServiserDBModel.BiLLItem" Width="1.5" PointX="8.25" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="ServiserDBModel.FK_BiLLItem_booking" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.FK_booking_bookingStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.FK_booking_customerProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.FK_booking_mechanicProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.FK_offerMechanicBridge_mechanicProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.FK_vehicleName_VehicleType" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.FK_vehicleProblems_vehicleName" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.FK_BiLLItem_vehicleProblems" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.CustomerVehicleName" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.mechanic_vehicle_problems" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.offerCustomerBridge" ManuallyRouted="false" />
+        <AssociationConnector Association="ServiserDBModel.userRole" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ServiserDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ServiserDB.dbo.BiLLItem' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BiLLItem">
+          <Key>
+            <PropertyRef Name="booking_id" />
+            <PropertyRef Name="problem_id" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="booking_id" Type="int" Nullable="false" />
+          <Property Name="problem_id" Type="int" Nullable="false" />
+          <Property Name="price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mechanic_id" Type="int" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="booking_status_id" Type="int" Nullable="false" />
+          <Property Name="creation_date_time" Type="datetime" Nullable="false" />
+          <Property Name="base_fare" Type="float" />
+          <Property Name="mechanic_latitude" Type="float" />
+          <Property Name="mechanic_longitude" Type="float" />
+          <Property Name="customer_longitude" Type="float" />
+          <Property Name="customer_latitude" Type="float" />
+          <Property Name="distance" Type="float" />
+        </EntityType>
+        <EntityType Name="bookingStatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="customerOffer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Heading" Type="varchar" MaxLength="50" />
+          <Property Name="Details" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="customerProfile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ServiserDB.dbo.CustomerVehicleName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CustomerVehicleName">
+          <Key>
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="vehicle_name_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="vehicle_name_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ServiserDB.dbo.mechanic_vehicle_problems' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="mechanic_vehicle_problems">
+          <Key>
+            <PropertyRef Name="mechanic_id" />
+            <PropertyRef Name="problem_id" />
+          </Key>
+          <Property Name="mechanic_id" Type="int" Nullable="false" />
+          <Property Name="problem_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mechanicOffers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="heading" Type="nchar" MaxLength="60" />
+          <Property Name="detail" Type="nchar" MaxLength="100" />
+          <Property Name="pic" Type="image" />
+          <Property Name="creation_date_time" Type="datetime" />
+          <Property Name="expiration_date_time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="mechanicProfile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="longitude" Type="int" Nullable="false" />
+          <Property Name="latitude" Type="int" Nullable="false" />
+          <Property Name="verified" Type="int" />
+        </EntityType>
+        <EntityType Name="Mechanic'sNotification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Heading" Type="varchar" MaxLength="50" />
+          <Property Name="Details" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ServiserDB.dbo.offerCustomerBridge' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="offerCustomerBridge">
+          <Key>
+            <PropertyRef Name="customer_id" />
+            <PropertyRef Name="offer_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="offer_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="offerMechanicBridge">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="mechanic_id" Type="int" Nullable="false" />
+          <Property Name="offer_id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id/ph#" />
+          </Key>
+          <Property Name="id/ph#" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" />
+          <Property Name="time_of_register" Type="time" Precision="7" Nullable="false" />
+          <Property Name="date_of_register" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ServiserDB.dbo.userRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="userRole">
+          <Key>
+            <PropertyRef Name="role_id" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vehicleName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="vehicle_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vehicleProblems">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vehicle_name_id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="min_rate" Type="int" Nullable="false" />
+          <Property Name="max_rate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BiLLItem_booking">
+          <End Role="booking" Type="Self.booking" Multiplicity="1" />
+          <End Role="BiLLItem" Type="Self.BiLLItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BiLLItem">
+              <PropertyRef Name="booking_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BiLLItem_vehicleProblems">
+          <End Role="vehicleProblems" Type="Self.vehicleProblems" Multiplicity="1" />
+          <End Role="BiLLItem" Type="Self.BiLLItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicleProblems">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BiLLItem">
+              <PropertyRef Name="problem_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_bookingStatus">
+          <End Role="bookingStatus" Type="Self.bookingStatus" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bookingStatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="booking_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_customerProfile">
+          <End Role="customerProfile" Type="Self.customerProfile" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customerProfile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_mechanicProfile">
+          <End Role="mechanicProfile" Type="Self.mechanicProfile" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mechanicProfile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="mechanic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerVehicleName_customerProfile">
+          <End Role="customerProfile" Type="Self.customerProfile" Multiplicity="1" />
+          <End Role="CustomerVehicleName" Type="Self.CustomerVehicleName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customerProfile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CustomerVehicleName">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerVehicleName_vehicleName">
+          <End Role="vehicleName" Type="Self.vehicleName" Multiplicity="1" />
+          <End Role="CustomerVehicleName" Type="Self.CustomerVehicleName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicleName">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CustomerVehicleName">
+              <PropertyRef Name="vehicle_name_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mechanic_vehicle_problems_mechanicProfile">
+          <End Role="mechanicProfile" Type="Self.mechanicProfile" Multiplicity="1" />
+          <End Role="mechanic_vehicle_problems" Type="Self.mechanic_vehicle_problems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mechanicProfile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mechanic_vehicle_problems">
+              <PropertyRef Name="mechanic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mechanic_vehicle_problems_vehicleProblems">
+          <End Role="vehicleProblems" Type="Self.vehicleProblems" Multiplicity="1" />
+          <End Role="mechanic_vehicle_problems" Type="Self.mechanic_vehicle_problems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicleProblems">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mechanic_vehicle_problems">
+              <PropertyRef Name="problem_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_offerCustomerBridge_customerOffer">
+          <End Role="customerOffer" Type="Self.customerOffer" Multiplicity="1" />
+          <End Role="offerCustomerBridge" Type="Self.offerCustomerBridge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customerOffer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="offerCustomerBridge">
+              <PropertyRef Name="offer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_offerCustomerBridge_customerProfile">
+          <End Role="customerProfile" Type="Self.customerProfile" Multiplicity="1" />
+          <End Role="offerCustomerBridge" Type="Self.offerCustomerBridge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customerProfile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="offerCustomerBridge">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_offerMechanicBridge_mechanicProfile">
+          <End Role="mechanicProfile" Type="Self.mechanicProfile" Multiplicity="1" />
+          <End Role="offerMechanicBridge" Type="Self.offerMechanicBridge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mechanicProfile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="offerMechanicBridge">
+              <PropertyRef Name="mechanic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userRole_role">
+          <End Role="role" Type="Self.role" Multiplicity="1" />
+          <End Role="userRole" Type="Self.userRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="userRole">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userRole_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="userRole" Type="Self.userRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id/ph#" />
+            </Principal>
+            <Dependent Role="userRole">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vehicleName_VehicleType">
+          <End Role="VehicleType" Type="Self.VehicleType" Multiplicity="1" />
+          <End Role="vehicleName" Type="Self.vehicleName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vehicleName">
+              <PropertyRef Name="vehicle_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vehicleProblems_vehicleName">
+          <End Role="vehicleName" Type="Self.vehicleName" Multiplicity="1" />
+          <End Role="vehicleProblems" Type="Self.vehicleProblems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicleName">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vehicleProblems">
+              <PropertyRef Name="Vehicle_name_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ServiserDBModelStoreContainer">
+          <EntitySet Name="booking" EntityType="Self.booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="bookingStatus" EntityType="Self.bookingStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customerOffer" EntityType="Self.customerOffer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="customerProfile" EntityType="Self.customerProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mechanicOffers" EntityType="Self.mechanicOffers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mechanicProfile" EntityType="Self.mechanicProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mechanic'sNotification" EntityType="Self.Mechanic'sNotification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="offerMechanicBridge" EntityType="Self.offerMechanicBridge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vehicleName" EntityType="Self.vehicleName" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vehicleProblems" EntityType="Self.vehicleProblems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleType" EntityType="Self.VehicleType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BiLLItem" EntityType="Self.BiLLItem" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BiLLItem].[booking_id] AS [booking_id], 
+    [BiLLItem].[problem_id] AS [problem_id], 
+    [BiLLItem].[price] AS [price]
+    FROM [dbo].[BiLLItem] AS [BiLLItem]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CustomerVehicleName" EntityType="Self.CustomerVehicleName" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CustomerVehicleName].[customer_id] AS [customer_id], 
+    [CustomerVehicleName].[vehicle_name_id] AS [vehicle_name_id]
+    FROM [dbo].[CustomerVehicleName] AS [CustomerVehicleName]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="mechanic_vehicle_problems" EntityType="Self.mechanic_vehicle_problems" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [mechanic_vehicle_problems].[mechanic_id] AS [mechanic_id], 
+    [mechanic_vehicle_problems].[problem_id] AS [problem_id]
+    FROM [dbo].[mechanic_vehicle_problems] AS [mechanic_vehicle_problems]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="offerCustomerBridge" EntityType="Self.offerCustomerBridge" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [offerCustomerBridge].[customer_id] AS [customer_id], 
+    [offerCustomerBridge].[offer_id] AS [offer_id]
+    FROM [dbo].[offerCustomerBridge] AS [offerCustomerBridge]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="userRole" EntityType="Self.userRole" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [userRole].[role_id] AS [role_id], 
+    [userRole].[user_id] AS [user_id]
+    FROM [dbo].[userRole] AS [userRole]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_BiLLItem_booking" Association="Self.FK_BiLLItem_booking">
+            <End Role="booking" EntitySet="booking" />
+            <End Role="BiLLItem" EntitySet="BiLLItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BiLLItem_vehicleProblems" Association="Self.FK_BiLLItem_vehicleProblems">
+            <End Role="vehicleProblems" EntitySet="vehicleProblems" />
+            <End Role="BiLLItem" EntitySet="BiLLItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_bookingStatus" Association="Self.FK_booking_bookingStatus">
+            <End Role="bookingStatus" EntitySet="bookingStatus" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_customerProfile" Association="Self.FK_booking_customerProfile">
+            <End Role="customerProfile" EntitySet="customerProfile" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_mechanicProfile" Association="Self.FK_booking_mechanicProfile">
+            <End Role="mechanicProfile" EntitySet="mechanicProfile" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerVehicleName_customerProfile" Association="Self.FK_CustomerVehicleName_customerProfile">
+            <End Role="customerProfile" EntitySet="customerProfile" />
+            <End Role="CustomerVehicleName" EntitySet="CustomerVehicleName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerVehicleName_vehicleName" Association="Self.FK_CustomerVehicleName_vehicleName">
+            <End Role="vehicleName" EntitySet="vehicleName" />
+            <End Role="CustomerVehicleName" EntitySet="CustomerVehicleName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mechanic_vehicle_problems_mechanicProfile" Association="Self.FK_mechanic_vehicle_problems_mechanicProfile">
+            <End Role="mechanicProfile" EntitySet="mechanicProfile" />
+            <End Role="mechanic_vehicle_problems" EntitySet="mechanic_vehicle_problems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mechanic_vehicle_problems_vehicleProblems" Association="Self.FK_mechanic_vehicle_problems_vehicleProblems">
+            <End Role="vehicleProblems" EntitySet="vehicleProblems" />
+            <End Role="mechanic_vehicle_problems" EntitySet="mechanic_vehicle_problems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_offerCustomerBridge_customerOffer" Association="Self.FK_offerCustomerBridge_customerOffer">
+            <End Role="customerOffer" EntitySet="customerOffer" />
+            <End Role="offerCustomerBridge" EntitySet="offerCustomerBridge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_offerCustomerBridge_customerProfile" Association="Self.FK_offerCustomerBridge_customerProfile">
+            <End Role="customerProfile" EntitySet="customerProfile" />
+            <End Role="offerCustomerBridge" EntitySet="offerCustomerBridge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_offerMechanicBridge_mechanicProfile" Association="Self.FK_offerMechanicBridge_mechanicProfile">
+            <End Role="mechanicProfile" EntitySet="mechanicProfile" />
+            <End Role="offerMechanicBridge" EntitySet="offerMechanicBridge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userRole_role" Association="Self.FK_userRole_role">
+            <End Role="role" EntitySet="role" />
+            <End Role="userRole" EntitySet="userRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userRole_user" Association="Self.FK_userRole_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="userRole" EntitySet="userRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vehicleName_VehicleType" Association="Self.FK_vehicleName_VehicleType">
+            <End Role="VehicleType" EntitySet="VehicleType" />
+            <End Role="vehicleName" EntitySet="vehicleName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vehicleProblems_vehicleName" Association="Self.FK_vehicleProblems_vehicleName">
+            <End Role="vehicleName" EntitySet="vehicleName" />
+            <End Role="vehicleProblems" EntitySet="vehicleProblems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ServiserDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="booking">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mechanic_id" Type="Int32" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="booking_status_id" Type="Int32" Nullable="false" />
+          <Property Name="creation_date_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="base_fare" Type="Double" />
+          <Property Name="mechanic_latitude" Type="Double" />
+          <Property Name="mechanic_longitude" Type="Double" />
+          <Property Name="customer_longitude" Type="Double" />
+          <Property Name="customer_latitude" Type="Double" />
+          <Property Name="distance" Type="Double" />
+          <NavigationProperty Name="BiLLItem" Relationship="Self.FK_BiLLItem_booking" FromRole="booking" ToRole="BiLLItem" />
+          <NavigationProperty Name="bookingStatus" Relationship="Self.FK_booking_bookingStatus" FromRole="booking" ToRole="bookingStatus" />
+          <NavigationProperty Name="customerProfile" Relationship="Self.FK_booking_customerProfile" FromRole="booking" ToRole="customerProfile" />
+          <NavigationProperty Name="mechanicProfile" Relationship="Self.FK_booking_mechanicProfile" FromRole="booking" ToRole="mechanicProfile" />
+        </EntityType>
+        <EntityType Name="bookingStatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="booking" Relationship="Self.FK_booking_bookingStatus" FromRole="bookingStatus" ToRole="booking" />
+        </EntityType>
+        <EntityType Name="customerOffer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Heading" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customerProfile" Relationship="Self.offerCustomerBridge" FromRole="customerOffer" ToRole="customerProfile" />
+        </EntityType>
+        <EntityType Name="customerProfile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="booking" Relationship="Self.FK_booking_customerProfile" FromRole="customerProfile" ToRole="booking" />
+          <NavigationProperty Name="vehicleName" Relationship="Self.CustomerVehicleName" FromRole="customerProfile" ToRole="vehicleName" />
+          <NavigationProperty Name="customerOffer" Relationship="Self.offerCustomerBridge" FromRole="customerProfile" ToRole="customerOffer" />
+        </EntityType>
+        <EntityType Name="mechanicOffers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="heading" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="detail" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="creation_date_time" Type="DateTime" Precision="3" />
+          <Property Name="expiration_date_time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="mechanicProfile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="longitude" Type="Int32" Nullable="false" />
+          <Property Name="latitude" Type="Int32" Nullable="false" />
+          <Property Name="verified" Type="Int32" />
+          <NavigationProperty Name="booking" Relationship="Self.FK_booking_mechanicProfile" FromRole="mechanicProfile" ToRole="booking" />
+          <NavigationProperty Name="offerMechanicBridge" Relationship="Self.FK_offerMechanicBridge_mechanicProfile" FromRole="mechanicProfile" ToRole="offerMechanicBridge" />
+          <NavigationProperty Name="vehicleProblems" Relationship="Self.mechanic_vehicle_problems" FromRole="mechanicProfile" ToRole="vehicleProblems" />
+        </EntityType>
+        <EntityType Name="Mechanic_sNotification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Heading" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="offerMechanicBridge">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="mechanic_id" Type="Int32" Nullable="false" />
+          <Property Name="offer_id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="mechanicProfile" Relationship="Self.FK_offerMechanicBridge_mechanicProfile" FromRole="offerMechanicBridge" ToRole="mechanicProfile" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user" Relationship="Self.userRole" FromRole="role" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id_ph_" />
+          </Key>
+          <Property Name="id_ph_" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="time_of_register" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="date_of_register" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="role" Relationship="Self.userRole" FromRole="user" ToRole="role" />
+        </EntityType>
+        <EntityType Name="vehicleName">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vehicle_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VehicleType" Relationship="Self.FK_vehicleName_VehicleType" FromRole="vehicleName" ToRole="VehicleType" />
+          <NavigationProperty Name="vehicleProblems" Relationship="Self.FK_vehicleProblems_vehicleName" FromRole="vehicleName" ToRole="vehicleProblems" />
+          <NavigationProperty Name="customerProfile" Relationship="Self.CustomerVehicleName" FromRole="vehicleName" ToRole="customerProfile" />
+        </EntityType>
+        <EntityType Name="vehicleProblems">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vehicle_name_id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="min_rate" Type="Int32" Nullable="false" />
+          <Property Name="max_rate" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="vehicleName" Relationship="Self.FK_vehicleProblems_vehicleName" FromRole="vehicleProblems" ToRole="vehicleName" />
+          <NavigationProperty Name="BiLLItem" Relationship="Self.FK_BiLLItem_vehicleProblems" FromRole="vehicleProblems" ToRole="BiLLItem" />
+          <NavigationProperty Name="mechanicProfile" Relationship="Self.mechanic_vehicle_problems" FromRole="vehicleProblems" ToRole="mechanicProfile" />
+        </EntityType>
+        <EntityType Name="VehicleType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="vehicleName" Relationship="Self.FK_vehicleName_VehicleType" FromRole="VehicleType" ToRole="vehicleName" />
+        </EntityType>
+        <EntityType Name="BiLLItem">
+          <Key>
+            <PropertyRef Name="booking_id" />
+            <PropertyRef Name="problem_id" />
+            <PropertyRef Name="price" />
+          </Key>
+          <Property Name="booking_id" Type="Int32" Nullable="false" />
+          <Property Name="problem_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="booking" Relationship="Self.FK_BiLLItem_booking" FromRole="BiLLItem" ToRole="booking" />
+          <NavigationProperty Name="vehicleProblems" Relationship="Self.FK_BiLLItem_vehicleProblems" FromRole="BiLLItem" ToRole="vehicleProblems" />
+        </EntityType>
+        <Association Name="FK_BiLLItem_booking">
+          <End Role="booking" Type="Self.booking" Multiplicity="1" />
+          <End Role="BiLLItem" Type="Self.BiLLItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="booking">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BiLLItem">
+              <PropertyRef Name="booking_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_bookingStatus">
+          <End Role="bookingStatus" Type="Self.bookingStatus" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bookingStatus">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="booking_status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_customerProfile">
+          <End Role="customerProfile" Type="Self.customerProfile" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customerProfile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_booking_mechanicProfile">
+          <End Role="mechanicProfile" Type="Self.mechanicProfile" Multiplicity="1" />
+          <End Role="booking" Type="Self.booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mechanicProfile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="booking">
+              <PropertyRef Name="mechanic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_offerMechanicBridge_mechanicProfile">
+          <End Role="mechanicProfile" Type="Self.mechanicProfile" Multiplicity="1" />
+          <End Role="offerMechanicBridge" Type="Self.offerMechanicBridge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mechanicProfile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="offerMechanicBridge">
+              <PropertyRef Name="mechanic_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vehicleName_VehicleType">
+          <End Role="VehicleType" Type="Self.VehicleType" Multiplicity="1" />
+          <End Role="vehicleName" Type="Self.vehicleName" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vehicleName">
+              <PropertyRef Name="vehicle_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vehicleProblems_vehicleName">
+          <End Role="vehicleName" Type="Self.vehicleName" Multiplicity="1" />
+          <End Role="vehicleProblems" Type="Self.vehicleProblems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicleName">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="vehicleProblems">
+              <PropertyRef Name="Vehicle_name_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BiLLItem_vehicleProblems">
+          <End Role="vehicleProblems" Type="Self.vehicleProblems" Multiplicity="1" />
+          <End Role="BiLLItem" Type="Self.BiLLItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vehicleProblems">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BiLLItem">
+              <PropertyRef Name="problem_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CustomerVehicleName">
+          <End Role="customerProfile" Type="Self.customerProfile" Multiplicity="*" />
+          <End Role="vehicleName" Type="Self.vehicleName" Multiplicity="*" />
+        </Association>
+        <Association Name="mechanic_vehicle_problems">
+          <End Role="mechanicProfile" Type="Self.mechanicProfile" Multiplicity="*" />
+          <End Role="vehicleProblems" Type="Self.vehicleProblems" Multiplicity="*" />
+        </Association>
+        <Association Name="offerCustomerBridge">
+          <End Role="customerOffer" Type="Self.customerOffer" Multiplicity="*" />
+          <End Role="customerProfile" Type="Self.customerProfile" Multiplicity="*" />
+        </Association>
+        <Association Name="userRole">
+          <End Role="role" Type="Self.role" Multiplicity="*" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ServiserDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="booking" EntityType="Self.booking" />
+          <EntitySet Name="bookingStatus" EntityType="Self.bookingStatus" />
+          <EntitySet Name="customerOffer" EntityType="Self.customerOffer" />
+          <EntitySet Name="customerProfile" EntityType="Self.customerProfile" />
+          <EntitySet Name="mechanicOffers" EntityType="Self.mechanicOffers" />
+          <EntitySet Name="mechanicProfile" EntityType="Self.mechanicProfile" />
+          <EntitySet Name="Mechanic_sNotification" EntityType="Self.Mechanic_sNotification" />
+          <EntitySet Name="offerMechanicBridge" EntityType="Self.offerMechanicBridge" />
+          <EntitySet Name="role" EntityType="Self.role" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="vehicleName" EntityType="Self.vehicleName" />
+          <EntitySet Name="vehicleProblems" EntityType="Self.vehicleProblems" />
+          <EntitySet Name="VehicleType" EntityType="Self.VehicleType" />
+          <EntitySet Name="BiLLItem" EntityType="Self.BiLLItem" />
+          <AssociationSet Name="FK_BiLLItem_booking" Association="Self.FK_BiLLItem_booking">
+            <End Role="booking" EntitySet="booking" />
+            <End Role="BiLLItem" EntitySet="BiLLItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_bookingStatus" Association="Self.FK_booking_bookingStatus">
+            <End Role="bookingStatus" EntitySet="bookingStatus" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_customerProfile" Association="Self.FK_booking_customerProfile">
+            <End Role="customerProfile" EntitySet="customerProfile" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_booking_mechanicProfile" Association="Self.FK_booking_mechanicProfile">
+            <End Role="mechanicProfile" EntitySet="mechanicProfile" />
+            <End Role="booking" EntitySet="booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_offerMechanicBridge_mechanicProfile" Association="Self.FK_offerMechanicBridge_mechanicProfile">
+            <End Role="mechanicProfile" EntitySet="mechanicProfile" />
+            <End Role="offerMechanicBridge" EntitySet="offerMechanicBridge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vehicleName_VehicleType" Association="Self.FK_vehicleName_VehicleType">
+            <End Role="VehicleType" EntitySet="VehicleType" />
+            <End Role="vehicleName" EntitySet="vehicleName" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vehicleProblems_vehicleName" Association="Self.FK_vehicleProblems_vehicleName">
+            <End Role="vehicleName" EntitySet="vehicleName" />
+            <End Role="vehicleProblems" EntitySet="vehicleProblems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BiLLItem_vehicleProblems" Association="Self.FK_BiLLItem_vehicleProblems">
+            <End Role="vehicleProblems" EntitySet="vehicleProblems" />
+            <End Role="BiLLItem" EntitySet="BiLLItem" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerVehicleName" Association="Self.CustomerVehicleName">
+            <End Role="customerProfile" EntitySet="customerProfile" />
+            <End Role="vehicleName" EntitySet="vehicleName" />
+          </AssociationSet>
+          <AssociationSet Name="mechanic_vehicle_problems" Association="Self.mechanic_vehicle_problems">
+            <End Role="mechanicProfile" EntitySet="mechanicProfile" />
+            <End Role="vehicleProblems" EntitySet="vehicleProblems" />
+          </AssociationSet>
+          <AssociationSet Name="offerCustomerBridge" Association="Self.offerCustomerBridge">
+            <End Role="customerOffer" EntitySet="customerOffer" />
+            <End Role="customerProfile" EntitySet="customerProfile" />
+          </AssociationSet>
+          <AssociationSet Name="userRole" Association="Self.userRole">
+            <End Role="role" EntitySet="role" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ServiserDBModelStoreContainer" CdmEntityContainer="ServiserDBEntities">
+          <EntitySetMapping Name="booking">
+            <EntityTypeMapping TypeName="ServiserDBModel.booking">
+              <MappingFragment StoreEntitySet="booking">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="mechanic_id" ColumnName="mechanic_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="booking_status_id" ColumnName="booking_status_id" />
+                <ScalarProperty Name="creation_date_time" ColumnName="creation_date_time" />
+                <ScalarProperty Name="base_fare" ColumnName="base_fare" />
+                <ScalarProperty Name="mechanic_latitude" ColumnName="mechanic_latitude" />
+                <ScalarProperty Name="mechanic_longitude" ColumnName="mechanic_longitude" />
+                <ScalarProperty Name="customer_longitude" ColumnName="customer_longitude" />
+                <ScalarProperty Name="customer_latitude" ColumnName="customer_latitude" />
+                <ScalarProperty Name="distance" ColumnName="distance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bookingStatus">
+            <EntityTypeMapping TypeName="ServiserDBModel.bookingStatus">
+              <MappingFragment StoreEntitySet="bookingStatus">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customerOffer">
+            <EntityTypeMapping TypeName="ServiserDBModel.customerOffer">
+              <MappingFragment StoreEntitySet="customerOffer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customerProfile">
+            <EntityTypeMapping TypeName="ServiserDBModel.customerProfile">
+              <MappingFragment StoreEntitySet="customerProfile">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mechanicOffers">
+            <EntityTypeMapping TypeName="ServiserDBModel.mechanicOffers">
+              <MappingFragment StoreEntitySet="mechanicOffers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="heading" ColumnName="heading" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="pic" ColumnName="pic" />
+                <ScalarProperty Name="creation_date_time" ColumnName="creation_date_time" />
+                <ScalarProperty Name="expiration_date_time" ColumnName="expiration_date_time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mechanicProfile">
+            <EntityTypeMapping TypeName="ServiserDBModel.mechanicProfile">
+              <MappingFragment StoreEntitySet="mechanicProfile">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="verified" ColumnName="verified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mechanic_sNotification">
+            <EntityTypeMapping TypeName="ServiserDBModel.Mechanic_sNotification">
+              <MappingFragment StoreEntitySet="Mechanic'sNotification">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Heading" ColumnName="Heading" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="offerMechanicBridge">
+            <EntityTypeMapping TypeName="ServiserDBModel.offerMechanicBridge">
+              <MappingFragment StoreEntitySet="offerMechanicBridge">
+                <ScalarProperty Name="mechanic_id" ColumnName="mechanic_id" />
+                <ScalarProperty Name="offer_id" ColumnName="offer_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="ServiserDBModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="ServiserDBModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="id_ph_" ColumnName="id/ph#" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="time_of_register" ColumnName="time_of_register" />
+                <ScalarProperty Name="date_of_register" ColumnName="date_of_register" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehicleName">
+            <EntityTypeMapping TypeName="ServiserDBModel.vehicleName">
+              <MappingFragment StoreEntitySet="vehicleName">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="vehicle_id" ColumnName="vehicle_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vehicleProblems">
+            <EntityTypeMapping TypeName="ServiserDBModel.vehicleProblems">
+              <MappingFragment StoreEntitySet="vehicleProblems">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Vehicle_name_id" ColumnName="Vehicle_name_id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="min_rate" ColumnName="min_rate" />
+                <ScalarProperty Name="max_rate" ColumnName="max_rate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleType">
+            <EntityTypeMapping TypeName="ServiserDBModel.VehicleType">
+              <MappingFragment StoreEntitySet="VehicleType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BiLLItem">
+            <EntityTypeMapping TypeName="ServiserDBModel.BiLLItem">
+              <MappingFragment StoreEntitySet="BiLLItem">
+                <ScalarProperty Name="booking_id" ColumnName="booking_id" />
+                <ScalarProperty Name="problem_id" ColumnName="problem_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CustomerVehicleName" TypeName="ServiserDBModel.CustomerVehicleName" StoreEntitySet="CustomerVehicleName">
+            <EndProperty Name="customerProfile">
+              <ScalarProperty Name="id" ColumnName="customer_id" />
+            </EndProperty>
+            <EndProperty Name="vehicleName">
+              <ScalarProperty Name="id" ColumnName="vehicle_name_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="mechanic_vehicle_problems" TypeName="ServiserDBModel.mechanic_vehicle_problems" StoreEntitySet="mechanic_vehicle_problems">
+            <EndProperty Name="mechanicProfile">
+              <ScalarProperty Name="id" ColumnName="mechanic_id" />
+            </EndProperty>
+            <EndProperty Name="vehicleProblems">
+              <ScalarProperty Name="id" ColumnName="problem_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="offerCustomerBridge" TypeName="ServiserDBModel.offerCustomerBridge" StoreEntitySet="offerCustomerBridge">
+            <EndProperty Name="customerOffer">
+              <ScalarProperty Name="id" ColumnName="offer_id" />
+            </EndProperty>
+            <EndProperty Name="customerProfile">
+              <ScalarProperty Name="id" ColumnName="customer_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="userRole" TypeName="ServiserDBModel.userRole" StoreEntitySet="userRole">
+            <EndProperty Name="role">
+              <ScalarProperty Name="id" ColumnName="role_id" />
+            </EndProperty>
+            <EndProperty Name="user">
+              <ScalarProperty Name="id_ph_" ColumnName="user_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -55,6 +55,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -191,17 +193,74 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="BiLLItem.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="booking.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bookingStatus.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="customerOffer.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="customerProfile.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="mechanicOffers.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mechanicProfile.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mechanic_sNotification.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="offerMechanicBridge.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="role.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="serviserDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>serviserDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="serviserDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="serviserDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>serviserDataModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="user.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vehicleName.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vehicleProblems.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleType.cs">
+      <DependentUpon>serviserDataModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Images\bike.png" />
@@ -326,6 +385,16 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="serviserDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>serviserDataModel.edmx</DependentUpon>
+      <LastGenOutput>serviserDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="serviserDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>serviserDataModel.edmx</DependentUpon>
+      <LastGenOutput>serviserDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -374,6 +443,13 @@
     <Content Include="Views\Home\Booking.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
+    <EntityDeploy Include="serviserDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>serviserDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="serviserDataModel.edmx.diagram">
+      <DependentUpon>serviserDataModel.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -386,6 +462,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
