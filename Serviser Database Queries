@@ -1,0 +1,390 @@
+USE [ServiserDB]
+GO
+/****** Object:  Table [dbo].[BiLLItem]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[BiLLItem](
+	[booking_id] [int] NOT NULL,
+	[problem_id] [int] NOT NULL,
+	[price] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[booking]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[booking](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[mechanic_id] [int] NOT NULL,
+	[customer_id] [int] NOT NULL,
+	[booking_status_id] [int] NOT NULL,
+	[creation_date_time] [datetime] NOT NULL,
+	[base_fare] [float] NULL,
+	[mechanic_latitude] [float] NULL,
+	[mechanic_longitude] [float] NULL,
+	[customer_longitude] [float] NULL,
+	[customer_latitude] [float] NULL,
+	[distance] [float] NULL,
+ CONSTRAINT [PK_booking] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[bookingStatus]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[bookingStatus](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[status] [varchar](25) NULL,
+ CONSTRAINT [PK_bookingStatus] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[customerOffer]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[customerOffer](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Heading] [varchar](50) NULL,
+	[Details] [varchar](50) NULL,
+ CONSTRAINT [PK_customerOffer] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[customerProfile]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[customerProfile](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_customerProfile] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[CustomerVehicleName]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CustomerVehicleName](
+	[customer_id] [int] NOT NULL,
+	[vehicle_name_id] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[mechanic_vehicle_problems]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[mechanic_vehicle_problems](
+	[mechanic_id] [int] NOT NULL,
+	[problem_id] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[mechanicOffers]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[mechanicOffers](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[heading] [nchar](60) NULL,
+	[detail] [nchar](100) NULL,
+	[pic] [image] NULL,
+	[creation_date_time] [datetime] NULL,
+	[expiration_date_time] [datetime] NULL,
+ CONSTRAINT [PK_mechanicOffers] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[mechanicProfile]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[mechanicProfile](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[longitude] [int] NOT NULL,
+	[latitude] [int] NOT NULL,
+	[verified] [int] NULL,
+ CONSTRAINT [PK_mechanicProfile] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Mechanic'sNotification]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Mechanic'sNotification](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Heading] [varchar](50) NULL,
+	[Details] [varchar](50) NULL,
+ CONSTRAINT [PK_Mechanic'sNotification] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[offerCustomerBridge]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[offerCustomerBridge](
+	[customer_id] [int] NOT NULL,
+	[offer_id] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[offerMechanicBridge]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[offerMechanicBridge](
+	[mechanic_id] [int] NOT NULL,
+	[offer_id] [int] NOT NULL,
+	[id] [int] IDENTITY(1,1) NOT NULL,
+ CONSTRAINT [PK_offerMechanicBridge_1] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[role]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[role](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NULL,
+ CONSTRAINT [PK_role] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[user]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[user](
+	[id/ph#] [int] NOT NULL,
+	[email] [varchar](50) NOT NULL,
+	[first_name] [varchar](50) NULL,
+	[last_name] [varchar](50) NULL,
+	[time_of_register] [time](7) NOT NULL,
+	[date_of_register] [date] NOT NULL,
+ CONSTRAINT [PK_user] PRIMARY KEY CLUSTERED 
+(
+	[id/ph#] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[userRole]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[userRole](
+	[role_id] [int] NOT NULL,
+	[user_id] [int] NOT NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[vehicleName]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[vehicleName](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+	[vehicle_id] [int] NOT NULL,
+ CONSTRAINT [PK_vehicleName] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[vehicleProblems]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[vehicleProblems](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Vehicle_name_id] [int] NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+	[min_rate] [int] NOT NULL,
+	[max_rate] [int] NOT NULL,
+ CONSTRAINT [PK_vehicleProblems] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[VehicleType]    Script Date: 4/22/2019 12:10:05 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[VehicleType](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_VehicleType] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+ALTER TABLE [dbo].[BiLLItem]  WITH CHECK ADD  CONSTRAINT [FK_BiLLItem_booking] FOREIGN KEY([booking_id])
+REFERENCES [dbo].[booking] ([id])
+GO
+ALTER TABLE [dbo].[BiLLItem] CHECK CONSTRAINT [FK_BiLLItem_booking]
+GO
+ALTER TABLE [dbo].[BiLLItem]  WITH CHECK ADD  CONSTRAINT [FK_BiLLItem_vehicleProblems] FOREIGN KEY([problem_id])
+REFERENCES [dbo].[vehicleProblems] ([id])
+GO
+ALTER TABLE [dbo].[BiLLItem] CHECK CONSTRAINT [FK_BiLLItem_vehicleProblems]
+GO
+ALTER TABLE [dbo].[booking]  WITH CHECK ADD  CONSTRAINT [FK_booking_bookingStatus] FOREIGN KEY([booking_status_id])
+REFERENCES [dbo].[bookingStatus] ([id])
+GO
+ALTER TABLE [dbo].[booking] CHECK CONSTRAINT [FK_booking_bookingStatus]
+GO
+ALTER TABLE [dbo].[booking]  WITH CHECK ADD  CONSTRAINT [FK_booking_customerProfile] FOREIGN KEY([customer_id])
+REFERENCES [dbo].[customerProfile] ([id])
+GO
+ALTER TABLE [dbo].[booking] CHECK CONSTRAINT [FK_booking_customerProfile]
+GO
+ALTER TABLE [dbo].[booking]  WITH CHECK ADD  CONSTRAINT [FK_booking_mechanicProfile] FOREIGN KEY([mechanic_id])
+REFERENCES [dbo].[mechanicProfile] ([id])
+GO
+ALTER TABLE [dbo].[booking] CHECK CONSTRAINT [FK_booking_mechanicProfile]
+GO
+ALTER TABLE [dbo].[CustomerVehicleName]  WITH CHECK ADD  CONSTRAINT [FK_CustomerVehicleName_customerProfile] FOREIGN KEY([customer_id])
+REFERENCES [dbo].[customerProfile] ([id])
+GO
+ALTER TABLE [dbo].[CustomerVehicleName] CHECK CONSTRAINT [FK_CustomerVehicleName_customerProfile]
+GO
+ALTER TABLE [dbo].[CustomerVehicleName]  WITH CHECK ADD  CONSTRAINT [FK_CustomerVehicleName_vehicleName] FOREIGN KEY([vehicle_name_id])
+REFERENCES [dbo].[vehicleName] ([id])
+GO
+ALTER TABLE [dbo].[CustomerVehicleName] CHECK CONSTRAINT [FK_CustomerVehicleName_vehicleName]
+GO
+ALTER TABLE [dbo].[mechanic_vehicle_problems]  WITH CHECK ADD  CONSTRAINT [FK_mechanic_vehicle_problems_mechanicProfile] FOREIGN KEY([mechanic_id])
+REFERENCES [dbo].[mechanicProfile] ([id])
+GO
+ALTER TABLE [dbo].[mechanic_vehicle_problems] CHECK CONSTRAINT [FK_mechanic_vehicle_problems_mechanicProfile]
+GO
+ALTER TABLE [dbo].[mechanic_vehicle_problems]  WITH CHECK ADD  CONSTRAINT [FK_mechanic_vehicle_problems_vehicleProblems] FOREIGN KEY([problem_id])
+REFERENCES [dbo].[vehicleProblems] ([id])
+GO
+ALTER TABLE [dbo].[mechanic_vehicle_problems] CHECK CONSTRAINT [FK_mechanic_vehicle_problems_vehicleProblems]
+GO
+ALTER TABLE [dbo].[offerCustomerBridge]  WITH CHECK ADD  CONSTRAINT [FK_offerCustomerBridge_customerOffer] FOREIGN KEY([offer_id])
+REFERENCES [dbo].[customerOffer] ([id])
+GO
+ALTER TABLE [dbo].[offerCustomerBridge] CHECK CONSTRAINT [FK_offerCustomerBridge_customerOffer]
+GO
+ALTER TABLE [dbo].[offerCustomerBridge]  WITH CHECK ADD  CONSTRAINT [FK_offerCustomerBridge_customerProfile] FOREIGN KEY([customer_id])
+REFERENCES [dbo].[customerProfile] ([id])
+GO
+ALTER TABLE [dbo].[offerCustomerBridge] CHECK CONSTRAINT [FK_offerCustomerBridge_customerProfile]
+GO
+ALTER TABLE [dbo].[offerMechanicBridge]  WITH CHECK ADD  CONSTRAINT [FK_offerMechanicBridge_mechanicProfile] FOREIGN KEY([mechanic_id])
+REFERENCES [dbo].[mechanicProfile] ([id])
+GO
+ALTER TABLE [dbo].[offerMechanicBridge] CHECK CONSTRAINT [FK_offerMechanicBridge_mechanicProfile]
+GO
+ALTER TABLE [dbo].[userRole]  WITH CHECK ADD  CONSTRAINT [FK_userRole_role] FOREIGN KEY([role_id])
+REFERENCES [dbo].[role] ([id])
+GO
+ALTER TABLE [dbo].[userRole] CHECK CONSTRAINT [FK_userRole_role]
+GO
+ALTER TABLE [dbo].[userRole]  WITH CHECK ADD  CONSTRAINT [FK_userRole_user] FOREIGN KEY([user_id])
+REFERENCES [dbo].[user] ([id/ph#])
+GO
+ALTER TABLE [dbo].[userRole] CHECK CONSTRAINT [FK_userRole_user]
+GO
+ALTER TABLE [dbo].[vehicleName]  WITH CHECK ADD  CONSTRAINT [FK_vehicleName_VehicleType] FOREIGN KEY([vehicle_id])
+REFERENCES [dbo].[VehicleType] ([id])
+GO
+ALTER TABLE [dbo].[vehicleName] CHECK CONSTRAINT [FK_vehicleName_VehicleType]
+GO
+ALTER TABLE [dbo].[vehicleProblems]  WITH CHECK ADD  CONSTRAINT [FK_vehicleProblems_vehicleName] FOREIGN KEY([Vehicle_name_id])
+REFERENCES [dbo].[vehicleName] ([id])
+GO
+ALTER TABLE [dbo].[vehicleProblems] CHECK CONSTRAINT [FK_vehicleProblems_vehicleName]
+GO
