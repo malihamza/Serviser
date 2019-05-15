@@ -67,3 +67,28 @@ address span {
 address a:hover {
     text-decoration: underline;
 }
+.a1 {
+    padding: 10px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+
+
+.a1-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.a1-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.a1-google {
+    background: #dd4b39;
+    color: white;
+}

@@ -2,111 +2,171 @@
     ViewBag.Title = "Register";
 }
 
-@section stylesheets {
+@section stylesheets 
+    {
     <link rel="stylesheet" href="~/Content/register.css">
 }
+<meta name="google-signin-client_id" content="989656006569-obtc83g2qlrc2d3mhutp6rnsa53cql75.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Default form register -->
+<div class="container" style="width: 500px">
+    <form class="text-center border border-light p-5">
 
-<div class="container-fluid p-4" style="background:url('../../Assets/Images/Map pinned-100.jpg'); background-size:cover;">
-    <div class="row" style="margin-top:70px">
-        <div class="col-xl-8 col-md-8 col-lg-7  ">
+        <p class="h4 mb-4">Sign up</p>
 
-        </div>
-        <div class="header-main col-xl-5 col-md-5  col-lg-5 col-sm-12" style="background: var(--soft-white);">
-
-            <div class="header-left-bottom">
-                <div class="bottom" style="margin-bottom: 30px;">
-                    <button class="btn">Already have an account</button>
-                </div>
-                <form action="#" method="post">
-
-                    <table>
-                        <tr>
-                            <td>
-                                <div class="icon1">
-                                    <span class="fa fa-user"></span>
-                                    <input type="text" placeholder="First Name" required="" />
-                                </div>
-                            </td>
-                            <td>
-                                <pre>          </pre>
-
-                            </td>
-                            <td>
-                                <div class="icon1">
-                                    <span class="fa fa-user"></span>
-                                    <input type="text" placeholder="Last Name" required="" />
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                    <div class="icon1">
-                        <span class="fa fa-user"></span>
-                        <input type="email" placeholder="Email Address" required="" />
-                    </div>
-                    <div class="icon1">
-                        <span class="fa fa-phone"></span>
-                        <input type="text" placeholder="Phone" required="" />
-                    </div>
-                    <div class="icon1">
-                        <span class="fa fa-lock"></span>
-                        <input type="password" placeholder="Password" required="" />
-                    </div>
-                    <div class="icon1">
-                        <span class="fa fa-map-marker"></span>
-                        <input type="password" placeholder="City" required="" />
-                    </div>
-                    <p>
-                        By proceeding, I agree to Serviser's Terms of Use and acknowledge that I have read the Privacy Policy.
-                    </p>
-                    <p>
-                        I also agree that Serviser or its representatives may contact me by email, phone, or SMS (including by automated means) at the email address or number I provide, including for marketing purposes.
-
-                    </p>
-                    <div class="bottom">
-                        <button class="btn">Register</button>
-                    </div>
-
-                </form>
+        <div class="form-row mb-4">
+            <div class="col">
+                <!-- First name -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
             </div>
+            <div class="col">
+                <!-- Last name -->
+                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+            </div>
+        </div>
 
+        <!-- E-mail -->
+        <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+        <!-- Password -->
+        <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+            At least 8 characters and 1 digit
+        </small>
+        <input type="number" id="defaultRegisterFormPassword" class="form-control" placeholder="Phone Number" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+
+
+
+        <!-- Sign up button -->
+        <button class="btn btn-info my-4 btn-block" type="submit">Sign Up</button>
+
+        <!-- Social register -->
+        <p>or sign up with:</p>
+        <a href="#" class="fa fa-facebook a1" style="text-decoration-line: none; text-decoration-color: inherit;"></a>
+        <a href="#" class="fa fa-twitter a1" style="text-decoration-line: none; text-decoration-color: inherit;"></a>
+        <a href="#" class="fa fa-google a1" style="text-decoration-line: none; text-decoration-color: inherit;color: red"></a>
+        <div id="my-signin2"></div>
+
+
+
+
+
+        <hr>
+
+        <!-- Terms of service -->
+        <p>
+            By clicking
+            <em>Sign up</em> you agree to our
+            <a href="" target="_blank">terms of service</a>
+
+    </form>
+</div>
+
+
+
+
+@*<div class="container-fluid p-4" style="background:url('../../Assets/Images/Map pinned-100.jpg'); background-size:cover;">
+        <div class="row" style="margin-top:70px">
+            <div class="col-xl-8 col-md-8 col-lg-7  ">
+
+            </div>
+            <div class="header-main col-xl-5 col-md-5  col-lg-5 col-sm-12" style="background: var(--soft-white);">
+
+                <div class="header-left-bottom">
+                    <div class="bottom" style="margin-bottom: 30px;">
+                        <button class="btn">Already have an account</button>
+                    </div>
+                    <form action="#" method="post">
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="icon1">
+                                        <span class="fa fa-user"></span>
+                                        <input type="text" placeholder="First Name" required="" />
+                                    </div>
+                                </td>
+                                <td>
+                                    <pre>          </pre>
+
+                                </td>
+                                <td>
+                                    <div class="icon1">
+                                        <span class="fa fa-user"></span>
+                                        <input type="text" placeholder="Last Name" required="" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="icon1">
+                            <span class="fa fa-user"></span>
+                            <input type="email" placeholder="Email Address" required="" />
+                        </div>
+                        <div class="icon1">
+                            <span class="fa fa-phone"></span>
+                            <input type="text" placeholder="Phone" required="" />
+                        </div>
+                        <div class="icon1">
+                            <span class="fa fa-lock"></span>
+                            <input type="password" placeholder="Password" required="" />
+                        </div>
+                        <div class="icon1">
+                            <span class="fa fa-map-marker"></span>
+                            <input type="password" placeholder="City" required="" />
+                        </div>
+                        <p>
+                            By proceeding, I agree to Serviser's Terms of Use and acknowledge that I have read the Privacy Policy.
+                        </p>
+                        <p>
+                            I also agree that Serviser or its representatives may contact me by email, phone, or SMS (including by automated means) at the email address or number I provide, including for marketing purposes.
+
+                        </p>
+                        <div class="bottom">
+                            <button class="btn">Register</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
-<div class="container-fluid mb-3" style="margin-top:50px;">
-    <div class="row" style="margin-left:50px;">
-        <div class="col-xl-4 col-md-4 col-sm-12">
-            <span style="font-size:30px">Make the Money</span>
-            <br /><br />
-            <p>
-                Got a car? Turn it into a money machine.
-                The city is buzzing and Uber makes it easy for you to cash in on the action.
-                Plus, you've already got everything you need to get started.
-            </p>
+    <div class="container-fluid mb-3" style="margin-top:50px;">
+        <div class="row" style="margin-left:50px;">
+            <div class="col-xl-4 col-md-4 col-sm-12">
+                <span style="font-size:30px">Make the Money</span>
+                <br /><br />
+                <p>
+                    Got a car? Turn it into a money machine.
+                    The city is buzzing and Uber makes it easy for you to cash in on the action.
+                    Plus, you've already got everything you need to get started.
+                </p>
 
+            </div>
+            <div class="col-xl-4 col-md-4 col-sm-12">
+                <span style="font-size:30px">Work when you want</span>
+                <br /><br />
+                <p>
+                    Need something outside the 9 to 5? As an independent
+                    contractor with Uber, you’ve got freedom
+                    and flexibility to drive whenever you have time.
+                    Set your own schedule,
+                    so you can be there for all of life’s most important moments.
+                </p>
+            </div>
+            <div class="col-xl-4 col-md-4 col-sm-12">
+                <span style="font-size:30px">No boss, No office</span>
+                <br /><br />
+                <p>
+                    Whether you’re supporting your family or
+                    saving for something big,
+                    Uber gives you the freedom to get behind the wheel when it makes sense for you.
+                    Choose when you drive, where you go, and who you pick up.
+                </p>
+            </div>
         </div>
-        <div class="col-xl-4 col-md-4 col-sm-12">
-            <span style="font-size:30px">Work when you want</span>
-            <br /><br />
-            <p>
-                Need something outside the 9 to 5? As an independent
-                contractor with Uber, you’ve got freedom
-                and flexibility to drive whenever you have time.
-                Set your own schedule,
-                so you can be there for all of life’s most important moments.
-            </p>
-        </div>
-        <div class="col-xl-4 col-md-4 col-sm-12">
-            <span style="font-size:30px">No boss, No office</span>
-            <br /><br />
-            <p>
-                Whether you’re supporting your family or
-                saving for something big,
-                Uber gives you the freedom to get behind the wheel when it makes sense for you.
-                Choose when you drive, where you go, and who you pick up.
-            </p>
-        </div>
-    </div>
-</div>
+    </div>*@
 <!--
 <div class="container-fluid" style="background-color:#F1F1F1;height:200px;margin-top:20px">
     <div class="row" style="margin-top:50px;height:120px;position:absolute">

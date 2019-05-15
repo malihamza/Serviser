@@ -11,61 +11,261 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg-T5ErBSP7PrxppZiO9OPBA3HW4TXleo"></script>
 <script src="~/Scripts/Home/Booking.js"></script>
+<div class="container-fluid " style="padding: 0px;margin: 0px;position: absolute;z-index: 0;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d108848.8336126985!2d74.24696695820313!3d31.5097088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1554993727992!5m2!1sen!2s"
+            frameborder="0" style="border:0;height:600px;width:100%;position:absolute;cursor:pointer;margin: 0px" allowfullscreen></iframe>
+
+</div>
+
+<div class="container-fluid mt-2 " style="padding: 20px;position: relative;z-index: 1;top: 10px;">
+    <div class="row justify-content-center">
+
+        <div class="col-lg-3  m-4" style="padding: 0px">
+
+            <div class="row justify-content-center" style="background-color: rgb(14,131,205);border-radius: 10px 10px 0px 0px">
+
+                <h4 class="text-center mt-3" style="color: white"><i class="fa fa-motorcycle"></i> Bike</h4>
+
+            </div>
+            <div class="col-lg-auto card" style="padding:10px ">
+
+                <table class="table table-responsive table-hover">
+                    <tr>
+                        <th>Check</th>
+                        <th style="width: 150px">Problem</th>
+                        <th>Rate in PKR</th>
 
 
-<div class="container-fluid pt-5 min-vh-100 d-flex align-items-center bookin-page-container" ng-app="MechanicBookingApp">
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="p1" name="p1">
+                                <label class="custom-control-label" for="p1"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="p2" name="p2">
+                                <label class="custom-control-label" for="p2"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="p3" name="p3">
+                                <label class="custom-control-label" for="p3"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="p4" name="p4">
+                                <label class="custom-control-label" for="p4"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="p5" name="p5">
+                                <label class="custom-control-label" for="p5"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
 
-    <div class="container mt-4 options-controller" ng-controller="OptionsSelectionController">
-        <div class="row">
-            <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 card p-3 form-container scrollbar" id="scrollbar-custom">
-                <div class="d-flex align-items-center steps-back-button" ng-click="previousStep()" ng-show="currentStep>1">
-                    <img src="~/Assets/Images/left-arrow.svg" alt="<" height="10" class="mr-1" /> <span>Back</span>
-                </div>
-                <div ng-if="currentStep==1" class="booking-step">
-                    <h3>Pick a Vehicle Type</h3>
-                    <ul class="list-group">
-                        <li ng-repeat="x in optionsData" class="list-group-item d-flex align-items-center" ng-click="step1Click($index)">
-                            <img src="{{x.ImageUrl}}" alt="Image Clipart of Vehicle" style="height:25px;" />
-                            <span class="mx-3">{{x.Name}}</span>
-                        </li>
+                </table>
 
-                    </ul>
-                </div>
+            </div>
 
-                <div ng-if="currentStep==2" class="booking-step">
-                    <h3>Select All Applicable Problems</h3>
-                    <ul class="list-group">
-                        <li ng-repeat="x in optionsData[selectedVehicleTypeIndex].Problems" class="list-group-item d-flex align-items-center" ng-click="step2ItemClick($index)">
-                            <img src="~/Assets/Images/check cirlce.svg" style="height:auto; max-width:15px;" class="mr-1" ng-if="selectedProblemsIndices[$index]" />
-                            <span>{{x.Title}}</span>
-                        </li>
-                    </ul>
-                    <button class="btn btn-success float-right step-next-button px-4 m-1" ng-click="nextStep()">Next - Option Description</button>
-                </div>
 
-                <div ng-if="currentStep==3" class="booking-step">
-                    <h3>Other Details or Description</h3>
-                    <textarea ng-model="descriptionOfProblem" class="form-control" rows="10" placeholder="Describe your problem here...">
-                            
-                    </textarea>
-                    <button class="btn btn-success float-right step-next-button px-4 m-1" ng-click="nextStep()">Next - Choose Location</button>
-                </div>
+        </div>
+        <div class="col-lg-3  m-4" style="padding: 0px">
 
-                <div ng-if="currentStep==4" class="booking-step">
-                    <h3>Choose Your Location</h3>
-                    <p ng-bind="currentAddress"></p>
+            <div class="row justify-content-center" style="background-color: rgb(14,131,205);border-radius: 10px 10px 0px 0px">
 
-                    <div class="d-flex justify-content-between">
-                        <div class="steps-back-button d-flex align-items-center" ng-click="pinCurrentLocation()">
-                            <img src="~/Assets/Images/position radar.svg" alt="O" width="20" class="mr-2" />
-                            <span>Fine Me</span>
-                        </div>
-                        <button class="btn btn-success float-right step-next-button px-4 m-1" ng-click="nextStep()">Submit</button>
+                <h4 class="text-center mt-3" style="color: white"><i class="fa fa-car"></i> Car</h4>
+
+            </div>
+            <div class="col-lg-auto card" style="padding:10px ">
+
+                <table class="table table-responsive table-hover">
+                    <tr>
+                        <th>Check</th>
+                        <th style="width: 150px">Problem</th>
+                        <th>Rate in PKR</th>
+
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="c1" name="c1">
+                                <label class="custom-control-label" for="c1"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="c2" name="c2">
+                                <label class="custom-control-label" for="c2"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="c3" name="c3">
+                                <label class="custom-control-label" for="c3"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="c4" name="c4">
+                                <label class="custom-control-label" for="c4"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="c5" name="c5">
+                                <label class="custom-control-label" for="c5"></label>
+                            </div>
+                        </td>
+                        <td>Brake Failure</td>
+                        <td>Rs/- 500</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="container card" style="position: relative;z-index: 1;top: 30px;background-color: white;border-radius: 15px 15px 0px 0px">
+
+    <h2 style="padding-top: 20px" class="text-center"><strong>Check Bill</strong></h2>
+    <center>
+        <table class="table  mt-3" style="width: 30%">
+
+            <tr>
+                <th>Net Bill :</th>
+                <td>RS/- 2000</td>
+            </tr>
+            <tr>
+                <th>Base Charges:</th>
+                <td>RS/- 200</td>
+            </tr>
+            <tr>
+                <th>Total Bill:</th>
+                <th>RS/- 2200</th>
+            </tr>
+
+
+        </table>
+    </center>
+    <div class="row  justify-content-end mb-3">
+        <div class="col-sm-2 ">
+            <button class="btn btn-info btn-block">Confirm Bill</button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@*<div class="container-fluid pt-5 min-vh-100 d-flex align-items-center bookin-page-container" ng-app="MechanicBookingApp">
+
+        <div class="container mt-4 options-controller" ng-controller="OptionsSelectionController">
+            <div class="row">
+                <div class="col-12 col-md-8 col-lg-6 offset-md-2 offset-lg-3 card p-3 form-container scrollbar" id="scrollbar-custom">
+                    <div class="d-flex align-items-center steps-back-button" ng-click="previousStep()" ng-show="currentStep>1">
+                        <img src="~/Assets/Images/left-arrow.svg" alt="<" height="10" class="mr-1" /> <span>Back</span>
+                    </div>
+                    <div ng-if="currentStep==1" class="booking-step">
+                        <h3>Pick a Vehicle Type</h3>
+                        <ul class="list-group">
+                            <li ng-repeat="x in optionsData" class="list-group-item d-flex align-items-center" ng-click="step1Click($index)">
+                                <img src="{{x.ImageUrl}}" alt="Image Clipart of Vehicle" style="height:25px;" />
+                                <span class="mx-3">{{x.Name}}</span>
+                            </li>
+
+                        </ul>
                     </div>
 
+                    <div ng-if="currentStep==2" class="booking-step">
+                        <h3>Select All Applicable Problems</h3>
+                        <ul class="list-group">
+                            <li ng-repeat="x in optionsData[selectedVehicleTypeIndex].Problems" class="list-group-item d-flex align-items-center" ng-click="step2ItemClick($index)">
+                                <img src="~/Assets/Images/check cirlce.svg" style="height:auto; max-width:15px;" class="mr-1" ng-if="selectedProblemsIndices[$index]" />
+                                <span>{{x.Title}}</span>
+                            </li>
+                        </ul>
+                        <button class="btn btn-success float-right step-next-button px-4 m-1" ng-click="nextStep()">Next - Option Description</button>
+                    </div>
+
+                    <div ng-if="currentStep==3" class="booking-step">
+                        <h3>Other Details or Description</h3>
+                        <textarea ng-model="descriptionOfProblem" class="form-control" rows="10" placeholder="Describe your problem here...">
+
+                        </textarea>
+                        <button class="btn btn-success float-right step-next-button px-4 m-1" ng-click="nextStep()">Next - Choose Location</button>
+                    </div>
+
+                    <div ng-if="currentStep==4" class="booking-step">
+                        <h3>Choose Your Location</h3>
+                        <p ng-bind="currentAddress"></p>
+
+                        <div class="d-flex justify-content-between">
+                            <div class="steps-back-button d-flex align-items-center" ng-click="pinCurrentLocation()">
+                                <img src="~/Assets/Images/position radar.svg" alt="O" width="20" class="mr-2" />
+                                <span>Fine Me</span>
+                            </div>
+                            <button class="btn btn-success float-right step-next-button px-4 m-1" ng-click="nextStep()">Submit</button>
+                        </div>
+
+                    </div>
+                    <div id="map" class="mt-1 .booking-step" ng-show="currentStep==4"></div>
                 </div>
-                <div id="map" class="mt-1 .booking-step" ng-show="currentStep==4"></div>
             </div>
         </div>
-    </div>
-</div>
+    </div>*@

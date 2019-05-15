@@ -12,6 +12,7 @@ namespace Serviser.DAL.Context
         public ServiserDbContext()
             : base("name=ServiserDbContext")
         {
+
         }
 
         public virtual DbSet<Booking> Bookings { get; set; }
