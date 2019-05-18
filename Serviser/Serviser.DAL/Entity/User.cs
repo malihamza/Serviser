@@ -25,10 +25,10 @@ namespace Serviser.DAL.Entity
             // Add custom user claims here
             return userIdentity;
         }
-
+        [Required]
         [StringLength(50)]
         public string FirstName { get; set; }
-
+        [Required]
         [StringLength(50)]
         public string LastName { get; set; }
 

@@ -92,3 +92,23 @@ address a:hover {
     background: #dd4b39;
     color: white;
 }
+.b {
+    border: 1px solid black;
+}
+
+.row {
+    margin: 0px;
+}
+
+.grayscale {
+    -webkit-filter: grayscale(70%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(80%);
+}
+
+.master {
+    background-image: url(../../Content/images/s2.jpg);
+}
+
+.master1 {
+    background-image: url(../../Content/images/4.jpg);
+}

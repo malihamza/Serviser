@@ -1,84 +1,81 @@
-﻿
-  <a id="top">
-
-  </a>
-    <div class="container-fluid ">
-        <div class="row" style="padding: 40px;background-color: rgb(241,241,241);">
-            <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(241,241,241);">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <a class="navbar-brand d-flex align-items-center" href="#">
-                    <img src="~/Assets/Images/logo.svg" alt="Serviser Logo" class="serviser-navbar-logo" width="50" height="50" />
-                    &nbsp; SERVISER
-                </a>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="@Url.Action("Index","Home")">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Booking","Home")">Book Now</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Pricing","Home")">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Contact Us</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav mt-2 ml-lg-auto mt-lg-0">
-                        <li class="nav-item m-1">
-                            <button class="btn btn-outline-info btn-block" onclick="location.href='@Url.Action("Register","Home")'"><span class="fa fa-sign-in"></span> Sign Up</button>
-                        </li>
-
-                        <li class="nav-item m-1">
-                            <button class="btn btn-outline-info btn-block" onclick="location.href='@Url.Action("Login","Home")'"><span class="fa fa-user"></span> Log In</button>
-                        </li>
-
-                    </ul>
-                </div>
-            </nav>
-
-
-        </div>
-
-
-    </div>
-
-    @*<nav class="navbar navbar-expand-lg navbar-light serviser-navbar fixed-top">
+﻿<div class="container-fluid ">
+    <div class="row" style="padding: 40px;background-color: rgb(241,241,241);">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(241,241,241);">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="~/Assets/Images/mechanic-with-wrench-logo-1.svg" alt="Serviser Logo" class="serviser-navbar-logo" width="30" height="30" />
+                <img src="~/Assets/Images/logo.svg" alt="Serviser Logo" class="serviser-navbar-logo" width="50" height="50" />
                 &nbsp; SERVISER
             </a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="@Url.Action("Index","Home")">Home</a>
+                        <a class="nav-link" href="/Home/Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Booking","Home")">Book Now</a>
+                        <a class="nav-link" href="/Home/Booking">Book Now</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Register","Home")">Become A Mechanic</a>
+                        <a class="nav-link" href="/Home/Pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">Contact Us</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mt-2 ml-lg-auto mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("RegisterAsUser","Home")">Register</a>
+                    <li class="nav-item m-1">
+                        
+                        <button class="btn btn-outline-info btn-block" onclick="location.href='/Home/Register'"><span class="fa fa-sign-in"></span> Sign Up</button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+
+                    <li class="nav-item m-1">
+                        <button class="btn btn-outline-info btn-block" onclick="location.href='/Account/Login'"><span class="fa fa-user"></span> Log In</button>
                     </li>
 
                 </ul>
             </div>
-        </nav>*@
+        </nav>
+
+
+    </div>
+
+
+</div>
+
+@*<nav class="navbar navbar-expand-lg navbar-light serviser-navbar fixed-top">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="~/Assets/Images/mechanic-with-wrench-logo-1.svg" alt="Serviser Logo" class="serviser-navbar-logo" width="30" height="30" />
+            &nbsp; SERVISER
+        </a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Booking","Home")">Book Now</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Register","Home")">Become A Mechanic</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mt-2 ml-lg-auto mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("RegisterAsUser","Home")">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>*@

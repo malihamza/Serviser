@@ -163,5 +163,7 @@ namespace Serviser.DAL.Context
         {
             return new ServiserDbContext();
         }
+
+        public System.Data.Entity.DbSet<Serviser.DAL.Entity.User> IdentityUsers { get; set; }
     }
 }
