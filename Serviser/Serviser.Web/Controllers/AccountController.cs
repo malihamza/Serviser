@@ -10,14 +10,18 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Serviser.DAL.Entity;
 using Serviser.Web.Models;
+using Serviser.DAL.Context;
 
 namespace Serviser.Web.Controllers
 {
+    
     [Authorize]
     public class AccountController : Controller
     {
+        ServiserDbContext serviserDbContext = new ServiserDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+
 
         public AccountController()
         {
@@ -153,12 +157,13 @@ namespace Serviser.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 //var user = new User { UserName = model.Email, Email = model.Email, RegisterationDateTime  = System.DateTime.UtcNow };
                 //var result = await UserManager.CreateAsync(user, model.Password);
                 //if (result.Succeeded)
                 //{
                 //    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                 //    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 //    // Send an email with this link
                 //    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
