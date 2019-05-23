@@ -1,59 +1,4 @@
-﻿@*@model Serviser.Web.Models.RegisterViewModel
-
-@{
-    ViewBag.Title = "Register";
-}
-
-<h2>Register</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>RegisterViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+﻿@model Serviser.Web.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -64,34 +9,43 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Default form register -->
 <div class="container" style="width: 500px">
-    <form class="text-center border border-light p-5">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "text-center border border-light p-5", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
 
         <p class="h4 mb-4">Sign up</p>
 
         <div class="form-row mb-4">
             <div class="col">
                 <!-- First name -->
-                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name">
+                @Html.TextBoxFor(m => m.FirstName, new { @type = "text", id = "defaultRegisterFormFirstName", @class = "form-control", placeholder = "First name" })
+
             </div>
             <div class="col">
                 <!-- Last name -->
-                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name">
+                @Html.TextBoxFor(m => m.LastName, new { @type = "text", id = "defaultRegisterFormLastName", @class = "form-control", placeholder = "Last name" })
+
             </div>
         </div>
 
         <!-- E-mail -->
-        <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+        @Html.TextBoxFor(m => m.Email, new { @type = "email", id = "defaultRegisterFormEmail", @class = "form-control mb-4", placeholder = "Email" })
+
         <!-- Password -->
-        <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+        @Html.TextBoxFor(m => m.Password, new { @type = "password", id = "defaultRegisterFormPassword", @class = "form-control", placeholder = "Password", aria_describedby = "defaultRegisterFormPasswordHelpBlock" })
         <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
             At least 8 characters and 1 digit
         </small>
-        <input type="number" id="defaultRegisterFormPassword" class="form-control" placeholder="Phone Number" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+        @Html.TextBoxFor(m => m.ConfirmPassword, new { @type = "password", id = "defaultRegisterFormPassword", @class = "form-control mb-4", placeholder = "Confirm Password", aria_describedby = "defaultRegisterFormPasswordHelpBlock" })
+
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @type = "text", id = "defaultRegisterFormPassword", @class = "form-control", placeholder = "Phone Number", aria_describedby = "defaultRegisterFormPasswordHelpBlock" })
 
 
 
         <!-- Sign up button -->
-        <button class="btn btn-info my-4 btn-block" type="submit">Sign Up</button>
+        <input class="btn btn-info my-4 btn-block" type="submit">
 
         <!-- Social register -->
         <p>or sign up with:</p>
@@ -111,8 +65,6 @@
             By clicking
             <em>Sign up</em> you agree to our
             <a href="" target="_blank">terms of service</a>
-
-    </form>
+        </p>
+    }
 </div>
-
-

@@ -10,18 +10,14 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Serviser.DAL.Entity;
 using Serviser.Web.Models;
-using Serviser.DAL.Context;
 
 namespace Serviser.Web.Controllers
 {
-
     [Authorize]
     public class AccountController : Controller
     {
-        ServiserDbContext serviserDbContext = new ServiserDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
 
         public AccountController()
         {
@@ -95,7 +91,6 @@ namespace Serviser.Web.Controllers
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
             }
-            return View();
         }
 
         //
@@ -158,28 +153,26 @@ namespace Serviser.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                
-                var user = new User { UserName = model.Email, Email = model.Email, RegisterationDateTime = System.DateTime.UtcNow };
-                
+                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, RegisterationDateTime = DateTime.Now };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    //For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    //Send an email with this link
-                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
-                //AddErrors(result);
+                AddErrors(result);
             }
 
-                // If we got this far, something failed, redisplay form
-                return View(model);
-            }
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
 
         //
         // GET: /Account/ConfirmEmail
