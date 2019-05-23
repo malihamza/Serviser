@@ -1,0 +1,47 @@
+﻿<div class="row">
+    <h1>Demo</h1>
+    <p>Sign Up with Serviser.Web. Login here and you will get an access token.</p>
+</div>
+<div class="row">
+    <input type="text" name="username" value="" placeholder="Email" id="username"/>
+    <input type="text" name="password" value="" placeholder="Password" id="password" />
+    <button onclick="onClickGetToken()">Login</button>
+</div>
+<div class="row">
+    <p>The Token</p>
+    <p>This token will be appended in the header of every request in order to provide authenticated access.</p>
+    <pre><code id="tokenText"></code></pre>
+</div>
+
+<a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api">This link has a guide to what's happening here.</a>
+
+
+@section scripts
+{
+    <script>
+        function onClickGetToken() {
+            var loginData = {
+                grant_type: 'password',
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: '/Token',
+                data: loginData
+            }).done(function (data) {
+                //console.log(data);
+                // Cache the access token in session storage.
+                //sessionStorage.setItem(tokenKey, data.access_token);
+                document.getElementById("tokenText").innerHTML = JSON.stringify(data,null,4);
+
+            }).fail((err) => {
+                //console.log(err);
+                document.getElementById("tokenText").innerHTML = JSON.stringify(err,null,4);
+            });
+        }
+
+        
+    </script>
+}
