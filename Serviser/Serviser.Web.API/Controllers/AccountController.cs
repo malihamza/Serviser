@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -329,7 +330,12 @@ namespace Serviser.Web.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
+            var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, RegisterationDateTime = DateTime.Now };
+            if (UserManager.Users.Any(u => u.PhoneNumber == model.PhoneNumber))
+            {
+                ModelState.AddModelError("", "Phone Number Already Exists.");
+                return BadRequest(ModelState);
+            }
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
