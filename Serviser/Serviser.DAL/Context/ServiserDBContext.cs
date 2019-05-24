@@ -6,6 +6,7 @@ namespace Serviser.DAL.Context
     using System.Linq;
     using Serviser.DAL.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Data.Entity.Infrastructure.Annotations;
 
     public partial class ServiserDbContext : IdentityDbContext<User>
     {
@@ -106,6 +107,11 @@ namespace Serviser.DAL.Context
             modelBuilder.Entity<MechanicNotification>()
                 .Property(e => e.Details)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.PhoneNumber)
+                .HasColumnType("varchar").HasMaxLength(100)
+                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute() { IsUnique = true }));
 
             //modelBuilder.Entity<Role>()
             //    .Property(e => e.Name)
