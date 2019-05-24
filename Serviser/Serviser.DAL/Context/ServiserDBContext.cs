@@ -7,7 +7,7 @@ namespace Serviser.DAL.Context
     using Serviser.DAL.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public partial class ServiserDbContext : IdentityDbContext
+    public partial class ServiserDbContext : IdentityDbContext<User>
     {
         public ServiserDbContext()
             : base("name=ServiserDbContext")
@@ -163,7 +163,5 @@ namespace Serviser.DAL.Context
         {
             return new ServiserDbContext();
         }
-
-        public System.Data.Entity.DbSet<Serviser.DAL.Entity.User> IdentityUsers { get; set; }
     }
 }
