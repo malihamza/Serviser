@@ -15,6 +15,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Serviser.DAL.Entity;
+using Serviser.DAL.Service;
 using Serviser.Web.API.Models;
 using Serviser.Web.API.Providers;
 using Serviser.Web.API.Results;
@@ -343,6 +344,13 @@ namespace Serviser.Web.API.Controllers
             {
                 return GetErrorResult(result);
             }
+
+            user.Roles.Add(new IdentityUserRole
+            {
+                RoleId = new RoleService().GetRoleByName("BasicUser").Id,
+                UserId = user.Id
+            }
+            );
 
             return Ok();
         }

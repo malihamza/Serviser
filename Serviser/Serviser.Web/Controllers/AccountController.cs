@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Serviser.DAL.Entity;
+using Serviser.DAL.Service;
 using Serviser.Web.Models;
 
 namespace Serviser.Web.Controllers
@@ -162,7 +164,7 @@ namespace Serviser.Web.Controllers
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, RegisterationDateTime = DateTime.Now };
-                if(UserManager.Users.Any(u=>u.PhoneNumber==model.PhoneNumber))
+                if (UserManager.Users.Any(u => u.PhoneNumber == model.PhoneNumber))
                 {
                     ModelState.AddModelError("", "Phone Number Already Exists.");
                     return View(model);
@@ -177,6 +179,14 @@ namespace Serviser.Web.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    user.Roles.Add(new IdentityUserRole
+                        {
+                            RoleId = new RoleService().GetRoleByName("BasicUser").Id,
+                            UserId = user.Id
+                        }
+                    );
+
 
                     return RedirectToAction("Index", "Home");
                 }
