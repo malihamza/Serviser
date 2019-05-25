@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Serviser.DAL.Console.DbInitializer;
+using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace Serviser.DAL.Console
 {
@@ -12,12 +15,20 @@ namespace Serviser.DAL.Console
     {
         static void Main(string[] args)
         {
-            //ServiserDbContext db = new ServiserDbContext();
-            //VehicleType vt = new VehicleType();
-            //vt.Name = "Test";
-            //db.VehicleTypes.Add(vt);
-            //db.SaveChanges();
-            System.Console.WriteLine(100+(float)3 / 100);
+            System.Console.WriteLine("Seeding...");
+
+            ServiserDbContext db = new ServiserDbContext();
+
+            while(db.Database.Exists())
+            {
+                System.Console.WriteLine("Database Already Exists. Manually Delete the database and hit Enter.");
+                System.Console.ReadLine();
+            }
+
+            new ServiserDbInitialSeed().Run();
+
+            System.Console.WriteLine("Seeding Done.");
+            System.Console.ReadLine();
         }
     }
 }
