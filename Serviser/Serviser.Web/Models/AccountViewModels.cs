@@ -49,9 +49,9 @@ namespace Serviser.Web.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Email or Phone Number")]
+        [RegularExpression(@"(^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$)|[0-9]{3,}", ErrorMessage = "Incorrect Email or Phone Format")]
+        public string EmailOrPhoneNumber { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
