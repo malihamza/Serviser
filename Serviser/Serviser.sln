@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serviser.DAL.Console", "Ser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serviser.DAL", "Serviser.DAL\Serviser.DAL.csproj", "{4EED5805-71EE-485C-8E98-7E279D5591DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serviser.Web.API", "Serviser.Web.API\Serviser.Web.API.csproj", "{0EA7B219-3062-4A19-811D-94C07A316B7F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{4EED5805-71EE-485C-8E98-7E279D5591DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EED5805-71EE-485C-8E98-7E279D5591DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EED5805-71EE-485C-8E98-7E279D5591DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0EA7B219-3062-4A19-811D-94C07A316B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0EA7B219-3062-4A19-811D-94C07A316B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0EA7B219-3062-4A19-811D-94C07A316B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0EA7B219-3062-4A19-811D-94C07A316B7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

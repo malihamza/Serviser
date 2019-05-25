@@ -208,6 +208,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,7 +227,9 @@
     <Content Include="Assets\Images\check cirlce.svg" />
     <Content Include="Assets\Images\left-arrow.svg" />
     <Content Include="Assets\Images\Map pinned-100.jpg" />
+    <Content Include="Assets\Images\mechanic-with-wrench-logo-1-white.svg" />
     <Content Include="Assets\Images\mechanic-with-wrench-logo-1.svg" />
+    <Content Include="Assets\Images\mech_pic.png" />
     <Content Include="Assets\Images\mystic machanic.png" />
     <Content Include="Assets\Images\mystic-mechanic-1.svg" />
     <Content Include="Assets\Images\phone-with-app.png" />
@@ -397,6 +400,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Me\" />
+    <Folder Include="Views\Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

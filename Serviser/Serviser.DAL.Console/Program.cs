@@ -12,11 +12,12 @@ namespace Serviser.DAL.Console
     {
         static void Main(string[] args)
         {
-            ServiserDbContext db = new ServiserDbContext();
-            VehicleType vt = new VehicleType();
-            vt.Name = "Test";
-            db.VehicleTypes.Add(vt);
-            db.SaveChanges();
+            //ServiserDbContext db = new ServiserDbContext();
+            //VehicleType vt = new VehicleType();
+            //vt.Name = "Test";
+            //db.VehicleTypes.Add(vt);
+            //db.SaveChanges();
+            System.Console.WriteLine(100+(float)3 / 100);
         }
     }
 }
