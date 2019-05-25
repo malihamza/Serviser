@@ -20,14 +20,14 @@ namespace Serviser.Web.API.Controllers
         // GET: api/Users
         public IQueryable<User> GetUsers()
         {
-            return db.Users;
+            return db.IdentityUsers;
         }
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(string id)
         {
-            User user = db.Users.Find(id);
+            User user = db.IdentityUsers.Find(id);
             if (user == null)
             {
                 return NotFound();
@@ -105,7 +105,7 @@ namespace Serviser.Web.API.Controllers
         [ResponseType(typeof(User))]
         public IHttpActionResult DeleteUser(string id)
         {
-            User user = db.Users.Find(id);
+            User user = db.IdentityUsers.Find(id);
             if (user == null)
             {
                 return NotFound();

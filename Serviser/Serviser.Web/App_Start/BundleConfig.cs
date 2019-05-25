@@ -28,7 +28,7 @@ namespace Serviser.Web
                       "~/Content/site.css"));
             bundles.Add(new StyleBundle("~/Content/css/css").Include(
                       "~/Content/css/bootstrap.min.css",
-                      "~/Content/css/calander.css"));
+                      "~/Content/css/calender.css"));
 
         }
     }

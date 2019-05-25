@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -15,7 +14,6 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Serviser.DAL.Entity;
-using Serviser.DAL.Service;
 using Serviser.Web.API.Models;
 using Serviser.Web.API.Providers;
 using Serviser.Web.API.Results;
@@ -331,12 +329,7 @@ namespace Serviser.Web.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, RegisterationDateTime = DateTime.Now };
-            if (UserManager.Users.Any(u => u.PhoneNumber == model.PhoneNumber))
-            {
-                ModelState.AddModelError("", "Phone Number Already Exists.");
-                return BadRequest(ModelState);
-            }
+            var user = new User() { UserName = model.Email, Email = model.Email };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
@@ -344,13 +337,6 @@ namespace Serviser.Web.API.Controllers
             {
                 return GetErrorResult(result);
             }
-
-            user.Roles.Add(new IdentityUserRole
-            {
-                RoleId = new RoleService().GetRoleByName("BasicUser").Id,
-                UserId = user.Id
-            }
-            );
 
             return Ok();
         }

@@ -117,4 +117,4 @@ namespace Serviser.Web.API.Controllers
             return db.VehicleTypes.Count(e => e.Id == id) > 0;
         }
     }
-}           
+}

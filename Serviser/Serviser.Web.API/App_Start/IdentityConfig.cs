@@ -29,11 +29,11 @@ namespace Serviser.Web.API
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 3//, In Release this would be 6
-                //RequireNonLetterOrDigit = true,
-                //RequireDigit = true,
-                //RequireLowercase = true,
-                //RequireUppercase = true,
+                RequiredLength = 6,
+                RequireNonLetterOrDigit = true,
+                RequireDigit = true,
+                RequireLowercase = true,
+                RequireUppercase = true,
             };
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)

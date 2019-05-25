@@ -6,9 +6,8 @@ namespace Serviser.DAL.Context
     using System.Linq;
     using Serviser.DAL.Entity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using System.Data.Entity.Infrastructure.Annotations;
 
-    public partial class ServiserDbContext : IdentityDbContext<User>
+    public partial class ServiserDbContext : IdentityDbContext
     {
         public ServiserDbContext()
             : base("name=ServiserDbContext")
@@ -108,11 +107,6 @@ namespace Serviser.DAL.Context
                 .Property(e => e.Details)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User>()
-                .Property(e => e.PhoneNumber)
-                .HasColumnType("varchar").HasMaxLength(100)
-                .HasColumnAnnotation("Index", new IndexAnnotation(new IndexAttribute() { IsUnique = true }));
-
             //modelBuilder.Entity<Role>()
             //    .Property(e => e.Name)
             //    .IsUnicode(false);
@@ -169,5 +163,7 @@ namespace Serviser.DAL.Context
         {
             return new ServiserDbContext();
         }
+
+        public System.Data.Entity.DbSet<Serviser.DAL.Entity.User> IdentityUsers { get; set; }
     }
 }

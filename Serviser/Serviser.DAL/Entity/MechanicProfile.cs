@@ -18,9 +18,9 @@ namespace Serviser.DAL.Entity
 
         public int Id { get; set; }
 
-        public float Longitude { get; set; }
+        public int Longitude { get; set; }
 
-        public float Latitude { get; set; }
+        public int Latitude { get; set; }
 
         public bool? Verified { get; set; }
 
