@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of c6bbca6... a
 ﻿//var bookingApp = angular.module("MechanicBookingApp", ['ngAnimate']);
 
 //bookingApp.controller("OptionsSelectionController", function ($scope) {
@@ -199,62 +202,21 @@ if (navigator.geolocation)
                 animation: google.maps.Animation.DROP,
                 map: map
             });
-=======
-﻿var bookingApp = angular.module("MechanicBookingApp", ['ngAnimate']);
-
-bookingApp.controller("OptionsSelectionController", function ($scope) {
-    var me = this;
-    me.maxSteps = 4;
-    $scope.currentStep = 1;
-
-    $scope.optionsData = [];
-    $scope.selectedVehicleTypeIndex = null;
-    $scope.selectedProblemsIndices = [];
-    $scope.descriptionOfProblem = '';
-    $scope.currentPos = { lat: 0, lng: 0 };
-    $scope.map = null;
-    $scope.mapMarker = null;
-    $scope.currentAddress = 'Map API quota is out probably';
-
-    me.pos = new google.maps.LatLng();
-
-    $scope.step1Click = function (index) {
-        $scope.selectedVehicleTypeIndex = index;
-        $scope.selectedProblemsIndices = new Array($scope.optionsData[index].Problems.length);
-        $scope.nextStep();
-    }
-
-    $scope.step2ItemClick = function (index) {
-        $scope.selectedProblemsIndices[index] = !$scope.selectedProblemsIndices[index];
-    }
-
-
-    $scope.pinCurrentLocation = function () {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                $scope.currentPos.lat = position.coords.latitude;
-                $scope.currentPos.lng = position.coords.longitude;
-                $scope.mapMarker.setPosition($scope.currentPos);
-                $scope.map.panTo($scope.currentPos);
-            },
-                function (posErr) {
-                    alert(posErr.message);
-                });
         }
-        else {
-            alert("Your Browser Doesn't Support GeoLocation");
->>>>>>> parent of f019f0c... Merge branch 'master' of https://github.com/malihamza/Serviser
-        }
+        //var info = new google.maps.InfoWindow({
+        //    content: document.getElementById('info')
+        //});
+        marker.addListener('click', function () {
+            //info.open(map, marker);
+            document.getElementById('info').style.visibility = "visible";
+        });
     }
-
-
-    $scope.nextStep = function () {
-        if ($scope.currentStep < me.maxSteps)
-            $scope.currentStep++;
+    function failure() {
+        alert("failed");
     }
-<<<<<<< HEAD
 
 }
+<<<<<<< HEAD
 =======
     $scope.previousStep = function () {
         if ($scope.currentStep > 1)
@@ -389,15 +351,16 @@ bookingApp.controller("OptionsSelectionController", function ($scope) {
     me.initMapWithLocation = function (position) {
         $scope.currentPos.lat = position.coords.latitude;
         $scope.currentPos.lng = position.coords.longitude;
+=======
+>>>>>>> parent of c6bbca6... a
 
-        $scope.map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: $scope.currentPos
-        });
 
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of c6bbca6... a
 function next_view() {
     document.getElementById("problem").style.visibility = "hidden";
     document.getElementById("bill").style.visibility = "hidden";
@@ -426,6 +389,7 @@ function next_view() {
     document.getElementById("loader").style.visibility = "hidden";
    
 
+<<<<<<< HEAD
 =======
         $scope.mapMarker = new google.maps.Marker({
             position: $scope.currentPos,
@@ -530,9 +494,15 @@ function dummyDataInstantiate(scope) {
         }
     ];
 >>>>>>> parent of f019f0c... Merge branch 'master' of https://github.com/malihamza/Serviser
+=======
+>>>>>>> parent of c6bbca6... a
 
+}
+function display() {
+    document.getElementById("info").style.visibility = "visible";
+    $("#info").fadeIn('slow');
+}
 
-<<<<<<< HEAD
 
 
 
@@ -575,6 +545,7 @@ async function makeAjaxRequest()
 <<<<<<< HEAD
     });
 
+<<<<<<< HEAD
 =======
 >>>>>>> parent of f019f0c... Merge branch 'master' of https://github.com/malihamza/Serviser
 =======
@@ -587,4 +558,6 @@ async function makeAjaxRequest()
 
 
 >>>>>>> parent of f019f0c... Merge branch 'master' of https://github.com/malihamza/Serviser
+=======
+>>>>>>> parent of c6bbca6... a
 }
