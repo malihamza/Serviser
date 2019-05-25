@@ -59,6 +59,7 @@
     <Compile Include="Entity\BookingStatus.cs" />
     <Compile Include="Entity\CustomerOffer.cs" />
     <Compile Include="Entity\CustomerProfile.cs" />
+    <Compile Include="Entity\Location.cs" />
     <Compile Include="Entity\MechanicNotification.cs" />
     <Compile Include="Entity\MechanicOffer.cs" />
     <Compile Include="Entity\MechanicProfile.cs" />
@@ -68,8 +69,10 @@
     <Compile Include="Entity\VehicleName.cs" />
     <Compile Include="Entity\VehicleProblem.cs" />
     <Compile Include="Entity\VehicleType.cs" />
+    <Compile Include="Extension\UserHelper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\RoleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

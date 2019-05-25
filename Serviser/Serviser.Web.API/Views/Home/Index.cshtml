@@ -1,16 +1,27 @@
-﻿<div class="row">
+﻿@model Serviser.Web.API.Models.RegisterBindingModel
+<div class="row">
     <h1>Demo</h1>
     <p>Sign Up with Serviser.Web. Login here and you will get an access token.</p>
 </div>
 <div class="row">
-    <input type="text" name="username" value="" placeholder="Email" id="username"/>
-    <input type="text" name="password" value="" placeholder="Password" id="password" />
+    <input type="email" name="username" value="" placeholder="Email or phone" id="username"/>
+    <input type="password" name="password" value="" placeholder="Password" id="password" />
     <button onclick="onClickGetToken()">Login</button>
 </div>
+    <form id="regForm" class="row">
+        <input type="text" placeholder="First name" name="FirstName">
+        <input type="text"  placeholder="Last name" name="LastName">
+        <input type="email"  placeholder="E-mail" name="Email">
+        <input type="password"  placeholder="Password" name="Password">
+        <input type="password"  placeholder="Confirm Password" name="ConfirmPassword" >
+        <input type="number"  placeholder="Phone Number" name="PhoneNumber">
+        <button type="button" onclick="onClickRegister()">Sign Up</button>
+    </form>
+
+<br />
 <div class="row">
-    <p>The Token</p>
-    <p>This token will be appended in the header of every request in order to provide authenticated access.</p>
-    <pre><code id="tokenText"></code></pre>
+    <p>The Result</p>
+    <pre><code id="resultText"></code></pre>
 </div>
 
 <a href="https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api">This link has a guide to what's happening here.</a>
@@ -34,14 +45,30 @@
                 //console.log(data);
                 // Cache the access token in session storage.
                 //sessionStorage.setItem(tokenKey, data.access_token);
-                document.getElementById("tokenText").innerHTML = JSON.stringify(data,null,4);
+                document.getElementById("resultText").innerHTML = JSON.stringify(data,null,4);
 
             }).fail((err) => {
                 //console.log(err);
-                document.getElementById("tokenText").innerHTML = JSON.stringify(err,null,4);
+                document.getElementById("resultText").innerHTML = JSON.stringify(err,null,4);
             });
         }
 
-        
+        function onClickRegister(ev) {
+            $.ajax({
+                type: 'POST',
+                url: '/api/Account/Register',
+                data: $('#regForm').serialize()
+            }).done(function (data) {
+                //console.log(data);
+                // Cache the access token in session storage.
+                //sessionStorage.setItem(tokenKey, data.access_token);
+                document.getElementById("resultText").innerHTML = JSON.stringify(data, null, 4);
+
+            }).fail((err) => {
+                //console.log(err);
+                document.getElementById("resultText").innerHTML = JSON.stringify(err, null, 4);
+                });
+            return false;
+        }
     </script>
 }
