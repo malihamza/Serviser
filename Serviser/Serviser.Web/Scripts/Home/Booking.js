@@ -145,6 +145,17 @@
 
 
 //}
+
+
+
+
+
+
+
+
+
+
+
 if (navigator.geolocation)
 {
     var pos = {lati : 20,longi:20};
@@ -162,24 +173,29 @@ if (navigator.geolocation)
             zoomControl: false,
              gestureHandling: 'none',
             scaleControl: false
+
         });
         addMarker(longi, lati,'Your Current Location');
     }
     function addMarker(longi, lati,title,icon1) {
-        var marker = new google.maps.Marker({
-            position: { lat: lati, lng: longi },
-            title: title,
-            map: map
-        });
-        if (icon1 != null)
-        {
+        
+        if (icon1 != null) {
             var marker = new google.maps.Marker({
                 position: { lat: lati, lng: longi },
                 title: title,
                 map: map,
+                animation: google.maps.Animation.DROP,
                 icon: document.getElementById('ico').getAttribute('src')
             });
-
+        }
+        else
+        {
+            var marker = new google.maps.Marker({
+                position: { lat: lati, lng: longi },
+                title: title,
+                animation: google.maps.Animation.DROP,
+                map: map
+            });
         }
         //var info = new google.maps.InfoWindow({
         //    content: document.getElementById('info')
@@ -192,40 +208,37 @@ if (navigator.geolocation)
     function failure() {
         alert("failed");
     }
-    function xyz() {
-        alert("Hahahaha");
-        addMarker(63, 56);
-    }
+
 }
 
 
 function next_view() {
     document.getElementById("problem").style.visibility = "hidden";
     document.getElementById("bill").style.visibility = "hidden";
-    document.getElementById("map_div").style.height = "800px";
+    document.getElementById("map_div").style.height = "100%";
     document.getElementById("loader").style.visibility = "visible";
 
     $('html, body').animate({ scrollTop: 0 }, '300');
-    $("#loader").fadeIn('slow').delay(5000).fadeOut('slow');
+//    $("#loader").fadeIn('slow').delay(5000).fadeOut('slow');
 
-    setTimeout(display, 6000);
+    
     $.ajax({
         url: "/Services/getMechanics",
         method: "POST",
         data: { Latitude: pos.lati, Longitude: pos.longi },
-        success: function (data)
-        {
-            for (var mechanic in data)
-            {
-                addMarker(data[mechanic].Longitude, data[mechanic].Latitude,'Mechanic','a');
+        success: function (data) {
+            for (var mechanic in data) {
+                addMarker(data[mechanic].Longitude, data[mechanic].Latitude, 'Mechanic', 'a');
             }
         },
-        failure: function (err)
-        {
+        failure: function (err) {
             console.log(err);
         }
     });
-    
+    //setTimeout(display, 6000);
+    display();
+    document.getElementById("loader").style.visibility = "hidden";
+   
 
 
 }
@@ -234,3 +247,26 @@ function display() {
     $("#info").fadeIn('slow');
 }
 
+
+
+
+async function makeAjaxRequest()
+{
+    await $.ajax({
+        url: "/Services/getMechanics",
+        method: "POST",
+        data: { Latitude: pos.lati, Longitude: pos.longi },
+        success: function (data)
+        {
+            for (var mechanic in data)
+            {
+                addMarker(data[mechanic].Longitude, data[mechanic].Latitude, 'Mechanic', 'a');
+            }
+        },
+        failure: function (err)
+        {
+            console.log(err);
+        }
+    });
+
+}

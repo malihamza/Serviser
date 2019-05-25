@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Serviser.DAL.Entity;
+using Serviser.Web.Models;
+
 namespace Serviser.Web.Controllers
 {
     public class ServicesController : Controller
@@ -48,5 +50,34 @@ namespace Serviser.Web.Controllers
 
             return Json(lis);
         }
+        public ActionResult Booking()
+        {
+            Problems problemsModel = new Problems();
+            List<VehicleProblem> problems = new List<VehicleProblem>();
+            VehicleProblem problem = new VehicleProblem();
+            problem.Name = "Break Failure";
+            problem.MaxRate = 150;
+            problems.Add(problem);
+
+            problem = new VehicleProblem();
+            problem.Name = "Punture";
+            problem.MaxRate = 500;
+            problems.Add(problem);
+
+            problem = new VehicleProblem();
+            problem.Name = "Enginee Fail";
+            problem.MaxRate = 50;
+            problems.Add(problem);
+
+            problem = new VehicleProblem();
+            problem.Name = "Break Failure 2.0";
+            problem.MaxRate = 100;
+            problems.Add(problem);
+
+            problemsModel.bikeProblems = problems;
+            problemsModel.carProblems = problems;
+            return View(problemsModel);
+        }
+
     }
 }
