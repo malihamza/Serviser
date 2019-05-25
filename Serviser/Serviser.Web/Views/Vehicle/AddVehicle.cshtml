@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "AddVehicle";
+    Layout = null;
+    Html.RenderPartial("_Adminheader");
+}
+
+<?php
+include('header.php');
+?>
+
+<div id="content-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.php">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Add New Vehicle</li>
+        </ol>
+
+
+        <center>
+            <form style="width: 30%">
+
+                <input type="text" name="vehicle_name" class="form-control" required="" placeholder="Vehicle Name">
+                <input type="text" name="vehicle_base_price" class="form-control mt-2" required="" placeholder="Vehicle Base Price">
+
+
+                <button class="btn btn-info mt-2">Add Vehicle</button>
+            </form>
+        </center>
+
+
+    </div>
+
+
+</div>
+
+
+@{
+    Html.RenderPartial("_Adminfooter");
+}
+
+

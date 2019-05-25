@@ -5,7 +5,8 @@ namespace Serviser.DAL.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Serviser.DAL.Context.ServiserDbContext>
+    //Change protection level to internal during production
+    public sealed class Configuration : DbMigrationsConfiguration<Serviser.DAL.Context.ServiserDbContext>
     {
         public Configuration()
         {
