@@ -53,5 +53,10 @@ namespace Serviser.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
     }
 }
