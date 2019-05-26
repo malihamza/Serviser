@@ -1,0 +1,123 @@
+﻿
+
+@{
+    ViewBag.Title = "DeleteProblem";
+    Layout = null;
+    Html.RenderPartial("_Adminheader");
+}
+
+
+
+<div id="content-wrapper">
+
+    <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.php">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Delete Problem</li>
+        </ol>
+
+        <form>
+
+            <div class="row  justify-content-center" style="height: 70px">
+                <div class="col-lg-2 " style="padding: 5px">
+                    <select class="form-control" name="type" style="height: 50px">
+                        <option>Select Problem Type</option>
+                        <option>Car</option>
+                        <option>Bike</option>
+
+                    </select>
+                </div>
+
+                <div class="col-lg-5 " style="padding: 5px">
+                    <input type="search" name="search" class="form-control" placeholder="Search By Name" style="height: 50px">
+                </div>
+
+                <div class="col-lg-2 " style="padding: 5px">
+                    <button class="btn btn-info btn-block" style="height: 50px" type="submit"> Search <span class="fa fa-search"></span></button>
+                </div>
+            </div>
+
+        </form>
+
+        <table class="table table-bordered table-striped mt-5">
+
+            <thead>
+            <th>Problem Name</th>
+            <th>Problem Type</th>
+            <th>Price</th>
+            <th>Actions</th>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Brake Failure</td>
+                    <td>Bike</td>
+                    <td>500</td>
+
+                    <td>
+                        <button class="btn btn-info btn-block">Delete</button>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Brake Failure</td>
+                    <td>Bike</td>
+                    <td>500</td>
+
+                    <td>
+                        <button class="btn btn-info btn-block">Delete</button>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Brake Failure</td>
+                    <td>Bike</td>
+                    <td>500</td>
+
+                    <td>
+                        <button class="btn btn-info btn-block">Delete</button>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Brake Failure</td>
+                    <td>Bike</td>
+                    <td>500</td>
+
+                    <td>
+                        <button class="btn btn-info btn-block">Delete</button>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Brake Failure</td>
+                    <td>Bike</td>
+                    <td>500</td>
+
+                    <td>
+                        <button class="btn btn-info btn-block">Delete</button>
+
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+
+    </div>
+
+
+</div>
+
+
+@{
+    Html.RenderPartial("_Adminfooter");
+}
+
+
+
+
