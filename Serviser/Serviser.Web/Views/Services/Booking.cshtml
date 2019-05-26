@@ -129,16 +129,16 @@
                     </tr>
                     @foreach (var problem in Model.bikeProblems)
                     {
-                    <tr>
-                        <td>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="p1" name="p1">
-                                <label class="custom-control-label" for="p1"></label>
-                            </div>
-                        </td>
-                        <td>@problem.Name</td>
-                        <td>Rs/- @problem.MaxRate</td>
-                    </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p1" name="p1">
+                                    <label class="custom-control-label" for="p1"></label>
+                                </div>
+                            </td>
+                            <td>@problem.Name</td>
+                            <td>Rs/- @problem.MaxRate</td>
+                        </tr>
                     }
 
                 </table>
@@ -232,3 +232,27 @@
     </div>
 
 </div>
+<script>
+    function next_view() {
+        document.getElementById("problem").style.visibility = "hidden";
+        document.getElementById("bill").style.visibility = "hidden";
+        document.getElementById("map_div").style.height = "800px";
+        document.getElementById("loader").style.visibility = "visible";
+
+        $('html, body').animate({ scrollTop: 0 }, '300');
+        $("#loader").fadeIn('slow').delay(5000).fadeOut('slow');
+
+        setTimeout(display, 6000);
+
+
+
+
+    }
+
+    function display() {
+        document.getElementById("info").style.visibility = "visible";
+        $("#info").fadeIn('slow');
+    }
+
+
+</script>

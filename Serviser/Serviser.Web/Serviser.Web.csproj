@@ -402,6 +402,23 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Services\Booking.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_Adminheader.cshtml" />
+    <Content Include="Views\Shared\_Adminfooter.cshtml" />
+    <Content Include="Views\Admin\Home.cshtml" />
+    <Content Include="Views\Admin\ViewAllMechanics.cshtml" />
+    <Content Include="Views\Admin\AddNewMechanic.cshtml" />
+    <Content Include="Views\Admin\DeleteMechanic.cshtml" />
+    <Content Include="Views\Admin\PendingRequests.cshtml" />
+    <Content Include="Views\Admin\RejectedRequests.cshtml" />
+    <Content Include="Views\Admin\Profile.cshtml" />
+    <Content Include="Views\Admin\AddAdmin.cshtml" />
+    <Content Include="Views\Problems\ViewAllProblems.cshtml" />
+    <Content Include="Views\Problems\AddProblem.cshtml" />
+    <Content Include="Views\Problems\DeleteProblem.cshtml" />
+    <Content Include="Views\Vehicle\ViewAllVehicles.cshtml" />
+    <Content Include="Views\Vehicle\AddVehicle.cshtml" />
+    <Content Include="Views\Vehicle\DeleteVehicle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
