@@ -221,20 +221,7 @@ function next_view() {
     $('html, body').animate({ scrollTop: 0 }, '300');
 //    $("#loader").fadeIn('slow').delay(5000).fadeOut('slow');
 
-    
-    $.ajax({
-        url: "/Services/getMechanics",
-        method: "POST",
-        data: { Latitude: pos.lati, Longitude: pos.longi },
-        success: function (data) {
-            for (var mechanic in data) {
-                addMarker(data[mechanic].Longitude, data[mechanic].Latitude, 'Mechanic', 'a');
-            }
-        },
-        failure: function (err) {
-            console.log(err);
-        }
-    });
+
     //setTimeout(display, 6000);
     display();
     document.getElementById("loader").style.visibility = "hidden";
