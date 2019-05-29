@@ -1,396 +1,136 @@
-<<<<<<< HEAD
-﻿//var bookingApp = angular.module("MechanicBookingApp", ['ngAnimate']);
 
-//bookingApp.controller("OptionsSelectionController", function ($scope) {
-//    var me = this;
-//    me.maxSteps = 4;
-//    $scope.currentStep = 1;
-
-//    $scope.optionsData = [];
-//    $scope.selectedVehicleTypeIndex = null;
-//    $scope.selectedProblemsIndices = [];
-//    $scope.descriptionOfProblem = '';
-//    $scope.currentPos = { lat: 0, lng: 0 };
-//    $scope.map = null;
-//    $scope.mapMarker = null;
-//    $scope.currentAddress = 'Map API quota is out probably';
-
-//    me.pos = new google.maps.LatLng();
-
-//    $scope.step1Click = function (index) {
-//        $scope.selectedVehicleTypeIndex = index;
-//        $scope.selectedProblemsIndices = new Array($scope.optionsData[index].Problems.length);
-//        $scope.nextStep();
-//    }
-
-//    $scope.step2ItemClick = function (index) {
-//        $scope.selectedProblemsIndices[index] = !$scope.selectedProblemsIndices[index];
-//    }
-
-
-//    $scope.pinCurrentLocation = function () {
-//        if (navigator.geolocation) {
-//            navigator.geolocation.getCurrentPosition(function (position) {
-//                $scope.currentPos.lat = position.coords.latitude;
-//                $scope.currentPos.lng = position.coords.longitude;
-//                $scope.mapMarker.setPosition($scope.currentPos);
-//                $scope.map.panTo($scope.currentPos);
-//            },
-//                function (posErr) {
-//                    alert(posErr.message);
-//                });
-//        }
-//        else {
-//            alert("Your Browser Doesn't Support GeoLocation");
-//        }
-//    }
-
-
-//    $scope.nextStep = function () {
-//        if ($scope.currentStep < me.maxSteps)
-//            $scope.currentStep++;
-//    }
-//    $scope.previousStep = function () {
-//        if ($scope.currentStep > 1)
-//            $scope.currentStep--;
-//    }
-
-//    me.getCurrentPosition = function () {
-//        if (navigator.geolocation) {
-//            navigator.geolocation.getCurrentPosition(function (position) {
-//                    $scope.currentPos.lat = position.coords.latitude;
-//                    $scope.currentPos.lng = position.coords.longitude;
-//            });
-//        }
-//    }
-
-//    me.initMapWithLocation = function (position) {
-//        $scope.currentPos.lat = position.coords.latitude;
-//        $scope.currentPos.lng = position.coords.longitude;
-
-//        $scope.map = new google.maps.Map(document.getElementById('map'), {
-//            zoom: 4,
-//            center: $scope.currentPos
-//        });
-
-//        $scope.mapMarker = new google.maps.Marker({
-//            position: $scope.currentPos,
-//            map: $scope.map,
-//            draggable: true,
-//            animation: google.maps.Animation.DROP
-//        });
-
-//        google.maps.event.addListener($scope.mapMarker, 'mouseup', function (event) {
-//            $scope.currentPos = {
-//                lat: $scope.mapMarker.getPosition().lat(),
-//                lng: $scope.mapMarker.getPosition().lng()
-//            };
-
-//            $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${$scope.currentPos.lat},${$scope.currentPos.lng}&key=AIzaSyDg-T5ErBSP7PrxppZiO9OPBA3HW4TXleo`, function (data, status) {
-//                if (status === 'success') {
-//                    $scope.currentAddress = data.results[0].formatted_address;
-//                }
-//            });
-//        });
-//    }
-
-//    me.initMap = function () {
-//        if (navigator.geolocation) {
-//            navigator.geolocation.getCurrentPosition(me.initMapWithLocation, me.initMapWithLocation({ coords: {latitude: 0, longitude: 0}}));
-//        }
-//        else {
-//            me.initMapWithLocation({ coords: { latitude: 0, longitude: 0 } });
-//        }
-//    }
-
-//    $(function () { me.initMap(); });
-
-//    dummyDataInstantiate($scope);
-//});
-
-//function dummyDataInstantiate(scope) {
-//    scope.optionsData = [
-//        {
-//            Id: 1, Name: 'Bike', ImageUrl: '/Assets/Images/bike.png', Problems:
-//            [{ Id: 1, Title: 'Problem 1' }, { Id: 2, Title: 'Problem 2' }, { Id: 3, Title: 'Problem 3' }, { Id: 4, Title: 'Problem 4' }]
-//        },
-//        {
-//            Id: 2, Name: 'Car', ImageUrl: '/Assets/Images/car.png', Problems:
-//            [{ Id: 5, Title: 'Problem 5' }, { Id: 6, Title: 'Problem 6' }, { Id: 7, Title: 'Problem 7' }, { Id: 8, Title: 'Problem 8' }]
-//        },
-//        {
-//            Id: 3, Name: 'Truck', ImageUrl: '/Assets/Images/truck.png', Problems:
-//            [{ Id: 5, Title: 'Problem 5' }, { Id: 6, Title: 'Problem 6' }, { Id: 7, Title: 'Problem 7' }, { Id: 8, Title: 'Problem 8' }]
-//        },
-//        {
-//            Id: 4, Name: 'Van', ImageUrl: '/Assets/Images/van.png', Problems:
-//            [{ Id: 1, Title: 'Problem 1' }, { Id: 2, Title: 'Problem 2' }, { Id: 3, Title: 'Problem 3' }, { Id: 4, Title: 'Problem 4' }]
-//        },
-//        {
-//            Id: 1, Name: 'Bike', ImageUrl: '/Assets/Images/bike.png', Problems:
-//            [{ Id: 1, Title: 'Problem 1' }, { Id: 2, Title: 'Problem 2' }, { Id: 3, Title: 'Problem 3' }, { Id: 4, Title: 'Problem 4' }]
-//        },
-//        {
-//            Id: 2, Name: 'Car', ImageUrl: '/Assets/Images/car.png', Problems:
-//            [{ Id: 5, Title: 'Problem 5' }, { Id: 6, Title: 'Problem 6' }, { Id: 7, Title: 'Problem 7' }, { Id: 8, Title: 'Problem 8' }]
-//        },
-//        {
-//            Id: 3, Name: 'Truck', ImageUrl: '/Assets/Images/truck.png', Problems:
-//            [{ Id: 5, Title: 'Problem 5' }, { Id: 6, Title: 'Problem 6' }, { Id: 7, Title: 'Problem 7' }, { Id: 8, Title: 'Problem 8' }]
-//        },
-//        {
-//            Id: 4, Name: 'Van', ImageUrl: '/Assets/Images/van.png', Problems:
-//            [{ Id: 1, Title: 'Problem 1' }, { Id: 2, Title: 'Problem 2' }, { Id: 3, Title: 'Problem 3' }, { Id: 4, Title: 'Problem 4' }]
-//        }
-//    ];
-
-
-//}
-
-
-
-
-
-
-
-
-
-
-
+var map;
+var problem_id_list = [];
+var pos = { lati: 20, longi: 20 };
 if (navigator.geolocation)
 {
-    var pos = {lati : 20,longi:20};
-    nav = navigator.geolocation;
-    nav.getCurrentPosition(success, failure);
-    var map;
-    function success(position) {
-        var lati = position.coords.latitude;
-        var longi = position.coords.longitude;
-        pos.lati = lati;
-        pos.longi = longi;
-        map = new google.maps.Map(document.getElementById('map_div'), {
-            center: { lat: lati, lng: longi },
-            zoom: 17,
-            zoomControl: false,
-             gestureHandling: 'none',
-            scaleControl: false
 
-        });
-        addMarker(longi, lati,'Your Current Location');
+    
+    var nav = navigator.geolocation;
+        nav.getCurrentPosition(success, failure);
+
+    function success(position)
+    {
+        var lati      = position.coords.latitude;
+        var longi     = position.coords.longitude;
+            pos.lati  = lati;
+            pos.longi = longi;
+
+
+        map           = new google.maps.Map(document.getElementById('map_div'),
+                        {
+                            center: { lat: lati, lng: longi },
+                            zoom: 17,
+                            zoomControl: false,
+                            gestureHandling: 'none',
+                            scaleControl: false
+                        });
+        addMarker(longi, lati, map,'Your Current Location');
     }
-    function addMarker(longi, lati,title,icon1) {
-        
-        if (icon1 != null) {
-            var marker = new google.maps.Marker({
-                position: { lat: lati, lng: longi },
-                title: title,
-                map: map,
-                animation: google.maps.Animation.DROP,
-                icon: document.getElementById('ico').getAttribute('src')
-            });
-        }
-        else
-        {
-            var marker = new google.maps.Marker({
-                position: { lat: lati, lng: longi },
-                title: title,
-                animation: google.maps.Animation.DROP,
-                map: map
-            });
-=======
-﻿var bookingApp = angular.module("MechanicBookingApp", ['ngAnimate']);
-
-bookingApp.controller("OptionsSelectionController", function ($scope) {
-    var me = this;
-    me.maxSteps = 4;
-    $scope.currentStep = 1;
-
-    $scope.optionsData = [];
-    $scope.selectedVehicleTypeIndex = null;
-    $scope.selectedProblemsIndices = [];
-    $scope.descriptionOfProblem = '';
-    $scope.currentPos = { lat: 0, lng: 0 };
-    $scope.map = null;
-    $scope.mapMarker = null;
-    $scope.currentAddress = 'Map API quota is out probably';
-
-    me.pos = new google.maps.LatLng();
-
-    $scope.step1Click = function (index) {
-        $scope.selectedVehicleTypeIndex = index;
-        $scope.selectedProblemsIndices = new Array($scope.optionsData[index].Problems.length);
-        $scope.nextStep();
+    
+    function failure()
+    {
+        alert("failed");
     }
-
-    $scope.step2ItemClick = function (index) {
-        $scope.selectedProblemsIndices[index] = !$scope.selectedProblemsIndices[index];
-    }
-
-
-    $scope.pinCurrentLocation = function () {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                $scope.currentPos.lat = position.coords.latitude;
-                $scope.currentPos.lng = position.coords.longitude;
-                $scope.mapMarker.setPosition($scope.currentPos);
-                $scope.map.panTo($scope.currentPos);
-            },
-                function (posErr) {
-                    alert(posErr.message);
-                });
-        }
-        else {
-            alert("Your Browser Doesn't Support GeoLocation");
->>>>>>> parent of f019f0c... Merge branch 'master' of https://github.com/malihamza/Serviser
-        }
-    }
-
-
-    $scope.nextStep = function () {
-        if ($scope.currentStep < me.maxSteps)
-            $scope.currentStep++;
-    }
-<<<<<<< HEAD
 
 }
-=======
-    $scope.previousStep = function () {
-        if ($scope.currentStep > 1)
-            $scope.currentStep--;
+
+function addMarker(longi, lati, map, title, icon1 )
+{
+    var marker =new google.maps.Marker(
+                {
+                    position: { lat: lati, lng: longi },
+                    title: title,
+                    map: map,
+                    animation: google.maps.Animation.DROP
+                });
+    if (icon1 != null)
+    {
+        marker.setIcon(document.getElementById('ico').getAttribute('src'));
     }
->>>>>>> parent of f019f0c... Merge branch 'master' of https://github.com/malihamza/Serviser
+}
 
-    me.getCurrentPosition = function () {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                    $scope.currentPos.lat = position.coords.latitude;
-                    $scope.currentPos.lng = position.coords.longitude;
-            });
-        }
-    }
-
-    me.initMapWithLocation = function (position) {
-        $scope.currentPos.lat = position.coords.latitude;
-        $scope.currentPos.lng = position.coords.longitude;
-
-        $scope.map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
-            center: $scope.currentPos
-        });
-
-<<<<<<< HEAD
-function next_view() {
+function next_view()
+{
     document.getElementById("problem").style.visibility = "hidden";
     document.getElementById("bill").style.visibility = "hidden";
-    document.getElementById("map_div").style.height = "100%";
+    document.getElementById("map_div").style.height = "800px";
     document.getElementById("loader").style.visibility = "visible";
 
     $('html, body').animate({ scrollTop: 0 }, '300');
-//    $("#loader").fadeIn('slow').delay(5000).fadeOut('slow');
+    $("#loader").fadeIn('slow').delay(5000).fadeOut('slow');
+    setTimeout(display, 6000);
 
 
-    //setTimeout(display, 6000);
-    display();
-    document.getElementById("loader").style.visibility = "hidden";
-   
-
-=======
-        $scope.mapMarker = new google.maps.Marker({
-            position: $scope.currentPos,
-            map: $scope.map,
-            draggable: true,
-            animation: google.maps.Animation.DROP
-        });
-
-        google.maps.event.addListener($scope.mapMarker, 'mouseup', function (event) {
-            $scope.currentPos = {
-                lat: $scope.mapMarker.getPosition().lat(),
-                lng: $scope.mapMarker.getPosition().lng()
-            };
-
-            $.getJSON(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${$scope.currentPos.lat},${$scope.currentPos.lng}&key=AIzaSyDg-T5ErBSP7PrxppZiO9OPBA3HW4TXleo`, function (data, status) {
-                if (status === 'success') {
-                    $scope.currentAddress = data.results[0].formatted_address;
-                }
-            });
-        });
-    }
-
-    me.initMap = function () {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(me.initMapWithLocation, me.initMapWithLocation({ coords: {latitude: 0, longitude: 0}}));
-        }
-        else {
-            me.initMapWithLocation({ coords: { latitude: 0, longitude: 0 } });
-        }
-    }
-
-    $(function () { me.initMap(); });
-
-    dummyDataInstantiate($scope);
-});
-
-function dummyDataInstantiate(scope) {
-    scope.optionsData = [
-        {
-            Id: 1, Name: 'Bike', ImageUrl: '/Assets/Images/bike.png', Problems:
-            [{ Id: 1, Title: 'Problem 1' }, { Id: 2, Title: 'Problem 2' }, { Id: 3, Title: 'Problem 3' }, { Id: 4, Title: 'Problem 4' }]
-        },
-        {
-            Id: 2, Name: 'Car', ImageUrl: '/Assets/Images/car.png', Problems:
-            [{ Id: 5, Title: 'Problem 5' }, { Id: 6, Title: 'Problem 6' }, { Id: 7, Title: 'Problem 7' }, { Id: 8, Title: 'Problem 8' }]
-        },
-        {
-            Id: 3, Name: 'Truck', ImageUrl: '/Assets/Images/truck.png', Problems:
-            [{ Id: 5, Title: 'Problem 5' }, { Id: 6, Title: 'Problem 6' }, { Id: 7, Title: 'Problem 7' }, { Id: 8, Title: 'Problem 8' }]
-        },
-        {
-            Id: 4, Name: 'Van', ImageUrl: '/Assets/Images/van.png', Problems:
-            [{ Id: 1, Title: 'Problem 1' }, { Id: 2, Title: 'Problem 2' }, { Id: 3, Title: 'Problem 3' }, { Id: 4, Title: 'Problem 4' }]
-        },
-        {
-            Id: 1, Name: 'Bike', ImageUrl: '/Assets/Images/bike.png', Problems:
-            [{ Id: 1, Title: 'Problem 1' }, { Id: 2, Title: 'Problem 2' }, { Id: 3, Title: 'Problem 3' }, { Id: 4, Title: 'Problem 4' }]
-        },
-        {
-            Id: 2, Name: 'Car', ImageUrl: '/Assets/Images/car.png', Problems:
-            [{ Id: 5, Title: 'Problem 5' }, { Id: 6, Title: 'Problem 6' }, { Id: 7, Title: 'Problem 7' }, { Id: 8, Title: 'Problem 8' }]
-        },
-        {
-            Id: 3, Name: 'Truck', ImageUrl: '/Assets/Images/truck.png', Problems:
-            [{ Id: 5, Title: 'Problem 5' }, { Id: 6, Title: 'Problem 6' }, { Id: 7, Title: 'Problem 7' }, { Id: 8, Title: 'Problem 8' }]
-        },
-        {
-            Id: 4, Name: 'Van', ImageUrl: '/Assets/Images/van.png', Problems:
-            [{ Id: 1, Title: 'Problem 1' }, { Id: 2, Title: 'Problem 2' }, { Id: 3, Title: 'Problem 3' }, { Id: 4, Title: 'Problem 4' }]
-        }
-    ];
->>>>>>> parent of f019f0c... Merge branch 'master' of https://github.com/malihamza/Serviser
-
-
-<<<<<<< HEAD
-
-
-
-async function makeAjaxRequest()
-{
-    await $.ajax({
-        url: "/Services/getMechanics",
-        method: "POST",
-        data: { Latitude: pos.lati, Longitude: pos.longi },
-        success: function (data)
-        {
-            for (var mechanic in data)
-            {
-                addMarker(data[mechanic].Longitude, data[mechanic].Latitude, 'Mechanic', 'a');
-            }
-        },
-        failure: function (err)
-        {
-            console.log(err);
-        }
-    });
-
-=======
->>>>>>> parent of f019f0c... Merge branch 'master' of https://github.com/malihamza/Serviser
+    makeAjaxRequest();
 }
+
+function display()
+{
+    document.getElementById("info").style.visibility = "visible";
+    $("#info").fadeIn('slow');
+}
+
+
+
+function makeAjaxRequest()
+{
+    if (map)
+    {
+        $.ajax(
+            {
+                url: "/Services/getMechanics",
+                method: "POST",
+                data: { Latitude: pos.lati, Longitude: pos.longi },
+                success: function (data) {
+                         for (var mechanic in data)
+                         {
+                             addMarker(data[mechanic].Longitude, data[mechanic].Latitude, map, 'Mechanic', 'a');
+                         }
+                },
+                failure: function (err)
+                         {
+                            console.log(err);
+                         }
+            });
+
+    }
+ }
+
+
+
+/****This is to add problem***/
+$(document).ready(function ()
+{
+    $("input[type=checkbox]").change(function ()
+    {
+        var checked_value = $(this).parent().parent().next().next().text();
+            checked_value = parseInt(checked_value.substring(4, checked_value.length));
+        
+        var est_bill      = $("#estimated_bill").text();
+            est_bill      = parseInt(est_bill.substring(4, est_bill.length));
+        
+        var net_bill      = $("#net_bill").text();
+            net_bill      = parseInt(net_bill.substring(4, net_bill.length));
+        
+        if (this.checked)
+        {
+            problem_id_list.push(parseInt($(this).parent().parent().next().next().next().text()));
+
+            $("#estimated_bill").text("RS/- " + (est_bill + checked_value));
+            $("#net_bill").text("RS/- " + (net_bill + checked_value));
+        }
+        else
+        {
+            var index     = problem_id_list.indexOf(parseInt($(this).parent().parent().next().next().next().text()));
+
+            problem_id_list.splice(index,1);
+
+            $("#estimated_bill").text("RS/- " + (est_bill - checked_value));
+            $("#net_bill").text("RS/- " + (net_bill - checked_value));
+
+        }
+        alert(problem_id_list);
+    });
+   
+});
