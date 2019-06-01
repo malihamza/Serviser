@@ -1,0 +1,174 @@
+﻿
+@{
+    ViewBag.Title = "GenerateBill";
+    Layout = null;
+    Html.RenderPartial("_Mechanicheader");
+}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<style>
+    .lds-ripple {
+        display: inline-block;
+        position: relative;
+        width: 64px;
+        height: 64px;
+    }
+
+        .lds-ripple div {
+            position: absolute;
+            border: 4px solid rgb(14,131,205);
+            opacity: 1;
+            border-radius: 50%;
+            animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+        }
+
+            .lds-ripple div:nth-child(2) {
+                animation-delay: -0.5s;
+            }
+
+    @@keyframes lds-ripple {
+        0% {
+            top: 28px;
+            left: 28px;
+            width: 0;
+            height: 0;
+            opacity: 1;
+        }
+
+        100% {
+            top: -1px;
+            left: -1px;
+            width: 58px;
+            height: 58px;
+            opacity: 0;
+        }
+    }
+
+    .checked {
+        color: orange;
+    }
+</style>
+<div id="content-wrapper">
+
+    <div class="container-fluid " style="padding: 0px;margin: 0px;position: absolute;z-index: 0;visibility:hidden" id="mapp">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d108848.8336126985!2d74.24696695820313!3d31.5097088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1554993727992!5m2!1sen!2s"
+                frameborder="0" style="border:0;height:800px;width:100%;position:absolute;cursor:pointer;margin: 0px;transition:0.6s" allowfullscreen id="map_div"></iframe>
+
+    </div>
+
+    <div class="container-fluid ">
+
+        <div class="row  justify-content-center w3-animate-zoom mt-5" style="position:relative;z-index:1" id="loader">
+            <div class="col-lg-4  " style="background-color:white;border-radius:10px; box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);">
+                <div class="row  justify-content-center">
+                    <div class="lds-ripple mt-4"><div></div><div></div></div>
+                </div>
+                <div class="row  justify-content-center" style="padding:20px">
+                    <h6>Someone is trying to reach you.</h6>
+                </div>
+                <div class="col-lg-auto  mt-2">
+                    <table class="table" style="font-size:14px">
+                        <tr>
+                            <th>Customer Name </th>
+                            <td>Ali Hamza</td>
+                        </tr>
+                        <tr>
+                            <th>Location </th>
+                            <td>Canal Road</td>
+                        </tr>
+                        <tr>
+                            <th>Distance </th>
+                            <td>7 min</td>
+                        </tr>
+                        <tr>
+                            <th>Problem </th>
+                            <td>Tyre Puncture</td>
+                        </tr>
+                        <tr>
+                            <th>Contact No.</th>
+                            <td>0321-4238228</td>
+                        </tr>
+                        <tr>
+                            <td><button class="btn btn-success btn-block" onclick="accept()"> Accept </button></td>
+                            <td><button class="btn btn-danger btn-block"> Reject </button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <div class="container-fluid " style="height:200px;z-index:1;position:relative;bottom:400px">
+        <div class="col-lg-3  w3-animate-zoom" style="background-color:white;box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);border-radius:5px;visibility:hidden;padding:10px" id="info">
+            <div class="row  mt-3 " style="padding:10px">
+                <div class="col-lg-4 " style="padding:0px;">
+                    <img src="~/Assets/images/avatar2.jpg" class="img-fluid img-circle" style="height:120px;width:140px" />
+                </div>
+                <div class="col-lg-7 ">
+                    <h5 class="mt-5">Ali Hamza</h5>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </div>
+            </div>
+            <div class="col-lg-auto  mt-5">
+                <table class="table" style="font-size:14px">
+                    <tr>
+                        <th>Customer Name </th>
+                        <td>Ali Hamza</td>
+                    </tr>
+                    <tr>
+                        <th>Location </th>
+                        <td>Canal Road</td>
+                    </tr>
+                    <tr>
+                        <th>Distance </th>
+                        <td>7 min</td>
+                    </tr>
+                    <tr>
+                        <th>Problem </th>
+                        <td>Tyre Puncture</td>
+                    </tr>
+                    <tr>
+                        <th>Contact No.</th>
+                        <td>0321-4238228</td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="row  mt-3 justify-content-center">
+                <button class="btn btn-success">Call Now <span class="fa fa-phone"></span></button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function accept()
+    {
+        document.getElementById("loader").style.visibility = "hidden";
+        document.getElementById("mapp").style.visibility = "visible";
+        document.getElementById("info").style.visibility = "visible";
+    }
+</script>
+
+
