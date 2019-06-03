@@ -4,6 +4,10 @@
 @{
     ViewBag.Title = "Booking";
 }
+@{
+    List<int> bill = new List<int>();
+
+}
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg-T5ErBSP7PrxppZiO9OPBA3HW4TXleo"
         async defer></script>
@@ -132,12 +136,12 @@
                         <tr>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p1" name="p1">
-                                    <label class="custom-control-label" for="p1"></label>
+                                    <input type="checkbox" class="custom-control-input" id="@problem.Id" name="@problem.VehicleName" value="@problem.Id">
+                                    <label class="custom-control-label" for="@problem.Id"></label>
                                 </div>
                             </td>
                             <td>@problem.Name</td>
-                            <td>Rs/- @problem.MaxRate</td>
+                            <td>Rs/- @problem.MinRate</td>
                         </tr>
                     }
 
@@ -170,12 +174,12 @@
                         <tr>
                             <td>
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p1" name="p1">
-                                    <label class="custom-control-label" for="p1"></label>
+                                    <input type="checkbox" class="custom-control-input" id="@problem.Id" name="@problem.Id" onchange="check(this)" value="@problem.Id">
+                                    <label class="custom-control-label" for="@problem.Id"></label>
                                 </div>
                             </td>
                             <td>@problem.Name</td>
-                            <td>Rs/- @problem.MaxRate</td>
+                            <td>Rs/- @problem.MinRate</td>
                         </tr>
                     }
 
@@ -253,6 +257,21 @@
         document.getElementById("info").style.visibility = "visible";
         $("#info").fadeIn('slow');
     }
+
+    function check(a) {
+
+        if (a.checked == true) {
+             
+            alert(a.value);
+          
+
+
+        }
+        
+
+
+    }
+
 
 
 </script>

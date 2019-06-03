@@ -217,9 +217,36 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\all_problems_Result.cs">
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Problems.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Problems.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Problems.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Problems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Problems.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\ServicesModel.cs" />
+    <Compile Include="Models\VehicleNames.cs">
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VehicleProblems.cs">
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VehicleTypes.cs">
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -258,6 +285,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Problems.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Problems.edmx</DependentUpon>
+      <LastGenOutput>Problems.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Problems.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Problems.edmx</DependentUpon>
+      <LastGenOutput>Problems.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\angular-1.7.8\angular-animate.js" />
     <Content Include="Scripts\angular-1.7.8\angular-animate.min.js" />
     <Content Include="Scripts\angular-1.7.8\angular-aria.js" />
@@ -330,6 +367,13 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="libman.json" />
+    <EntityDeploy Include="Models\Problems.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Problems.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Problems.edmx.diagram">
+      <DependentUpon>Problems.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -441,6 +485,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Serviser.DAL.Console\Serviser.DAL.Console.csproj">
