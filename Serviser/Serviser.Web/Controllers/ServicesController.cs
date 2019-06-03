@@ -10,6 +10,7 @@ namespace Serviser.Web.Controllers
 {
     public class ServicesController : Controller
     {
+        List<int> bill = new List<int>();
         // GET: Services
         public ActionResult Index()
         {
@@ -100,5 +101,13 @@ namespace Serviser.Web.Controllers
             return View(problemsModel);
         }
 
+
+        public ActionResult MakeBill()
+        {
+            
+           
+
+           return  RedirectToAction("Booking");
+        }
     }
 }
