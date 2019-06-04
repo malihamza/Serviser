@@ -1,4 +1,4 @@
-﻿
+﻿@model Serviser.Web.Models.Problems
 @{
     ViewBag.Title = "Pricing";
 }
@@ -39,42 +39,15 @@
 
 
                     </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
+                    @foreach (var problem in Model.bikeProblems)
+    {
+                <tr>
+                    <td>@problem.Name</td>
+                    <td>Rs/- @problem.MinRate</td>
+                </tr>
+}
+
+
 
                 </table>
 
@@ -100,43 +73,13 @@
 
 
                     </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-                    <tr>
-                        <td>Brake Failure</td>
-                        <td>Rs/- 500</td>
-                    </tr>
-
+                    @foreach (var problem in Model.carProblems)
+    {
+                <tr>
+                    <td>@problem.Name</td>
+                    <td>Rs/- @problem.MinRate</td>
+                </tr>
+}
                 </table>
 
             </div>
@@ -161,8 +104,8 @@
                     <span class="fa fa-thumbs-o-up ml-3 mt-4" style="font-size:40px "></span>
 
                 </div>
-                <div class="col-lg-9 "  onmouseover="change1(c1)" onmouseout="change2(c1)">
-                    <h6  class="mt-2"><strong>100% TRANSPARENCY</strong></h6>
+                <div class="col-lg-9 " onmouseover="change1(c1)" onmouseout="change2(c1)">
+                    <h6 class="mt-2"><strong>100% TRANSPARENCY</strong></h6>
                     <p style="font-size:13px ">We ensure that you get a well detailed break-up of each minor repair work.</p>
 
                 </div>
@@ -177,8 +120,8 @@
                     <span class="fa fa-wrench ml-3 mt-4" style="font-size:40px "></span>
 
                 </div>
-                <div class="col-lg-9 "  onmouseover="change1(c2)" onmouseout="change2(c2)">
-                    <h6  class="mt-2"><strong>QUALITY SERVICES</strong></h6>
+                <div class="col-lg-9 " onmouseover="change1(c2)" onmouseout="change2(c2)">
+                    <h6 class="mt-2"><strong>QUALITY SERVICES</strong></h6>
                     <p style="font-size:13px ">To bring premium mechanical services at your home is our mission.</p>
 
                 </div>
@@ -193,8 +136,8 @@
                     <span class="fa fa-users ml-3 mt-4" style="font-size:40px "></span>
 
                 </div>
-                <div class="col-lg-9 "  onmouseover="change1(c3)" onmouseout="change2(c3)">
-                    <h6  class="mt-2"><strong>VERIFIED MECHANICS</strong></h6>
+                <div class="col-lg-9 " onmouseover="change1(c3)" onmouseout="change2(c3)">
+                    <h6 class="mt-2"><strong>VERIFIED MECHANICS</strong></h6>
                     <p style="font-size:13px ">We have a detailed process to verify the authenticity of mechanics.</p>
 
                 </div>
