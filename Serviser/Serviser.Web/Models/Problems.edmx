@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ServiserDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="VehicleNames">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="VehicleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleProblems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VehicleNameId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MinRate" Type="int" Nullable="false" />
+          <Property Name="MaxRate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VehicleTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_VehicleNames_dbo_VehicleTypes_VehicleId">
+          <End Role="VehicleTypes" Type="Self.VehicleTypes" Multiplicity="1" />
+          <End Role="VehicleNames" Type="Self.VehicleNames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VehicleNames">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_VehicleProblems_dbo_VehicleNames_VehicleNameId">
+          <End Role="VehicleNames" Type="Self.VehicleNames" Multiplicity="1" />
+          <End Role="VehicleProblems" Type="Self.VehicleProblems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleNames">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VehicleProblems">
+              <PropertyRef Name="VehicleNameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="all_problems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ServiserDbModelStoreContainer">
+          <EntitySet Name="VehicleNames" EntityType="Self.VehicleNames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleProblems" EntityType="Self.VehicleProblems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleTypes" EntityType="Self.VehicleTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_VehicleNames_dbo_VehicleTypes_VehicleId" Association="Self.FK_dbo_VehicleNames_dbo_VehicleTypes_VehicleId">
+            <End Role="VehicleTypes" EntitySet="VehicleTypes" />
+            <End Role="VehicleNames" EntitySet="VehicleNames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_VehicleProblems_dbo_VehicleNames_VehicleNameId" Association="Self.FK_dbo_VehicleProblems_dbo_VehicleNames_VehicleNameId">
+            <End Role="VehicleNames" EntitySet="VehicleNames" />
+            <End Role="VehicleProblems" EntitySet="VehicleProblems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ServiserDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="VehicleNames">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VehicleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VehicleTypes" Relationship="Self.FK_dbo_VehicleNames_dbo_VehicleTypes_VehicleId" FromRole="VehicleNames" ToRole="VehicleTypes" />
+          <NavigationProperty Name="VehicleProblems" Relationship="Self.FK_dbo_VehicleProblems_dbo_VehicleNames_VehicleNameId" FromRole="VehicleNames" ToRole="VehicleProblems" />
+        </EntityType>
+        <EntityType Name="VehicleProblems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VehicleNameId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MinRate" Type="Int32" Nullable="false" />
+          <Property Name="MaxRate" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="VehicleNames" Relationship="Self.FK_dbo_VehicleProblems_dbo_VehicleNames_VehicleNameId" FromRole="VehicleProblems" ToRole="VehicleNames" />
+        </EntityType>
+        <EntityType Name="VehicleTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VehicleNames" Relationship="Self.FK_dbo_VehicleNames_dbo_VehicleTypes_VehicleId" FromRole="VehicleTypes" ToRole="VehicleNames" />
+        </EntityType>
+        <Association Name="FK_dbo_VehicleNames_dbo_VehicleTypes_VehicleId">
+          <End Role="VehicleTypes" Type="Self.VehicleTypes" Multiplicity="1" />
+          <End Role="VehicleNames" Type="Self.VehicleNames" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VehicleNames">
+              <PropertyRef Name="VehicleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_VehicleProblems_dbo_VehicleNames_VehicleNameId">
+          <End Role="VehicleNames" Type="Self.VehicleNames" Multiplicity="1" />
+          <End Role="VehicleProblems" Type="Self.VehicleProblems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VehicleNames">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VehicleProblems">
+              <PropertyRef Name="VehicleNameId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ServiserDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="VehicleNames" EntityType="Self.VehicleNames" />
+          <EntitySet Name="VehicleProblems" EntityType="Self.VehicleProblems" />
+          <EntitySet Name="VehicleTypes" EntityType="Self.VehicleTypes" />
+          <AssociationSet Name="FK_dbo_VehicleNames_dbo_VehicleTypes_VehicleId" Association="Self.FK_dbo_VehicleNames_dbo_VehicleTypes_VehicleId">
+            <End Role="VehicleTypes" EntitySet="VehicleTypes" />
+            <End Role="VehicleNames" EntitySet="VehicleNames" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_VehicleProblems_dbo_VehicleNames_VehicleNameId" Association="Self.FK_dbo_VehicleProblems_dbo_VehicleNames_VehicleNameId">
+            <End Role="VehicleNames" EntitySet="VehicleNames" />
+            <End Role="VehicleProblems" EntitySet="VehicleProblems" />
+          </AssociationSet>
+          <FunctionImport Name="all_problems" ReturnType="Collection(ServiserDbModel.all_problems_Result)" />
+        </EntityContainer>
+        <ComplexType Name="all_problems_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="VehicleNameId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="MinRate" Nullable="false" />
+          <Property Type="Int32" Name="MaxRate" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ServiserDbModelStoreContainer" CdmEntityContainer="ServiserDbEntities">
+          <EntitySetMapping Name="VehicleNames">
+            <EntityTypeMapping TypeName="ServiserDbModel.VehicleNames">
+              <MappingFragment StoreEntitySet="VehicleNames">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VehicleId" ColumnName="VehicleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleProblems">
+            <EntityTypeMapping TypeName="ServiserDbModel.VehicleProblems">
+              <MappingFragment StoreEntitySet="VehicleProblems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VehicleNameId" ColumnName="VehicleNameId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MinRate" ColumnName="MinRate" />
+                <ScalarProperty Name="MaxRate" ColumnName="MaxRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleTypes">
+            <EntityTypeMapping TypeName="ServiserDbModel.VehicleTypes">
+              <MappingFragment StoreEntitySet="VehicleTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="all_problems" FunctionName="ServiserDbModel.Store.all_problems">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ServiserDbModel.all_problems_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VehicleNameId" ColumnName="VehicleNameId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MinRate" ColumnName="MinRate" />
+                <ScalarProperty Name="MaxRate" ColumnName="MaxRate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

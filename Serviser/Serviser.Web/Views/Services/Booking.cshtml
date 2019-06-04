@@ -4,6 +4,10 @@
 @{
     ViewBag.Title = "Booking";
 }
+@{
+    List<int> bill = new List<int>();
+
+}
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg-T5ErBSP7PrxppZiO9OPBA3HW4TXleo"
         async defer></script>
@@ -175,16 +179,11 @@
                     @foreach (var problem in Model.carProblems)
                     {
                         <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class=""  name="p1">
-                                    <!--<label class="custom-control-label" for="p1"></label>-->
-                                </div>
-                            </td>
 
                             <td>@problem.Name</td>
                             <td>Rs/- @problem.MaxRate</td>
                             <td style="display:none">@problem.Id</td>
+                            <td>Rs/- @problem.MinRate</td>
                         </tr>
                     }
 
@@ -242,5 +241,5 @@
 
 </div>
 <script>
-       
+
 </script>

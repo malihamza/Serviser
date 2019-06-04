@@ -48,7 +48,49 @@
     .checked {
         color: orange;
     }
+
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
 </style>
+
 <div id="content-wrapper">
 
     <div class="container-fluid " style="padding: 0px;margin: 0px;position: absolute;z-index: 0;visibility:hidden" id="mapp">
@@ -157,14 +199,294 @@
                 <button class="btn btn-success">Call Now <span class="fa fa-phone"></span></button>
 
             </div>
+            <div class="row  mt-1 justify-content-center" style="padding:20px">
+                <button class="btn btn-info btn-block" id="myBtn">Generate Bill <span class="fa fa-list"></span></button>
+
+            </div>
         </div>
 
     </div>
 </div>
 
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="row justify-content-center">
+            <div class="col-md-5 m-2">
+                <div class="row justify-content-center" style="background-color: rgb(14,131,205);border-radius: 10px 10px 0px 0px">
+
+                    <h4 class="text-center mt-3" style="color: white"><i class="fa fa-motorcycle"></i> Bike</h4>
+
+                </div>
+                <div class="row card" style="overflow: auto;height:350px">
+
+                    <table class="table  table-hover">
+                        <tr>
+                            <th>Check</th>
+                            <th>Problem</th>
+                            <th>Rate in PKR</th>
+
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p1" name="p1">
+                                    <label class="custom-control-label" for="p1"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p2" name="p2">
+                                    <label class="custom-control-label" for="p2"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p3" name="p3">
+                                    <label class="custom-control-label" for="p3"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p4" name="p4">
+                                    <label class="custom-control-label" for="p4"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p5" name="p5">
+                                    <label class="custom-control-label" for="p5"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p4" name="p4">
+                                    <label class="custom-control-label" for="p4"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p5" name="p5">
+                                    <label class="custom-control-label" for="p5"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p4" name="p4">
+                                    <label class="custom-control-label" for="p4"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="p5" name="p5">
+                                    <label class="custom-control-label" for="p5"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+
+            <div class="col-md-5 m-2">
+                <div class="row justify-content-center" style="background-color: rgb(14,131,205);border-radius: 10px 10px 0px 0px">
+
+                    <h4 class="text-center mt-3" style="color: white"><i class="fa fa-car"></i> Car</h4>
+
+                </div>
+                <div class="row card" style="overflow: auto;height:350px">
+
+                    <table class="table table-responsive table-hover">
+                        <tr>
+                            <th>Check</th>
+                            <th>Problem</th>
+                            <th>Rate in PKR</th>
+
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="c1" name="c1">
+                                    <label class="custom-control-label" for="c1"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="c2" name="c2">
+                                    <label class="custom-control-label" for="c2"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="c3" name="c3">
+                                    <label class="custom-control-label" for="c3"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="c4" name="c4">
+                                    <label class="custom-control-label" for="c4"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="c5" name="c5">
+                                    <label class="custom-control-label" for="c5"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="c4" name="c4">
+                                    <label class="custom-control-label" for="c4"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="c5" name="c5">
+                                    <label class="custom-control-label" for="c5"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="c4" name="c4">
+                                    <label class="custom-control-label" for="c4"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="c5" name="c5">
+                                    <label class="custom-control-label" for="c5"></label>
+                                </div>
+                            </td>
+                            <td>Brake Failure</td>
+                            <td>Rs/- 500</td>
+                        </tr>
+
+
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="row mt-1 ">
+                <h3><b>Total Bill :</b> 2000 PKR /-</h3>
+            </div>
+
+
+        </div>
+        <div class="row justify-content-end">
+            <button class="btn btn-success col-lg-4 mt-3">Confirm Bill</button>
+        </div>
+    </div>
+    <script>
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</div>
+
+
 <script>
-    function accept()
-    {
+    function accept() {
         document.getElementById("loader").style.visibility = "hidden";
         document.getElementById("mapp").style.visibility = "visible";
         document.getElementById("info").style.visibility = "visible";

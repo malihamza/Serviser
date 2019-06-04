@@ -1,7 +1,11 @@
-
+var mechanicHub = $.connection.mechanicHub;
 var map;
+var mechanic_markers = [];
 var problem_id_list = [];
-var pos = { lati: 20, longi: 20 };
+var my_position = { lati: 20, longi: 20 };
+
+
+
 if (navigator.geolocation)
 {
 
@@ -13,8 +17,8 @@ if (navigator.geolocation)
     {
         var lati      = position.coords.latitude;
         var longi     = position.coords.longitude;
-            pos.lati  = lati;
-            pos.longi = longi;
+            my_position.lati  = lati;
+            my_position.longi = longi;
 
 
         map           = new google.maps.Map(document.getElementById('map_div'),
@@ -35,6 +39,36 @@ if (navigator.geolocation)
 
 }
 
+
+$.connection.hub.start()
+    .done(function ()
+    {
+        mechanicHub.server.getMechanics(my_position);
+    })
+    .fail(function ()
+    {
+        alert("Hello");
+    });
+
+
+
+$.connection.client.updateMechanics = function (data)
+{
+    for (let i = 0; i < mechanic_markers.length; i++)
+    {
+        mechanic_markers[i].setMap(null);
+    }
+
+    mechanic_markers.splice(0, mechanic_markers.length);
+
+    for (var mechanic in data)
+    {
+        addMarker(data[mechanic].Longitude, data[mechanic].Latitude, map, 'Mechanic', 'a');
+    }
+}
+
+
+
 function addMarker(longi, lati, map, title, icon1 )
 {
     var marker =new google.maps.Marker(
@@ -48,7 +82,13 @@ function addMarker(longi, lati, map, title, icon1 )
     {
         marker.setIcon(document.getElementById('ico').getAttribute('src'));
     }
+    mechanic_markers.push(marker);
 }
+
+
+
+
+
 
 function next_view()
 {
@@ -62,7 +102,7 @@ function next_view()
     setTimeout(display, 6000);
 
 
-    makeAjaxRequest();
+    
 }
 
 function display()

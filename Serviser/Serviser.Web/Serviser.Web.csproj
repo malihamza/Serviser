@@ -58,6 +58,12 @@
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -217,9 +223,36 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\all_problems_Result.cs">
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Problems.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Problems.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Problems.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Problems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Problems.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\ServicesModel.cs" />
+    <Compile Include="Models\VehicleNames.cs">
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VehicleProblems.cs">
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VehicleTypes.cs">
+      <DependentUpon>Problems.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -258,6 +291,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Problems.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Problems.edmx</DependentUpon>
+      <LastGenOutput>Problems.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Problems.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Problems.edmx</DependentUpon>
+      <LastGenOutput>Problems.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\angular-1.7.8\angular-animate.js" />
     <Content Include="Scripts\angular-1.7.8\angular-animate.min.js" />
     <Content Include="Scripts\angular-1.7.8\angular-aria.js" />
@@ -330,6 +373,13 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="libman.json" />
+    <EntityDeploy Include="Models\Problems.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Problems.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Problems.edmx.diagram">
+      <DependentUpon>Problems.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -338,6 +388,8 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.4.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -432,6 +484,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Real_Time_Service\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -441,6 +494,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Serviser.DAL.Console\Serviser.DAL.Console.csproj">
