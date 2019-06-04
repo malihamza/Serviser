@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Serviser - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/all.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom styles for this template-->
+    <link href="~/Content/sb-admin.css" rel="stylesheet">
+
+
+    <style>
+        .b {
+            border: 1px solid black;
+        }
+    </style>
+    @RenderSection("stylesheets", false)
+</head>
+
+<body id="page-top">
+
+    @{Html.RenderPartial("_NavbarPartial");}
+    <div id="wrapper">
+        @{ Html.RenderPartial("_SidebarPartial");}
+        <div id="content-wrapper" class="container-fluid">
+
+            @RenderBody()
+        </div>
+    </div>
+    <!-- /#wrapper -->
+
+
+
+    @{ Html.RenderPartial("_FooterPartial");}
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Scripts/jquery.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Scripts/jquery.easing.min.js"></script>
+
+
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Scripts/sb-admin.min.js"></script>
+
+    <!-- Demo scripts for this page-->
+    <script src="js/demo/datatables-demo.js"></script>
+
+    @RenderSection("scripts",false)
+</body>
+
+</html>
+

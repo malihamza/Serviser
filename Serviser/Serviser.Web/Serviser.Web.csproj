@@ -211,8 +211,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VehicleProblemsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VehicleTypesController.cs" />
+    <Compile Include="Areas\Admin\Models\ViewComponents.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminxController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MechanicController.cs" />
@@ -276,6 +281,7 @@
     <Content Include="Assets\Images\position radar.svg" />
     <Content Include="Assets\Images\truck.png" />
     <Content Include="Assets\Images\van.png" />
+    <Content Include="Content\all.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -283,6 +289,21 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\calander.css" />
+    <Content Include="Content\css\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\calander.css" />
+    <Content Include="Content\datatables.min.css" />
+    <Content Include="Scripts\datatables.min.js" />
+    <Content Include="Content\elegant_font\fonts\ElegantIcons.svg" />
+    <Content Include="Content\elegant_font\gpl_license.txt" />
+    <Content Include="Content\elegant_font\index.html" />
+    <Content Include="Content\elegant_font\lte-ie7.js" />
+    <Content Include="Content\elegant_font\mit_license.txt" />
+    <Content Include="Content\elegant_font\style.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Home\Booking.css" />
     <Content Include="Content\Home\Index.css" />
@@ -373,6 +394,28 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="libman.json" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_SidebarPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_NavbarPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleTypes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleTypes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleTypes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleTypes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleTypes\Index.cshtml" />
+    <Content Include="Content\css\bootstrap-grid.css.map" />
+    <Content Include="Content\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\css\bootstrap.min.css.map" />
+    <Content Include="Content\elegant_font\fonts\ElegantIcons.eot" />
+    <Content Include="Content\elegant_font\fonts\ElegantIcons.ttf" />
+    <Content Include="Content\elegant_font\fonts\ElegantIcons.woff" />
+    <Content Include="Areas\Admin\Views\Shared\_BreadCrumbPartial.cshtml" />
     <EntityDeploy Include="Models\Problems.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Problems.Designer.cs</LastGenOutput>
@@ -380,6 +423,11 @@
     <Content Include="Models\Problems.edmx.diagram">
       <DependentUpon>Problems.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\VehicleProblems\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleProblems\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleProblems\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleProblems\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleProblems\Index.cshtml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -459,32 +507,33 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Services\Booking.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_Adminheader.cshtml" />
     <Content Include="Views\Shared\_Adminfooter.cshtml" />
-    <Content Include="Views\Admin\Home.cshtml" />
-    <Content Include="Views\Admin\ViewAllMechanics.cshtml" />
-    <Content Include="Views\Admin\AddNewMechanic.cshtml" />
-    <Content Include="Views\Admin\DeleteMechanic.cshtml" />
-    <Content Include="Views\Admin\PendingRequests.cshtml" />
-    <Content Include="Views\Admin\RejectedRequests.cshtml" />
-    <Content Include="Views\Admin\Profile.cshtml" />
-    <Content Include="Views\Admin\AddAdmin.cshtml" />
     <Content Include="Views\Problems\ViewAllProblems.cshtml" />
     <Content Include="Views\Problems\AddProblem.cshtml" />
     <Content Include="Views\Problems\DeleteProblem.cshtml" />
     <Content Include="Views\Vehicle\ViewAllVehicles.cshtml" />
     <Content Include="Views\Vehicle\AddVehicle.cshtml" />
     <Content Include="Views\Vehicle\DeleteVehicle.cshtml" />
-    <Content Include="Views\Admin\ForgotPassword.cshtml" />
+    <Content Include="Views\Adminx\ForgotPassword.cshtml" />
     <Content Include="Views\Mechanic\Index.cshtml" />
     <Content Include="Views\Shared\_Mechanicheader.cshtml" />
     <Content Include="Views\Mechanic\Profile.cshtml" />
     <Content Include="Views\Mechanic\GenerateBill.cshtml" />
+    <Content Include="Views\Adminx\AddAdmin.cshtml" />
+    <Content Include="Views\Adminx\AddNewMechanic.cshtml" />
+    <Content Include="Views\Adminx\DeleteMechanic.cshtml" />
+    <Content Include="Views\Adminx\Home.cshtml" />
+    <Content Include="Views\Adminx\Index.cshtml" />
+    <Content Include="Views\Adminx\PendingRequests.cshtml" />
+    <Content Include="Views\Adminx\Profile.cshtml" />
+    <Content Include="Views\Adminx\RejectedRequests.cshtml" />
+    <Content Include="Views\Adminx\ViewAllMechanics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Real_Time_Service\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -84,7 +84,7 @@ namespace Serviser.Web.Controllers
             List<VehicleProblem> carproblems = new List<VehicleProblem>();
             foreach (var a in problems)
             {
-                if(a.VehicleNameId==1)
+                if(a.VehicleType.Id==1)
                 {
                     bikeproblems.Add(a);
                 }

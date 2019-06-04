@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Serviser.DAL.Entity.VehicleProblem>
+@using Serviser.Web.Areas.Admin.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section stylesheets {
+    <link href="~/Content/datatables.min.css" rel="stylesheet" />
+
+}
+
+@Html.Partial("_BreadCrumbPartial", new BreadCrumb()
+{
+    Trail = new List<BreadCrumb.Item> {
+new BreadCrumb.Item { Name="Dashboard", Url = Url.Action("Index","Dashboard") },
+new BreadCrumb.Item { Name="Vehicle Problems", IsActive=true }
+}
+})
+
+<table id="VehicleTypesTable" class="table table-bordered table-striped mt-5">
+    <thead>
+
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Estimated Price
+            </th>
+            <th>
+                Type
+            </th>
+            <th>Action </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstimatedPrice)
+                </td>
+                <td>
+                    <div class="btn-group">
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-info" })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-success" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-danger" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts {
+    <script src="~/Scripts/datatables.min.js"></script>
+    <script>
+        $(() => {
+            $('#VehicleTypesTable').DataTable();
+        });
+    </script>
+}

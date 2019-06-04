@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Serviser.DAL.Entity.VehicleType>
+@using Serviser.Web.Areas.Admin.Models;
+@{
+    ViewBag.Title = "Index";
+}
+
+@section stylesheets {
+    <link href="~/Content/datatables.min.css" rel="stylesheet" />
+
+}
+
+
+@Html.Partial("_BreadCrumbPartial",new BreadCrumb()
+{
+    Trail = new List<BreadCrumb.Item> {
+    new BreadCrumb.Item { Name="Dashboard", Url = Url.Action("Index","Dashboard") },
+    new BreadCrumb.Item { Name="Vehicle Types", IsActive=true }
+    }
+})
+
+<table id="VehicleTypesTable" class="table table-bordered table-striped mt-5">
+    <thead>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <div class="btn-group">
+
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-info" })
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-success" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-danger" })
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts {
+    <script src="~/Scripts/datatables.min.js"></script>
+    <script>
+        $(() => {
+            $('#VehicleTypesTable').DataTable();
+        });
+    </script>
+}

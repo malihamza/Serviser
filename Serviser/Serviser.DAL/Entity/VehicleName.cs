@@ -1,34 +1,36 @@
-namespace Serviser.DAL.Entity
-{
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+//Removed because of changed business logic
 
-    public partial class VehicleName
-    {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public VehicleName()
-        {
-            VehicleProblems = new HashSet<VehicleProblem>();
-            CustomerProfiles = new HashSet<CustomerProfile>();
-        }
+//namespace Serviser.DAL.Entity
+//{
+//    using System;
+//    using System.Collections.Generic;
+//    using System.ComponentModel.DataAnnotations;
+//    using System.ComponentModel.DataAnnotations.Schema;
+//    using System.Data.Entity.Spatial;
 
-        public int Id { get; set; }
+//    public partial class VehicleName
+//    {
+//        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+//        public VehicleName()
+//        {
+//            VehicleProblems = new HashSet<VehicleProblem>();
+//            CustomerProfiles = new HashSet<CustomerProfile>();
+//        }
 
-        [Required]
-        [StringLength(50)]
-        public string Name { get; set; }
+//        public int Id { get; set; }
 
-        public int VehicleId { get; set; }
+//        [Required]
+//        [StringLength(50)]
+//        public string Name { get; set; }
 
-        public virtual VehicleType VehicleType { get; set; }
+//        public int VehicleId { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VehicleProblem> VehicleProblems { get; set; }
+//        public virtual VehicleType VehicleType { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerProfile> CustomerProfiles { get; set; }
-    }
-}
+//        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+//        public virtual ICollection<VehicleProblem> VehicleProblems { get; set; }
+
+//        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+//        public virtual ICollection<CustomerProfile> CustomerProfiles { get; set; }
+//    }
+//}

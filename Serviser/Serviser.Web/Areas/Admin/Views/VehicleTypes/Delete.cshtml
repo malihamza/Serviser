@@ -1,0 +1,38 @@
+﻿@model Serviser.DAL.Entity.VehicleType
+@using Serviser.Web.Areas.Admin.Models;
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@Html.Partial("_BreadCrumbPartial", new BreadCrumb()
+{
+    Trail = new List<BreadCrumb.Item> {
+new BreadCrumb.Item { Name="Dashboard", Url = Url.Action("Index","Dashboard") },
+new BreadCrumb.Item { Name="Vehicle Types", Url = Url.Action("Index","VehicleTypes") },
+new BreadCrumb.Item { Name= "Delete", IsActive=true }
+}
+})
+
+
+<h6>Are you sure you want to delete this Vehicle Type?</h6>
+<div class="card p-2">
+    <dl class="row">
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color mt-2">
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </div>
+}

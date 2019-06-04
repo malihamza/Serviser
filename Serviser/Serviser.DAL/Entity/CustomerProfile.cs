@@ -12,7 +12,7 @@ namespace Serviser.DAL.Entity
         public CustomerProfile()
         {
             Bookings = new HashSet<Booking>();
-            VehicleNames = new HashSet<VehicleName>();
+            //VehicleNames = new HashSet<VehicleName>();
             CustomerOffers = new HashSet<CustomerOffer>();
         }
 
@@ -21,8 +21,8 @@ namespace Serviser.DAL.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VehicleName> VehicleNames { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<VehicleName> VehicleNames { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerOffer> CustomerOffers { get; set; }

@@ -1,0 +1,29 @@
+﻿@model Serviser.Web.Areas.Admin.Models.BreadCrumb
+
+@using Serviser.Web.Areas.Admin.Models;
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    @if (Model != null && Model.Trail != null)
+    {
+        foreach (BreadCrumb.Item item in Model.Trail)
+        {
+            <li class="breadcrumb-item 
+                @if (item.IsActive)
+                { 
+                    @:"active" 
+                }
+                ">
+                @if (!String.IsNullOrEmpty(item.Url))
+                {
+                    <a href="@item.Url">@item.Name</a>
+                }
+                else
+                {
+                    @item.Name
+                }
+            </li>
+        }
+    }
+</ol>
+

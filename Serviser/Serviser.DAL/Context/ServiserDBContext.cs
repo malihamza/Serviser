@@ -26,7 +26,7 @@ namespace Serviser.DAL.Context
         public virtual DbSet<OfferMechanicBridge> OfferMechanicBridges { get; set; }
         //public virtual DbSet<Role> Roles { get; set; }
         //public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<VehicleName> VehicleNames { get; set; }
+        //public virtual DbSet<VehicleName> VehicleNames { get; set; }
         public virtual DbSet<VehicleProblem> VehicleProblems { get; set; }
         public virtual DbSet<VehicleType> VehicleTypes { get; set; }
         public virtual DbSet<BillItem> BillItems { get; set; }
@@ -70,10 +70,10 @@ namespace Serviser.DAL.Context
                 .HasForeignKey(e => e.CustomerId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CustomerProfile>()
-                .HasMany(e => e.VehicleNames)
-                .WithMany(e => e.CustomerProfiles)
-                .Map(m => m.ToTable("CustomerVehicleName").MapLeftKey("customer_id").MapRightKey("vehicle_name_id"));
+            //modelBuilder.Entity<CustomerProfile>()
+            //    .HasMany(e => e.VehicleNames)
+            //    .WithMany(e => e.CustomerProfiles)
+            //    .Map(m => m.ToTable("CustomerVehicleName").MapLeftKey("customer_id").MapRightKey("vehicle_name_id"));
 
             modelBuilder.Entity<MechanicOffer>()
                 .Property(e => e.Heading)
@@ -134,15 +134,15 @@ namespace Serviser.DAL.Context
             //    .Property(e => e.LastName)
             //    .IsUnicode(false);
 
-            modelBuilder.Entity<VehicleName>()
-                .Property(e => e.Name)
-                .IsUnicode(false);
+            //modelBuilder.Entity<VehicleName>()
+            //    .Property(e => e.Name)
+            //    .IsUnicode(false);
 
-            modelBuilder.Entity<VehicleName>()
-                .HasMany(e => e.VehicleProblems)
-                .WithRequired(e => e.VehicleName)
-                .HasForeignKey(e => e.VehicleNameId)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<VehicleName>()
+            //    .HasMany(e => e.VehicleProblems)
+            //    .WithRequired(e => e.VehicleName)
+            //    .HasForeignKey(e => e.VehicleNameId)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<VehicleProblem>()
                 .Property(e => e.Name)
@@ -151,7 +151,6 @@ namespace Serviser.DAL.Context
             modelBuilder.Entity<VehicleProblem>()
                 .HasMany(e => e.BillItems)
                 .WithRequired(e => e.VehicleProblem)
-                .HasForeignKey(e => e.ProblemId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<VehicleType>()
@@ -159,9 +158,8 @@ namespace Serviser.DAL.Context
                 .IsUnicode(false);
 
             modelBuilder.Entity<VehicleType>()
-                .HasMany(e => e.VehicleNames)
+                .HasMany(e => e.VehicleProblems)
                 .WithRequired(e => e.VehicleType)
-                .HasForeignKey(e => e.VehicleId)
                 .WillCascadeOnDelete(false);
         }
 

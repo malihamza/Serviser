@@ -1,0 +1,54 @@
+﻿@model Serviser.DAL.Entity.VehicleProblem
+@using Serviser.Web.Areas.Admin.Models;
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@Html.Partial("_BreadCrumbPartial", new BreadCrumb()
+{
+    Trail = new List<BreadCrumb.Item> {
+new BreadCrumb.Item { Name="Dashboard", Url = Url.Action("Index","Dashboard") },
+new BreadCrumb.Item { Name="Vehicle Types", Url = Url.Action("Index","VehicleTypes") },
+new BreadCrumb.Item { Name= "Details", IsActive=true }
+}
+})
+<div class="card p-2">
+    <dl class="row">
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.VehicleType.Name)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.VehicleType.Name)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.EstimatedPrice)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.EstimatedPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary mt-2" }) 
+</p>

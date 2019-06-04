@@ -11,7 +11,7 @@ namespace Serviser.DAL.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public VehicleType()
         {
-            VehicleNames = new HashSet<VehicleName>();
+            VehicleProblems = new HashSet<VehicleProblem>();
         }
 
         public int Id { get; set; }
@@ -21,6 +21,6 @@ namespace Serviser.DAL.Entity
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VehicleName> VehicleNames { get; set; }
+        public virtual ICollection<VehicleProblem> VehicleProblems { get; set; }
     }
 }
