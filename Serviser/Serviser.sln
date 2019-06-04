@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serviser.Web", "Serviser.Web\Serviser.Web.csproj", "{456E5AA4-73A8-46BE-AF7C-87F4408BB016}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serviser.DAL.Console", "Serviser.DAL.Console\Serviser.DAL.Console.csproj", "{1F2ECB48-97EF-47BF-B3F5-D53A4263078C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serviser.DAL", "Serviser.DAL\Serviser.DAL.csproj", "{4EED5805-71EE-485C-8E98-7E279D5591DF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serviser.Web.API", "Serviser.Web.API\Serviser.Web.API.csproj", "{0EA7B219-3062-4A19-811D-94C07A316B7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +27,6 @@ Global
 		{4EED5805-71EE-485C-8E98-7E279D5591DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EED5805-71EE-485C-8E98-7E279D5591DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EED5805-71EE-485C-8E98-7E279D5591DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0EA7B219-3062-4A19-811D-94C07A316B7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0EA7B219-3062-4A19-811D-94C07A316B7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0EA7B219-3062-4A19-811D-94C07A316B7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0EA7B219-3062-4A19-811D-94C07A316B7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
