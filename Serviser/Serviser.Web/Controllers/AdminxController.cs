@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Serviser.Web.Controllers
 {
-    public class AdminController : Controller
+    public class AdminxController : Controller
     {
         // GET: Admin
         public ActionResult Index()
