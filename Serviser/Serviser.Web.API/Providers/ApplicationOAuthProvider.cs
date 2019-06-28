@@ -35,11 +35,17 @@ namespace Serviser.Web.API.Providers
 
             var user = await userManager.Users.FirstOrDefaultAsync(u => u.Email == context.UserName || u.PhoneNumber == context.UserName);
 
-            //User user = await userManager.FindAsync(context.UserName, context.Password);
+            if (user == null)
+            {
+                context.SetError("invalid_grant", "The user name is incorrect.");
+                return;
+            }
+
+            user = await userManager.FindAsync(user.UserName, context.Password);
 
             if (user == null)
             {
-                context.SetError("invalid_grant", "The user name or password is incorrect.");
+                context.SetError("invalid_grant", "The password is incorrect.");
                 return;
             }
 

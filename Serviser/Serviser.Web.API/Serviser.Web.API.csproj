@@ -236,7 +236,6 @@
     <Compile Include="Controllers\MechanicOffersController.cs" />
     <Compile Include="Controllers\MechanicProfilesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Controllers\VehicleNamesController.cs" />
     <Compile Include="Controllers\VehicleProblemsController.cs" />
     <Compile Include="Controllers\VehicleTypesController.cs" />
     <Compile Include="Global.asax.cs">

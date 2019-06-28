@@ -332,6 +332,13 @@ namespace Serviser.Web.API.Controllers
             }
 
             var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, RegisterationDateTime = DateTime.Now };
+
+            user.Roles.Add(new IdentityUserRole
+            {
+                RoleId = RoleService.GetRoleByName("BasicUser").Id,
+                UserId = user.Id
+            }
+            );
             if (UserManager.Users.Any(u => u.PhoneNumber == model.PhoneNumber))
             {
                 ModelState.AddModelError("", "Phone Number Already Exists.");
@@ -345,12 +352,7 @@ namespace Serviser.Web.API.Controllers
                 return GetErrorResult(result);
             }
 
-            user.Roles.Add(new IdentityUserRole
-            {
-                RoleId = new RoleService().GetRoleByName("BasicUser").Id,
-                UserId = user.Id
-            }
-            );
+            
 
             return Ok();
         }
