@@ -42,5 +42,9 @@ namespace Serviser.DAL.Entity
         public string LastName { get; set; }
 
         public DateTime RegisterationDateTime { get; set; }
+
+        public virtual MechanicProfile MechanicProfile { get; set; }
+
+        public virtual CustomerProfile CustomerProfile { get; set; }
     }
 }

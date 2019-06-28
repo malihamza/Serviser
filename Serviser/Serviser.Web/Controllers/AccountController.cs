@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
@@ -151,7 +152,9 @@ namespace Serviser.Web.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterViewModel model = new RegisterViewModel();
+            model.RoleName = "BasicUser";
+            return View(model);
         }
 
         //
@@ -169,6 +172,76 @@ namespace Serviser.Web.Controllers
                     ModelState.AddModelError("", "Phone Number Already Exists.");
                     return View(model);
                 }
+                IdentityRole role = RoleService.GetRoleByName(model.RoleName);
+                if (role==null)
+                {
+                    ModelState.AddModelError("", "Role Does not exists.");
+                    return View(model);
+                }
+                user.Roles.Add(new IdentityUserRole
+                {
+                    RoleId = role.Id,
+                    UserId = user.Id
+                }
+                    );
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+
+        [AllowAnonymous]
+        public ActionResult RegisterMechanic()
+        {
+            RegisterMechanicViewModel model = new RegisterMechanicViewModel();
+            model.RoleName = "Mechanic";
+            return View("~/Areas/Admin/Views/Mechanic/Register", model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterMechanic(RegisterMechanicViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, RegisterationDateTime = DateTime.Now };
+                user.MechanicProfile = new MechanicProfile();
+                user.MechanicProfile.CNIC = model.CNIC;
+                
+                if (UserManager.Users.Any(u => u.PhoneNumber == model.PhoneNumber))
+                {
+                    TempData["model"] = model;
+                    TempData["modelStateErrors"] = ModelState.SelectMany(x => x.Value.Errors);
+                    return RedirectToAction("Register", "Mechanic", new { area = "Admin" });
+                }
+                IdentityRole role = RoleService.GetRoleByName(model.RoleName);
+                if (role == null)
+                {
+                    TempData["model"] = model;
+                    TempData["modelStateErrors"] = ModelState.SelectMany(x => x.Value.Errors);
+                    return RedirectToAction("Register", "Mechanic", new { area = "Admin" });
+                }
+                user.Roles.Add(new IdentityUserRole
+                {
+                    RoleId = role.Id,
+                    UserId = user.Id
+                }
+                    );
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -180,21 +253,17 @@ namespace Serviser.Web.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    user.Roles.Add(new IdentityUserRole
-                        {
-                            RoleId = new RoleService().GetRoleByName("BasicUser").Id,
-                            UserId = user.Id
-                        }
-                    );
+                    
 
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Mechanic", new { area = "Admin" });
                 }
                 AddErrors(result);
             }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            TempData["model"] = model;
+            TempData["modelStateErrors"] = ModelState.SelectMany(x => x.Value.Errors);
+            return RedirectToAction("Register", "Mechanic", new { area = "Admin" });
         }
 
         //

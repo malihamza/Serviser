@@ -1,4 +1,8 @@
-﻿<div class="container-fluid ">
+﻿@{ 
+    var user = User.Identity.GetUser();
+}
+
+<div class="container-fluid ">
     <div class="row" style="padding: 40px;background-color: rgb(241,241,241);">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(241,241,241);">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,13 +51,16 @@
                     {
                         @Html.AntiForgeryToken()
                     }
-                    <div class="position-relative mr-4">
+                    <div class="position-relative mr-4" style="cursor:pointer;">
                         <a class="dropdown-toggle" data-toggle="dropdown">
-                            First Name (TBI)
+                            @user.FirstName
                         </a>
                         <div class="dropdown-menu dropdown-menu-left" style="position:absolute;right:0;">
                             <button class="dropdown-item" type="button">Action</button>
-                            <button class="dropdown-item" type="button">Another action</button>
+                            @if(User.IsInRole("Admin"))
+                            {
+                            <a class="dropdown-item" role="button" href="@Url.Action("Index","Dashboard",new { area = "Admin"})">Admin Panel</a>
+                            }
                             <a class="dropdown-item" role="button" href="javascript:document.getElementById('logoutForm').submit()">Log Off</a>
                         </div>
                     </div>

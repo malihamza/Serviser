@@ -1,20 +1,26 @@
-﻿@model Serviser.Web.Models.RegisterViewModel
+﻿@model Serviser.Web.Models.RegisterMechanicViewModel
+@using Serviser.Web.Areas.Admin.Models;
 @{
     ViewBag.Title = "Register";
 }
 
-
+@Html.Partial("_BreadCrumbPartial", new BreadCrumb()
+{
+    Trail = new List<BreadCrumb.Item> {
+new BreadCrumb.Item { Name="Dashboard", Url = Url.Action("Index","Dashboard") },
+new BreadCrumb.Item { Name="Mehanics", Url = Url.Action("Index","Mechanic") },
+new BreadCrumb.Item { Name="Register", IsActive=true }
+}
+})
 <meta name="google-signin-client_id" content="989656006569-obtc83g2qlrc2d3mhutp6rnsa53cql75.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Default form register -->
 <div class="container" style="width: 500px">
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "text-center border border-light p-5", role = "form" }))
+    @using (Html.BeginForm("RegisterMechanic", "Account", new { area = "" }, FormMethod.Post, new { @class = "text-center border border-light p-2", role = "form" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary("", new { @class = "text-danger" })
-
-        <p class="h4 mb-4">Sign up</p>
 
         <div class="form-row mb-4">
             <div class="col">
@@ -40,28 +46,14 @@
         </small>
         @Html.TextBoxFor(m => m.ConfirmPassword, new { @type = "password", id = "defaultRegisterFormPassword", @class = "form-control mb-4", placeholder = "Confirm Password", aria_describedby = "defaultRegisterFormPasswordHelpBlock" })
 
-        @Html.TextBoxFor(m => m.PhoneNumber, new { @type = "text", id = "defaultRegisterFormPassword", @class = "form-control", placeholder = "Phone Number", aria_describedby = "defaultRegisterFormPasswordHelpBlock" })
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @type = "text", id = "defaultRegisterFormPassword", @class = "form-control mb-4", placeholder = "Phone Number", aria_describedby = "defaultRegisterFormPasswordHelpBlock" })
+
+
+        @Html.TextBoxFor(m => m.CNIC, new { @type = "text", id = "defaultRegisterFormCNIC", @class = "form-control", placeholder = "CNIC", aria_describedby = "defaultRegisterFormCNICHelpBlock" })
 
         @Html.HiddenFor(m => m.RoleName)
 
         <!-- Sign up button -->
         <input class="btn btn-info my-4 btn-block" type="submit">
-
-        <!-- Social register -->
-        <p>or sign up with:</p>
-        <a href="#" class="fa fa-facebook a1" style="text-decoration-line: none; text-decoration-color: inherit;"></a>
-        <a href="#" class="fa fa-twitter a1" style="text-decoration-line: none; text-decoration-color: inherit;"></a>
-        <a href="#" class="fa fa-google a1" style="text-decoration-line: none; text-decoration-color: inherit;color: red"></a>
-        <div id="my-signin2"></div>
-
-
-        <hr>
-
-        <!-- Terms of service -->
-        <p>
-            By clicking
-            <em>Sign up</em> you agree to our
-            <a href="" target="_blank">terms of service</a>
-        </p>
     }
 </div>

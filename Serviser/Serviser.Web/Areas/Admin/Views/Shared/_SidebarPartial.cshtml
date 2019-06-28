@@ -1,16 +1,21 @@
 ﻿    <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
     <li class="nav-item active">
-        <a class="nav-link" href="@Url.Action("Home","Admin")">
+        <a class="nav-link" href="@Url.Action("Index","Dashboard")">
             <i class="fa fa-tachometer"></i>
             <span>Dashboard</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="@Url.Action("Profile","Admin")">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-fw fa-user"></i>
-            <span>Profile</span>
+            <span>Mechanic</span>
         </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="@Url.Action("Index","Mechanic")">View All</a>
+            <a class="dropdown-item" href="@Url.Action("Register","Mechanic")">Add Mechanic</a>
+
+        </div>
     </li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,11 +43,3 @@
 
 </ul>
 
-<!-- Sticky Footer -->
-<footer class="sticky-footer">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright © Serviser 2019</span>
-        </div>
-    </div>
-</footer>

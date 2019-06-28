@@ -9,27 +9,13 @@ using System.Threading.Tasks;
 
 namespace Serviser.DAL.Service
 {
-    public class RoleService
+    public static class RoleService
     {
-        private ServiserDbContext _dbContext;
-        private ServiserDbContext DbContext {
-            get
-            {
-                return _dbContext ?? (_dbContext = new ServiserDbContext());
-            }
-        }
+        public static ServiserDbContext ServiserDbContext { get; set; } = new ServiserDbContext(); 
 
-        public RoleService()
-        { }
-
-        public RoleService(ServiserDbContext dbContext)
+        public static IdentityRole GetRoleByName(string name)
         {
-            _dbContext = dbContext;
-        }
-
-        public IdentityRole GetRoleByName(string name)
-        {
-            return DbContext.Roles.Where(x => x.Name == name).FirstOrDefault();
+            return ServiserDbContext.Roles.Where(x => x.Name == name).FirstOrDefault();
         }
     }
 }

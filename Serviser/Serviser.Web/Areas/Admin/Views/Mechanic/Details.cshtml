@@ -1,0 +1,136 @@
+﻿@model Serviser.DAL.Entity.User
+@using Serviser.Web.Areas.Admin.Models;
+@{
+    ViewBag.Title = "Details";
+}
+@Html.Partial("_BreadCrumbPartial", new BreadCrumb()
+{
+    Trail = new List<BreadCrumb.Item> {
+new BreadCrumb.Item { Name="Dashboard", Url = Url.Action("Index","Dashboard") },
+new BreadCrumb.Item { Name="Mechanics", Url = Url.Action("Index","Mechanic") },
+new BreadCrumb.Item { Name= "Details", IsActive=true }
+}
+})
+<div class="card p-2 ">
+    <dl class="dl-horizontal row">
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.MechanicProfile.CNIC)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.MechanicProfile.CNIC)
+        </dd>
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.RegisterationDateTime)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.RegisterationDateTime)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.EmailConfirmed)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.EmailConfirmed)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.PasswordHash)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.SecurityStamp)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.SecurityStamp)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.TwoFactorEnabled)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.LockoutEndDateUtc)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.LockoutEnabled)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.LockoutEnabled)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.AccessFailedCount)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.AccessFailedCount)
+        </dd>
+
+        <dt class="col-4">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd class="col-8">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+
+    </dl>
+</div>
