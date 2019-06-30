@@ -25,9 +25,9 @@ namespace Serviser.DAL.Entity
 
         public string Description { get; set; }
 
-        //public int MinRate { get; set; }
+        public int MinRate { get; set; }
 
-        //public int MaxRate { get; set; }
+        public int MaxRate { get; set; }
 
         public int EstimatedPrice { get; set; }
 

@@ -14,7 +14,7 @@ namespace Serviser.Web.Real_Time_Service
         {
             Clients.All.hello();
         }
-        public void GetMechnaics(Location loc)
+        public void GetMechanics(Location loc)
         {
             List<MechanicProfile> lis = new List<MechanicProfile>();
             MechanicProfile profile = new MechanicProfile();

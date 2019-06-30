@@ -260,6 +260,7 @@
       <DependentUpon>Problems.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Real_Time_Service\MechanicHub.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -536,7 +537,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Real_Time_Service\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>

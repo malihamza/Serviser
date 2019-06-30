@@ -33,8 +33,10 @@ namespace Serviser.DAL.Context
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+           
 
+            base.OnModelCreating(modelBuilder);
+            
             modelBuilder.Entity<Booking>()
                 .HasMany(e => e.BillItems)
                 .WithRequired(e => e.Booking)

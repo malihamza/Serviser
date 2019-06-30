@@ -56,46 +56,46 @@ namespace Serviser.Web.Controllers
             Problems problemsModel = new Problems();
             List<VehicleProblem> problems = new List<VehicleProblem>();
             VehicleProblem problem = new VehicleProblem();
-           // problem.Name = "Break Failure";
-           // problem.MaxRate = 150;
-            //problems.Add(problem);
+            problem.Name = "Break Failure";
+            problem.MaxRate = 150;
+            problems.Add(problem);
 
-            //problem = new VehicleProblem();
-           // problem.Name = "Punture";
-           // problem.MaxRate = 500;
-           // problems.Add(problem);
+            problem = new VehicleProblem();
+            problem.Name = "Punture";
+            problem.MaxRate = 500;
+            problems.Add(problem);
 
-            //problem = new VehicleProblem();
-            //problem.Name = "Enginee Fail";
-            //problem.MaxRate = 50;
-            //problems.Add(problem);
+            problem = new VehicleProblem();
+            problem.Name = "Enginee Fail";
+            problem.MaxRate = 50;
+            problems.Add(problem);
 
-            //problem = new VehicleProblem();
-            //problem.Name = "Break Failure 2.0";
-            //problem.MaxRate = 100;
-            //problems.Add(problem);
+            problem = new VehicleProblem();
+            problem.Name = "Break Failure 2.0";
+            problem.MaxRate = 100;
+            problems.Add(problem);
 
-            //problemsModel.bikeProblems = problems;
-            //problemsModel.carProblems = problems;
+            problemsModel.bikeProblems = problems;
+            problemsModel.carProblems = problems;
 
-            ServiserDbEntities db = new ServiserDbEntities();
-             problems = db.Database.SqlQuery<VehicleProblem>("exec all_problems").ToList();
-            List<VehicleProblem> bikeproblems = new List<VehicleProblem>();
-            List<VehicleProblem> carproblems = new List<VehicleProblem>();
-            foreach (var a in problems)
-            {
-                if(a.VehicleType.Id==1)
-                {
-                    bikeproblems.Add(a);
-                }
-                else
-                {
-                    carproblems.Add(a);
-                }
-            }
+            //ServiserDbEntities db = new ServiserDbEntities();
+            // problems = db.Database.SqlQuery<VehicleProblem>("exec all_problems").ToList();
+            //List<VehicleProblem> bikeproblems = new List<VehicleProblem>();
+            //List<VehicleProblem> carproblems = new List<VehicleProblem>();
+            //foreach (var a in problems)
+            //{
+            //    if(a.VehicleType.Id==1)
+            //    {
+            //        bikeproblems.Add(a);
+            //    }
+            //    else
+            //    {
+            //        carproblems.Add(a);
+            //    }
+            //}
 
-            problemsModel.bikeProblems = bikeproblems;
-            problemsModel.carProblems = carproblems;
+            //problemsModel.bikeProblems = bikeproblems;
+            //problemsModel.carProblems = carproblems;
 
 
             return View(problemsModel);
