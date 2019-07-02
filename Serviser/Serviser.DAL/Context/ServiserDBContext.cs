@@ -13,7 +13,7 @@ namespace Serviser.DAL.Context
         public ServiserDbContext()
             : base("ServiserDbContext")
         {
-
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public virtual DbSet<Booking> Bookings { get; set; }
