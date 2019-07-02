@@ -218,7 +218,6 @@
     <Compile Include="Areas\Admin\Controllers\VehicleTypesController.cs" />
     <Compile Include="Areas\Admin\Models\ViewComponents.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdminxController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MechanicController.cs" />
@@ -322,6 +321,14 @@
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\calander.css" />
     <Content Include="Content\datatables.min.css" />
+    <Content Include="Content\Home\bootstrap-grid.css" />
+    <Content Include="Content\Home\bootstrap-grid.min.css" />
+    <Content Include="Content\Home\bootstrap-reboot.css" />
+    <Content Include="Content\Home\bootstrap-reboot.min.css" />
+    <Content Include="Content\Home\bootstrap.css" />
+    <Content Include="Content\Home\bootstrap.min.css" />
+    <Content Include="Content\Home\calander.css" />
+    <Content Include="Content\sb-admin.css" />
     <Content Include="Scripts\datatables.min.js" />
     <Content Include="Content\elegant_font\fonts\ElegantIcons.svg" />
     <Content Include="Content\elegant_font\gpl_license.txt" />
@@ -457,6 +464,12 @@
     <Content Include="Areas\Admin\Views\Mechanic\Register.cshtml" />
     <Content Include="Areas\Admin\Views\Mechanic\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Mechanic\Details.cshtml" />
+    <Content Include="Content\Home\bootstrap-grid.css.map" />
+    <Content Include="Content\Home\bootstrap-grid.min.css.map" />
+    <Content Include="Content\Home\bootstrap-reboot.css.map" />
+    <Content Include="Content\Home\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\Home\bootstrap.css.map" />
+    <Content Include="Content\Home\bootstrap.min.css.map" />
     <None Include="Properties\PublishProfiles\serviser - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\serviser - Web Deploy.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -538,32 +551,19 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Services\Booking.cshtml" />
-    <Content Include="Views\Shared\_Adminheader.cshtml" />
-    <Content Include="Views\Shared\_Adminfooter.cshtml" />
     <Content Include="Views\Problems\ViewAllProblems.cshtml" />
     <Content Include="Views\Problems\AddProblem.cshtml" />
     <Content Include="Views\Problems\DeleteProblem.cshtml" />
     <Content Include="Views\Vehicle\ViewAllVehicles.cshtml" />
     <Content Include="Views\Vehicle\AddVehicle.cshtml" />
     <Content Include="Views\Vehicle\DeleteVehicle.cshtml" />
-    <Content Include="Views\Adminx\ForgotPassword.cshtml" />
     <Content Include="Views\Mechanic\Index.cshtml" />
     <Content Include="Views\Shared\_Mechanicheader.cshtml" />
     <Content Include="Views\Mechanic\Profile.cshtml" />
     <Content Include="Views\Mechanic\GenerateBill.cshtml" />
-    <Content Include="Views\Adminx\AddAdmin.cshtml" />
-    <Content Include="Views\Adminx\AddNewMechanic.cshtml" />
-    <Content Include="Views\Adminx\DeleteMechanic.cshtml" />
-    <Content Include="Views\Adminx\Home.cshtml" />
-    <Content Include="Views\Adminx\Index.cshtml" />
-    <Content Include="Views\Adminx\PendingRequests.cshtml" />
-    <Content Include="Views\Adminx\Profile.cshtml" />
-    <Content Include="Views\Adminx\RejectedRequests.cshtml" />
-    <Content Include="Views\Adminx\ViewAllMechanics.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
