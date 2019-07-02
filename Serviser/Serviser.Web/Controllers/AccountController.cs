@@ -104,6 +104,42 @@ namespace Serviser.Web.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public async Task<ActionResult> AddAdminNow()
+        {
+            var user = new User { UserName = "admin@serviser.com", Email = "admin@serviser.com", FirstName = "Admin", LastName = "Admin", PhoneNumber = "090078601", RegisterationDateTime = DateTime.Now };
+            if (UserManager.Users.Any(u => u.PhoneNumber == user.PhoneNumber))
+            {
+                return Json(new { status = "FAILED" }, JsonRequestBehavior.AllowGet);
+
+            }
+            IdentityRole role = RoleService.GetRoleByName("Admin");
+            if (role == null)
+            {
+                return Json(new { status = "Failed" }, JsonRequestBehavior.AllowGet);
+
+            }
+            user.Roles.Add(new IdentityUserRole
+            {
+                RoleId = role.Id,
+                UserId = user.Id
+            }
+                );
+            var result = await UserManager.CreateAsync(user, "1234");
+            if (result.Succeeded)
+            {
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                // Send an email with this link
+                // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return Json(new { status = "OK" }, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { status = "FAILED" },JsonRequestBehavior.AllowGet); 
+        }
+
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
