@@ -70,6 +70,9 @@ namespace Serviser.Web.API.Models
         [Display(Name = "Phone Number")]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string PhoneNumber { get; set; }
+
+        [Required]
+        public string RoleName { get; set; }
     }
 
     public class RegisterExternalBindingModel

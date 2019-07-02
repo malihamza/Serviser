@@ -335,7 +335,7 @@ namespace Serviser.Web.API.Controllers
 
             user.Roles.Add(new IdentityUserRole
             {
-                RoleId = RoleService.GetRoleByName("BasicUser").Id,
+                RoleId = RoleService.GetRoleByName(model.RoleName).Id,
                 UserId = user.Id
             }
             );
