@@ -265,6 +265,21 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\1.jpg" />
+    <Content Include="Assets\Images\10.jpg" />
+    <Content Include="Assets\Images\11.jpg" />
+    <Content Include="Assets\Images\12.jpg" />
+    <Content Include="Assets\Images\13.jpg" />
+    <Content Include="Assets\Images\15.jpg" />
+    <Content Include="Assets\Images\2.jpg" />
+    <Content Include="Assets\Images\3.jpg" />
+    <Content Include="Assets\Images\4.jpg" />
+    <Content Include="Assets\Images\5.jpg" />
+    <Content Include="Assets\Images\6.jpg" />
+    <Content Include="Assets\Images\7.jpg" />
+    <Content Include="Assets\Images\8.jpg" />
+    <Content Include="Assets\Images\9.jpg" />
+    <Content Include="Assets\Images\avatar2.jpg" />
     <Content Include="Assets\Images\bike.png" />
     <Content Include="Assets\Images\car artwork.png" />
     <Content Include="Assets\Images\car-artwork.svg" />
@@ -272,7 +287,9 @@
     <Content Include="Assets\Images\car.svg" />
     <Content Include="Assets\Images\check cirlce.svg" />
     <Content Include="Assets\Images\left-arrow.svg" />
+    <Content Include="Assets\Images\logo.svg" />
     <Content Include="Assets\Images\Map pinned-100.jpg" />
+    <Content Include="Assets\Images\mec.png" />
     <Content Include="Assets\Images\mechanic-with-wrench-logo-1-white.svg" />
     <Content Include="Assets\Images\mechanic-with-wrench-logo-1.svg" />
     <Content Include="Assets\Images\mech_pic.png" />
@@ -282,8 +299,13 @@
     <Content Include="Assets\Images\phone-with-app.svg" />
     <Content Include="Assets\Images\playstore.svg" />
     <Content Include="Assets\Images\position radar.svg" />
+    <Content Include="Assets\Images\s1.jpg" />
+    <Content Include="Assets\Images\s2.jpg" />
+    <Content Include="Assets\Images\t2.jpg" />
+    <Content Include="Assets\Images\tool.png" />
     <Content Include="Assets\Images\truck.png" />
     <Content Include="Assets\Images\van.png" />
+    <Content Include="Assets\mech_pic.png" />
     <Content Include="Content\all.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -435,6 +457,8 @@
     <Content Include="Areas\Admin\Views\Mechanic\Register.cshtml" />
     <Content Include="Areas\Admin\Views\Mechanic\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Mechanic\Details.cshtml" />
+    <None Include="Properties\PublishProfiles\serviser - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\serviser - Web Deploy.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

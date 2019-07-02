@@ -11,7 +11,7 @@ namespace Serviser.DAL.Context
     public partial class ServiserDbContext : IdentityDbContext<User>
     {
         public ServiserDbContext()
-            : base("name=ServiserDbContext")
+            : base("ServiserDbContext")
         {
 
         }
