@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace Serviser.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class MechanicController : Controller
     {
         private ServiserDbContext db = new ServiserDbContext();

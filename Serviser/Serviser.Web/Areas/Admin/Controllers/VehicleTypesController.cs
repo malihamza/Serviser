@@ -11,6 +11,7 @@ using Serviser.DAL.Entity;
 
 namespace Serviser.Web.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class VehicleTypesController : Controller
     {
         private ServiserDbContext db = new ServiserDbContext();
