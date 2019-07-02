@@ -62,7 +62,7 @@ $.connection.hub.start()
         mechanicHub.server.updateLocationOfMechanic(my_position);
     })
     .fail(function () {
-        alert("Hello");s
+        alert("Failed To Start A RealTime Connection");
     });
 
 mechanicHub.client.showLocation = function (data)

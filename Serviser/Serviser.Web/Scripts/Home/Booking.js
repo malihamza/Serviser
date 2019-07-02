@@ -39,10 +39,10 @@ if (navigator.geolocation) {
 
 $.connection.hub.start()
     .done(function () {
-        alert("Helkklo");
+        //alert("Helkklo");
     })
     .fail(function () {
-        alert("Hello");
+        alert("Failed TO start a realtime connection");
     });
 
 
@@ -129,7 +129,7 @@ $(document).ready(function () {
             $("#net_bill").text("RS/- " + (net_bill - checked_value));
 
         }
-        alert(problem_id_list);
+        //alert(problem_id_list);
     });
 
 });
