@@ -62,10 +62,10 @@ $.connection.hub.start()
         mechanicHub.server.updateLocationOfMechanic(my_position);
     })
     .fail(function () {
-        alert("Hello");
+        alert("Hello");s
     });
 
 mechanicHub.client.showLocation = function (data)
 {
-    alert(data.Latitude + "  " + data.Longitude);
+   // alert(data.Latitude + "  " + data.Longitude);
 }

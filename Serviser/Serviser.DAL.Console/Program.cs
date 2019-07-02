@@ -15,14 +15,7 @@ namespace Serviser.DAL.Console
     {
         static void Main(string[] args)
         {
-            //ServiserDbContext db = new ServiserDbContext();
-            //List<User> mechanics = new ServiserDbContext().Users
-            //   .Where(x=>x.CustomerProfile.Id==null ).ToList();
-
-            //foreach(User u in mechanics)
-            //{
-            //    System.Console.WriteLine(u.FirstName+"   "+u.MechanicProfile.Id);
-            //}
+           
             System.Console.WriteLine("Seeding...");
 
             ServiserDbContext db = new ServiserDbContext();
