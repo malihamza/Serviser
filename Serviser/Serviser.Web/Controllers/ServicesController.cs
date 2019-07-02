@@ -5,11 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using Serviser.DAL.Entity;
 using Serviser.Web.Models;
+using Serviser.DAL.Context;
+using System.Data.Entity;
+
 
 namespace Serviser.Web.Controllers
 {
     public class ServicesController : Controller
     {
+        private ServiserDbContext db = new ServiserDbContext();
         List<int> bill = new List<int>();
         // GET: Services
         public ActionResult Index()
@@ -53,50 +57,28 @@ namespace Serviser.Web.Controllers
         }
         public ActionResult Booking()
         {
-            Problems problemsModel = new Problems();
-            List<VehicleProblem> problems = new List<VehicleProblem>();
-            VehicleProblem problem = new VehicleProblem();
-            problem.Name = "Break Failure";
-            problem.MaxRate = 150;
-            problems.Add(problem);
+            Problems problemsModel            = new Problems();
+            List<VehicleProblem> bikeProblems = new List<VehicleProblem>();
+            List<VehicleProblem> carProblems  = new List<VehicleProblem>();
+       
 
-            problem = new VehicleProblem();
-            problem.Name = "Punture";
-            problem.MaxRate = 500;
-            problems.Add(problem);
+            List<VehicleProblem> problemsList = db.VehicleProblems.Include(v => v.VehicleType).ToList();
 
-            problem = new VehicleProblem();
-            problem.Name = "Enginee Fail";
-            problem.MaxRate = 50;
-            problems.Add(problem);
 
-            problem = new VehicleProblem();
-            problem.Name = "Break Failure 2.0";
-            problem.MaxRate = 100;
-            problems.Add(problem);
+            foreach (VehicleProblem singleProblem in problemsList)
+            {
+                if(singleProblem.VehicleTypeId==1)
+                {
+                    carProblems.Add(singleProblem);
+                }
+                else
+                {
+                    bikeProblems.Add(singleProblem);
+                }
+            }
 
-            problemsModel.bikeProblems = problems;
-            problemsModel.carProblems = problems;
-
-            //ServiserDbEntities db = new ServiserDbEntities();
-            // problems = db.Database.SqlQuery<VehicleProblem>("exec all_problems").ToList();
-            //List<VehicleProblem> bikeproblems = new List<VehicleProblem>();
-            //List<VehicleProblem> carproblems = new List<VehicleProblem>();
-            //foreach (var a in problems)
-            //{
-            //    if(a.VehicleType.Id==1)
-            //    {
-            //        bikeproblems.Add(a);
-            //    }
-            //    else
-            //    {
-            //        carproblems.Add(a);
-            //    }
-            //}
-
-            //problemsModel.bikeProblems = bikeproblems;
-            //problemsModel.carProblems = carproblems;
-
+            problemsModel.bikeProblems        = bikeProblems;
+            problemsModel.carProblems         = carProblems;
 
             return View(problemsModel);
         }

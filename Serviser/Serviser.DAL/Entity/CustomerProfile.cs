@@ -16,7 +16,11 @@ namespace Serviser.DAL.Entity
             CustomerOffers = new HashSet<CustomerOffer>();
         }
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
+
+        public float? Longitude { get; set; }
+
+        public float? Latitude { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Booking> Bookings { get; set; }

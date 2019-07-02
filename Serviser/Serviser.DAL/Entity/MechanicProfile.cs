@@ -18,7 +18,7 @@ namespace Serviser.DAL.Entity
 
         public string CNIC { get; set; }
 
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public float Longitude { get; set; }
 

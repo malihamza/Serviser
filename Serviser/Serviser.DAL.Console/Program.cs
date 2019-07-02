@@ -15,11 +15,19 @@ namespace Serviser.DAL.Console
     {
         static void Main(string[] args)
         {
+            //ServiserDbContext db = new ServiserDbContext();
+            //List<User> mechanics = new ServiserDbContext().Users
+            //   .Where(x=>x.CustomerProfile.Id==null ).ToList();
+
+            //foreach(User u in mechanics)
+            //{
+            //    System.Console.WriteLine(u.FirstName+"   "+u.MechanicProfile.Id);
+            //}
             System.Console.WriteLine("Seeding...");
 
             ServiserDbContext db = new ServiserDbContext();
 
-            while(db.Database.Exists())
+            while (db.Database.Exists())
             {
                 System.Console.WriteLine("Database Already Exists. Manually Delete the database and hit Enter.");
                 System.Console.ReadLine();
@@ -28,7 +36,7 @@ namespace Serviser.DAL.Console
             new ServiserDbInitialSeed().Run();
 
             System.Console.WriteLine("Seeding Done.");
-            System.Console.ReadLine();
+            //System.Console.ReadLine();
         }
     }
 }

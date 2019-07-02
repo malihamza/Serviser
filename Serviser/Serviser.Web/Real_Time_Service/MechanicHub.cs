@@ -14,6 +14,13 @@ namespace Serviser.Web.Real_Time_Service
         {
             Clients.All.hello();
         }
+
+
+        public void UpdateLocationOfMechanic(Location location)
+        {
+          //  Clients.Users()
+            Clients.Caller.ShowLocation(location);
+        }
         public void GetMechanics(Location loc)
         {
             List<MechanicProfile> lis = new List<MechanicProfile>();
