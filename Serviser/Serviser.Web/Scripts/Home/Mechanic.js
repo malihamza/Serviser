@@ -34,13 +34,8 @@ if (navigator.geolocation) {
             });
         addMarkerOnMyLocation();
 
-        hub.start()
-            .done(function () {
-                mechanicHub.server.saveMyLocationAndTime(my_position, userId);
-            })
-            .fail(function () {
-                alert("Failed1 TO start a realtime connection");
-            });
+        hub.start().done(function () { mechanicHub.server.saveMyLocationAndTime(my_position, userId); });
+
     }
 
     function failure() {
@@ -62,6 +57,10 @@ function addMarkerOnMyLocation() {
 }
 
 
+setInterval(function () {
+    hub.start().done(function () { mechanicHub.server.saveMyLocationAndTime(my_position, userId); });
+ 
+}, 5000);
 
 
 function addMarker(longi, lati, map, title, icon1) {
@@ -78,7 +77,12 @@ function addMarker(longi, lati, map, title, icon1) {
 
 
 
-
+mechanicHub.client.showCustomerRequest = function (data)
+{
+    $("#customerName").html(data.FirstName + " " + data.LastName);
+    $("#customerNumber").html(data.PhoneNumber);
+    document.getElementById("loader").style.visibility = "visible";
+}
 
 mechanicHub.client.showLocation = function (data)
 {

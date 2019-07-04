@@ -34,40 +34,42 @@ namespace Serviser.Web.Real_Time_Service
           //  Clients.Users()
             Clients.Caller.ShowLocation(location);
         }
-        public void GetMechanics(Location loc)
+        public void GetMechanics(Location location)
         {
             List<User> lis = new List<User>();
-            User profile = new User();
-            profile.Latitude = loc.Latitude + (float)1 / 1000;
-            profile.Longitude = loc.Longitude + (float)1 / 1000;
-            lis.Add(profile);
 
-            profile = new User();
-            profile.Latitude = loc.Latitude - (float)8 / 10000;
-            profile.Longitude = loc.Longitude - (float)8 / 10000;
-            lis.Add(profile);
+            List<User> mechanics = serviserDb.Users.Where(
+                                                        x => x.MechanicProfile.Id != null 
+                                                        &&x.Latitude!=null &&(x.Longitude>=
+                                                        (location.Longitude - 3 / 100)
+                                                        || x.Longitude <=
+                                                        (location.Longitude + 3 / 100)
+                                                        || x.Latitude >=
+                                                        (location.Latitude - 3 / 100)
+                                                        || x.Latitude <=
+                                                        (location.Latitude + 3 / 100))).ToList();
 
-            profile = new User();
-            profile.Latitude = loc.Latitude - (float)2 / 1000;
-            profile.Longitude = loc.Longitude + (float)2 / 1000;
-            lis.Add(profile);
+            foreach(User user in mechanics)
+            {
+                if(user.Longitude!=null&& user.Latitude != null)
+                {
+                    lis.Add(user);
+                }
+            }
+            Clients.Caller.UpdateMechanics(lis);
+        }
 
-            profile = new User();
-            profile.Latitude = loc.Latitude + (float)1 / 1000;
-            profile.Longitude = loc.Longitude - (float)2 / 1000;
-            lis.Add(profile);
 
-            profile = new User();
-            profile.Latitude = loc.Latitude - (float)2 / 1000;
-            profile.Longitude = loc.Longitude + (float)1 / 1000;
-            lis.Add(profile);
+        public void PutRequestToMechanic(string id)
+        {
+            User customer = serviserDb.Users.Find(id);
+            User mechanic = serviserDb.Users.Where(x => x.MechanicProfile.Id!=null
+                                                    &&(x.Longitude <= (customer.Longitude + 3 / 100)
+                                                   || x.Longitude >= (customer.Longitude - 3 / 100)
+                                                   || x.Latitude <= (customer.Latitude + 3 / 100)
+                                                   || x.Latitude >= (customer.Latitude - 3 / 100))).FirstOrDefault();
 
-            profile = new User();
-            profile.Latitude = loc.Latitude + (float)3 / 1000;
-            profile.Longitude = loc.Longitude + (float)3 / 1000;
-            lis.Add(profile);
-
-            Clients.All.UpdateMechanics(lis);
+            Clients.All.ShowCustomerRequest(customer);
         }
 
     }

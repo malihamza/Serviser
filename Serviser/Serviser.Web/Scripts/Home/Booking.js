@@ -92,6 +92,7 @@ mechanicHub.client.updateMechanics = function (data) {
     for (var mechanic in data) {
         addMarker(data[mechanic].Longitude, data[mechanic].Latitude, map, 'Mechanic', 'a');
     }
+    //alert(mechanic_markers.length);
 }
 
 
@@ -101,20 +102,23 @@ function addMarker(longi, lati, map, title, icon1) {
         {
             position: { lat: lati, lng: longi },
             title: title,
-            map: map,
-            animation: google.maps.Animation.DROP
+            map: map
+            //animation: google.maps.Animation.DROP
         });
     if (icon1 != null) {
         marker.setIcon(document.getElementById('ico').getAttribute('src'));
     }
     mechanic_markers.push(marker);
+
 }
 
 
 setInterval(function () {
-    mechanicHub.server.saveMyLocationAndTime(my_position, userId);
-    mechanicHub.server.getMechanics(my_position);
-}, 5000);
+    hub.start().done(function () { mechanicHub.server.saveMyLocationAndTime(my_position, userId); });
+    hub.start().done(function () { mechanicHub.server.getMechanics(my_position); });
+    //hub.start().done(function () { mechanicHub.server.getMechanics(my_position); });
+
+}, 1000);
 
 
 
@@ -128,7 +132,7 @@ function next_view() {
     $("#loader").fadeIn('slow').delay(5000).fadeOut('slow');
     setTimeout(display, 6000);
 
-    mechanicHub.server.getMechanics(my_position);
+    hub.start().done(function () { mechanicHub.server.saveMyLocationAndTime(my_position, userId); });
 
 }
 
@@ -170,4 +174,11 @@ $(document).ready(function () {
         //alert(problem_id_list);
     });
 
+});
+
+
+
+$("#callMechanic").click(function ()
+{
+    hub.start().done(function () { mechanicHub.server.putRequestToMechanic(userId); });  
 });
