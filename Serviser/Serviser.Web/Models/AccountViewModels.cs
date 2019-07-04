@@ -37,6 +37,8 @@ namespace Serviser.Web.Models
         [Display(Name = "CNIC")]
         public string CNIC { get; set; }
 
+        public string ProfileImageUrl { get; set; }
+
     }
     public class ExternalLoginConfirmationViewModel
     {
