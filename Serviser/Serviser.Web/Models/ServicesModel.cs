@@ -8,8 +8,8 @@ namespace Serviser.Web.Models
 {
     public class Problems
     {
-        public List<VehicleProblem> carProblems { get; set; }
-        public List<VehicleProblem> bikeProblems { get; set; }
+        public List<VehicleProblem> CarProblems { get; set; }
+        public List<VehicleProblem> BikeProblems { get; set; }
         
     }
     public class Location

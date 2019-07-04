@@ -77,8 +77,8 @@ namespace Serviser.Web.Controllers
                 }
             }
 
-            problemsModel.bikeProblems        = bikeProblems;
-            problemsModel.carProblems         = carProblems;
+            problemsModel.BikeProblems        = bikeProblems;
+            problemsModel.CarProblems         = carProblems;
 
             return View(problemsModel);
         }

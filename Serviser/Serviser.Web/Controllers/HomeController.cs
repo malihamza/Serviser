@@ -1,4 +1,5 @@
-﻿using Serviser.DAL.Entity;
+﻿using Serviser.DAL.Context;
+using Serviser.DAL.Entity;
 using Serviser.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -50,27 +51,13 @@ namespace Serviser.Web.Controllers
         }
         public ActionResult Pricing()
         {
-            Problems problemsModel = new Problems();
-            List<VehicleProblem> problems = new List<VehicleProblem>();
-            VehicleProblem problem = new VehicleProblem();
-            ServiserDbEntities db = new ServiserDbEntities();
-            problems = db.Database.SqlQuery<VehicleProblem>("exec all_problems").ToList();
-            List<VehicleProblem> bikeproblems = new List<VehicleProblem>();
-            List<VehicleProblem> carproblems = new List<VehicleProblem>();
-            foreach (var a in problems)
-            {
-                if (a.VehicleType.Id == 1)
-                {
-                    bikeproblems.Add(a);
-                }
-                else
-                {
-                    carproblems.Add(a);
-                }
-            }
+            ServiserDbContext db = new ServiserDbContext(); 
+            List<VehicleProblem> bikeproblems = db.VehicleProblems.Where(x=>x.VehicleType.Name=="Bike").ToList();
+            List<VehicleProblem> carproblems = db.VehicleProblems.Where(x => x.VehicleType.Name == "Car").ToList();
 
-            problemsModel.bikeProblems = bikeproblems;
-            problemsModel.carProblems = carproblems;
+            Problems problemsModel = new Problems();
+            problemsModel.BikeProblems = bikeproblems;
+            problemsModel.CarProblems = carproblems;
 
             return View(problemsModel);
         }

@@ -34,16 +34,16 @@
                 <table class="table  table-hover">
                     <tr>
 
-                        <th style="width: 350px">Problem</th>
+                        <th >Problem</th>
                         <th>Rate in PKR</th>
 
 
                     </tr>
-                    @foreach (var problem in Model.bikeProblems)
+                    @foreach (var problem in Model.BikeProblems)
     {
                 <tr>
                     <td>@problem.Name</td>
-                    <td>Rs/- @problem.MinRate</td>
+                    <td>Rs/- @problem.EstimatedPrice</td>
                 </tr>
 }
 
@@ -68,16 +68,16 @@
                 <table class="table  table-hover">
                     <tr>
 
-                        <th style="width: 350px">Problem</th>
+                        <th>Problem</th>
                         <th>Rate in PKR</th>
 
 
                     </tr>
-                    @foreach (var problem in Model.carProblems)
+                    @foreach (var problem in Model.CarProblems)
     {
                 <tr>
                     <td>@problem.Name</td>
-                    <td>Rs/- @problem.MinRate</td>
+                    <td>Rs/- @problem.EstimatedPrice</td>
                 </tr>
 }
                 </table>
