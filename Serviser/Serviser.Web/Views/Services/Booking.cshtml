@@ -6,17 +6,27 @@
 }
 @{
     List<int> bill = new List<int>();
-
+    var user = User.Identity.GetUser();
 }
+
+
+<input type="text" id="userId" value="@user.Id" hidden/>
+<script>
+    var userId = $("#userId").val();
+   // var userId = @user.Id.ToString();
+</script>
+
 @section scripts
 {
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDg-T5ErBSP7PrxppZiO9OPBA3HW4TXleo"
             async defer></script>
 
 
+
     <script src="~/Scripts/jquery.signalR-2.4.1.min.js"></script>
     <script src="~/signalr/js"></script>
     <script src="~/Scripts/Home/Booking.js"></script>
+
 }
 
 
@@ -150,7 +160,7 @@
                         </tr>
                     }
 
-                   
+
                 </table>
 
             </div>
@@ -244,6 +254,3 @@
     </div>
 
 </div>
-<script>
-
-</script>

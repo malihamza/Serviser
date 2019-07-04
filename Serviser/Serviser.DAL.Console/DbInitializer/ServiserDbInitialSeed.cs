@@ -34,7 +34,7 @@ namespace Serviser.DAL.Console.DbInitializer
         }
 
         private void SeedVehicleTypes()
-        {
+        { 
             DbContext.VehicleTypes.Add(new VehicleType { Name = "Car" });
             DbContext.VehicleTypes.Add(new VehicleType { Name = "Bike" });
         }

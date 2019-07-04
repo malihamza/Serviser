@@ -1,10 +1,10 @@
 ﻿var mechanicHub = $.connection.mechanicHub;
+var hub = $.connection.hub;
 var map;
 var mechanic_markers = [];
-var my_position = { Latitude: 20, Longitude: 20 };
-
-
-
+var problem_id_list = [];
+var my_position = { Latitude: 0, Longitude: 0 };
+var my_marker;
 
 
 
@@ -32,7 +32,15 @@ if (navigator.geolocation) {
                 gestureHandling: 'none',
                 scaleControl: false
             });
-        addMarker(longi, lati, map, 'Your Current Location');
+        addMarkerOnMyLocation();
+
+        hub.start()
+            .done(function () {
+                mechanicHub.server.saveMyLocationAndTime(my_position, userId);
+            })
+            .fail(function () {
+                alert("Failed1 TO start a realtime connection");
+            });
     }
 
     function failure() {
@@ -40,6 +48,20 @@ if (navigator.geolocation) {
     }
 
 }
+
+
+
+function addMarkerOnMyLocation() {
+    my_marker = new google.maps.Marker(
+        {
+            position: { lat: my_position.Latitude, lng: my_position.Longitude },
+            title: 'My Location',
+            map: map
+            //  animation: google.maps.Animation.DROP
+        });
+}
+
+
 
 
 function addMarker(longi, lati, map, title, icon1) {
@@ -57,13 +79,6 @@ function addMarker(longi, lati, map, title, icon1) {
 
 
 
-$.connection.hub.start()
-    .done(function () {
-        mechanicHub.server.updateLocationOfMechanic(my_position);
-    })
-    .fail(function () {
-        alert("Failed To Start A RealTime Connection");
-    });
 
 mechanicHub.client.showLocation = function (data)
 {

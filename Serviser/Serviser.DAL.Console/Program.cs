@@ -15,7 +15,8 @@ namespace Serviser.DAL.Console
     {
         static void Main(string[] args)
         {
-            //ServiserDbContext db = new ServiserDbContext();
+
+
             //List<User> mechanics = new ServiserDbContext().Users
             //   .Where(x=>x.CustomerProfile.Id==null ).ToList();
 
@@ -23,19 +24,26 @@ namespace Serviser.DAL.Console
             //{
             //    System.Console.WriteLine(u.FirstName+"   "+u.MechanicProfile.Id);
             //}
-            System.Console.WriteLine("Seeding...");
+            //System.Console.WriteLine("Seeding...");
+            ServiserDbContext db = new ServiserDbContext();
+            List<User> user = db.Users.Where(x=>x.Longitude>=74.1&&x.Latitude>=31 &&x.MechanicProfile.Id!=null).ToList();
+            foreach(User user1 in user)
+            {
+                System.Console.WriteLine(user1.FirstName);
+            }
+            
+            //System.Console.WriteLine((DateTime.Now-user.RegisterationDateTime).TotalSeconds);
 
-            //ServiserDbContext db = new ServiserDbContext();
-
-            //while (db.Database.Exists())
-            //{
-            //    System.Console.WriteLine("Database Already Exists. Manually Delete the database and hit Enter.");
+         
+            //    while (db.Database.Exists())
+            //  {
+            //      System.Console.WriteLine("Database Already Exists. Manually Delete the database and hit Enter.");
             //    System.Console.ReadLine();
-            //}
+            // }
 
-            new ServiserDbInitialSeed().Run();
+             //new ServiserDbInitialSeed().Run();
 
-            System.Console.WriteLine("Seeding Done.");
+             //  System.Console.WriteLine("Seeding Done.");
             //System.Console.ReadLine();
         }
     }

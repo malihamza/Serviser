@@ -1,8 +1,19 @@
 var mechanicHub = $.connection.mechanicHub;
+var hub         = $.connection.hub;
 var map;
 var mechanic_markers = [];
 var problem_id_list = [];
-var my_position = { Latitude: 20, Longitude: 20 };
+var my_position = { Latitude: 0, Longitude: 0 };
+var my_marker;
+
+
+hub.start()
+    .done(function () {
+        alert("Hoagaya");
+    })
+    .fail(function () {
+        alert("Failed TO start a realtime connection");
+    });
 
 
 
@@ -18,6 +29,8 @@ if (navigator.geolocation) {
         my_position.Latitude = lati;
         my_position.Longitude = longi;
 
+      
+        
 
         map = new google.maps.Map(document.getElementById('map_div'),
             {
@@ -27,23 +40,46 @@ if (navigator.geolocation) {
                 gestureHandling: 'none',
                 scaleControl: false
             });
-        addMarker(longi, lati, map, 'Your Current Location');
+
+        addMarkerOnMyLocation();
+        
+
+
+
+        hub.start()
+            .done(function () {
+                mechanicHub.server.saveMyLocationAndTime(my_position, userId);
+            })
+            .fail(function () {
+                alert("Failed1 TO start a realtime connection");
+            });
+
+
+       
     }
 
-    function failure() {
+
+
+    function failure()
+    {
         alert("failed");
     }
 
 }
 
 
-$.connection.hub.start()
-    .done(function () {
-        //alert("Helkklo");
-    })
-    .fail(function () {
-        alert("Failed TO start a realtime connection");
-    });
+
+
+function addMarkerOnMyLocation()
+{
+    my_marker = new google.maps.Marker(
+        {
+            position: { lat: my_position.Latitude, lng: my_position.Longitude },
+            title: 'My Location',
+            map: map
+          //  animation: google.maps.Animation.DROP
+        });
+}
 
 
 mechanicHub.client.updateMechanics = function (data) {
@@ -75,7 +111,9 @@ function addMarker(longi, lati, map, title, icon1) {
 }
 
 
-
+setInterval(function () {
+    mechanicHub.server.saveMyLocationAndTime(my_position, userId);
+}, 5000);
 
 
 
@@ -113,8 +151,7 @@ $(document).ready(function () {
         var net_bill = $("#net_bill").text();
         net_bill = parseInt(net_bill.substring(4, net_bill.length));
 
-        if (this.checked)
-        {
+        if (this.checked) {
             problem_id_list.push(parseInt($(this).parent().parent().next().next().next().text()));
 
             $("#estimated_bill").text("RS/- " + (est_bill + checked_value));

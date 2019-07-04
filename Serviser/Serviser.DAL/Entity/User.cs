@@ -40,7 +40,10 @@ namespace Serviser.DAL.Entity
         [Required]
         [StringLength(50)]
         public string LastName { get; set; }
+        public float? Longitude { get; set; }
 
+        public float? Latitude { get; set; }
+        public DateTime? LastOnlineTime { get; set; }
         public DateTime RegisterationDateTime { get; set; }
 
         public virtual MechanicProfile MechanicProfile { get; set; }
