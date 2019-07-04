@@ -455,6 +455,9 @@ namespace Serviser.Web.Controllers
                     Path.GetFileName(profileImage.FileName);
 
                 string localPath = Server.MapPath(remoteFilePath);
+
+                Directory.CreateDirectory(Server.MapPath(remoteDirectoryPath));
+
                 profileImage.SaveAs(localPath);
 
                 if(user.ProfileImageUrl!=null &&!String.IsNullOrWhiteSpace(user.ProfileImageUrl))
