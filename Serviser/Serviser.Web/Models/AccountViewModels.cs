@@ -3,6 +3,41 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Serviser.Web.Models
 {
+    public class AccountEditViewModel
+    {
+        [Required]
+        public string UserId { get; set; }
+        public int? MechanicProfileId { get; set; }
+        public int? CustomerProfileId { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "First Name")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Last Name")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        public string LastName { get; set; }
+
+        [Required]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Phone Number")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "CNIC")]
+        public string CNIC { get; set; }
+
+    }
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

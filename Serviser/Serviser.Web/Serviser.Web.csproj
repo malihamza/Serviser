@@ -561,6 +561,8 @@
     <Content Include="Views\Shared\_Mechanicheader.cshtml" />
     <Content Include="Views\Mechanic\Profile.cshtml" />
     <Content Include="Views\Mechanic\GenerateBill.cshtml" />
+    <Content Include="Views\Shared\_MechanicLayout.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

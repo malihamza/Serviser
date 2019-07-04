@@ -11,7 +11,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Serviser.DAL.Context;
 using Serviser.DAL.Entity;
+using Serviser.DAL.Extension;
 using Serviser.DAL.Service;
 using Serviser.Web.Models;
 
@@ -401,6 +403,52 @@ namespace Serviser.Web.Controllers
             return View();
         }
 
+        public ActionResult Edit()
+        {
+            User user = User.Identity.GetUser(true);
+            AccountEditViewModel model = new AccountEditViewModel()
+            {
+                UserId = user.Id,
+                MechanicProfileId = user.MechanicProfile == null ? null : user.MechanicProfile.Id,
+                CustomerProfileId = user.CustomerProfile == null ? null : user.CustomerProfile.Id,
+                CNIC = user.MechanicProfile == null ? "0" : user.MechanicProfile.CNIC,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(AccountEditViewModel accountEditViewModel)
+        {
+            ServiserDbContext db = new ServiserDbContext();
+            User user = User.Identity.GetUser(true);
+
+            if (user.Id == accountEditViewModel.UserId)
+            {
+                user.FirstName = accountEditViewModel.FirstName;
+                user.LastName = accountEditViewModel.LastName;
+                user.Email = accountEditViewModel.Email;
+                user.PhoneNumber = accountEditViewModel.PhoneNumber;
+                user.UserName = accountEditViewModel.Email;
+            }
+            if(user.MechanicProfile!=null && user.MechanicProfile.Id == accountEditViewModel.MechanicProfileId)
+            {
+                user.MechanicProfile.CNIC = accountEditViewModel.CNIC;
+            }
+            if (user.CustomerProfile != null && user.CustomerProfile.Id == accountEditViewModel.CustomerProfileId)
+            {
+            }
+
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return View(accountEditViewModel);
+        }
+
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
@@ -552,6 +600,8 @@ namespace Serviser.Web.Controllers
 
             base.Dispose(disposing);
         }
+
+
 
         #region Helpers
         // Used for XSRF protection when adding external logins
