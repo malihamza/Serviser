@@ -11,6 +11,10 @@ namespace Serviser.DAL.Service
 {
     public static class RoleService
     {
+        public const string MECHANIC = "Mechanic"; 
+        public const string BASIC_USER = "BasicUser"; 
+        public const string ADMIN = "Admin";
+
         public static ServiserDbContext ServiserDbContext { get; set; } = new ServiserDbContext(); 
 
         public static IdentityRole GetRoleByName(string name)
