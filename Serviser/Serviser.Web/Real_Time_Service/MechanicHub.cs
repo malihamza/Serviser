@@ -37,7 +37,36 @@ namespace Serviser.Web.Real_Time_Service
         public void GetMechanics(Location loc)
         {
             List<User> lis = new List<User>();
-           
+            User profile = new User();
+            profile.Latitude = loc.Latitude + (float)1 / 1000;
+            profile.Longitude = loc.Longitude + (float)1 / 1000;
+            lis.Add(profile);
+
+            profile = new User();
+            profile.Latitude = loc.Latitude - (float)8 / 10000;
+            profile.Longitude = loc.Longitude - (float)8 / 10000;
+            lis.Add(profile);
+
+            profile = new User();
+            profile.Latitude = loc.Latitude - (float)2 / 1000;
+            profile.Longitude = loc.Longitude + (float)2 / 1000;
+            lis.Add(profile);
+
+            profile = new User();
+            profile.Latitude = loc.Latitude + (float)1 / 1000;
+            profile.Longitude = loc.Longitude - (float)2 / 1000;
+            lis.Add(profile);
+
+            profile = new User();
+            profile.Latitude = loc.Latitude - (float)2 / 1000;
+            profile.Longitude = loc.Longitude + (float)1 / 1000;
+            lis.Add(profile);
+
+            profile = new User();
+            profile.Latitude = loc.Latitude + (float)3 / 1000;
+            profile.Longitude = loc.Longitude + (float)3 / 1000;
+            lis.Add(profile);
+
             Clients.All.UpdateMechanics(lis);
         }
 

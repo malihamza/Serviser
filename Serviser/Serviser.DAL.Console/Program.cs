@@ -26,7 +26,8 @@ namespace Serviser.DAL.Console
             //}
             //System.Console.WriteLine("Seeding...");
             ServiserDbContext db = new ServiserDbContext();
-            List<User> user = db.Users.Where(x=>x.Longitude>=74.1&&x.Latitude>=31 &&x.MechanicProfile.Id!=null).ToList();
+            double d = 5;
+           List<User> user = db.Users.Where(x=>((DateTime)DateTime.Now-(DateTime)x.RegisterationDateTime).TotalSeconds>d).ToList();
             foreach(User user1 in user)
             {
                 System.Console.WriteLine(user1.FirstName);
@@ -43,7 +44,7 @@ namespace Serviser.DAL.Console
 
              //new ServiserDbInitialSeed().Run();
 
-             //  System.Console.WriteLine("Seeding Done.");
+               //System.Console.WriteLine("Seeding Done.");
             //System.Console.ReadLine();
         }
     }
