@@ -1,8 +1,7 @@
 ﻿@using Serviser.DAL;
 @{
     ViewBag.Title = "GenerateBill";
-    Layout = null;
-    Html.RenderPartial("_Mechanicheader");
+    Layout = "~/Views/Shared/_MechanicLayout.cshtml";
 
     var user = User.Identity.GetUser();
 }

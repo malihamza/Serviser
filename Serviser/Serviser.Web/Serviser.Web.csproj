@@ -550,12 +550,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Services\Booking.cshtml" />
-    <Content Include="Views\Problems\ViewAllProblems.cshtml" />
-    <Content Include="Views\Problems\AddProblem.cshtml" />
-    <Content Include="Views\Problems\DeleteProblem.cshtml" />
-    <Content Include="Views\Vehicle\ViewAllVehicles.cshtml" />
-    <Content Include="Views\Vehicle\AddVehicle.cshtml" />
-    <Content Include="Views\Vehicle\DeleteVehicle.cshtml" />
     <Content Include="Views\Mechanic\Index.cshtml" />
     <Content Include="Views\Shared\_Mechanicheader.cshtml" />
     <Content Include="Views\Mechanic\Profile.cshtml" />
@@ -565,6 +559,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data_Files\UserProfileImages\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

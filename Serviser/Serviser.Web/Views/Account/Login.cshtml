@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- Default form register -->
-<div class="container" style="width: 500px">
+<div class="container">
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, htmlAttributes: new { @class = "text-center border border-light p-5" }))
     {
         @Html.AntiForgeryToken()
@@ -38,21 +38,6 @@
         <!-- Sign up button -->
         <button class="btn btn-info my-4 btn-block" type="submit">Log In</button>
 
-        <!-- Social register -->
-        <p>or sign up with:</p>
-        <a href="#" class="fa fa-facebook a1" style="text-decoration-line: none; text-decoration-color: inherit;"></a>
-        <a href="#" class="fa fa-twitter a1" style="text-decoration-line: none; text-decoration-color: inherit;"></a>
-        <a href="#" class="fa fa-google a1" style="text-decoration-line: none; text-decoration-color: inherit;color: red"></a>
-        <div id="my-signin2"></div>
-
-        <hr>
-
-        <!-- Terms of service -->
-        <p>
-            By clicking
-            <em>Sign up</em> you agree to our
-            <a href="" target="_blank">terms of service</a>
-        </p>
     }
 
     @* Include the below bundle if validation doesn't work *@

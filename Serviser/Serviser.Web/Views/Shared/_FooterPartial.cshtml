@@ -2,15 +2,19 @@
 <footer id="dk-footer" class="dk-footer mt-5">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-lg-4 mt-5">
-                <div class="dk-footer-box-info">
-                    <a href="index.html" class="footer-logo">
-                        <img src="~/Assets/images/logo.svg" alt="footer_logo" class="img-fluid ml-5" style="height: 100px;width: 150px">
+            <div class="col-md-12 col-lg-4 mt-5 ">
+
+                <div class="row">
+                <div class="dk-footer-box-info" style="position: relative;">
+                    <div class="col-md-12 col-sm-12">
+                    <a href="@Url.Action("Index","Home")" class="footer-logo d-flex justify-content-center">
+                        <img src="~/Assets/images/mechanic-with-wrench-logo-1-white.svg" alt="footer_logo" class="img-fluid" style="height: 100px;width: 150px">
                     </a>
-                    <p class="footer-info-text">
+                    <p class="footer-info-text text-center">
                         The service your vehicle needs We provide fast, convinient and affordable services for your vehicles.This is Serviser © for you!
                     </p>
-                    <div class="footer-social-link">
+                        </div>
+                    <div class="footer-social-link col-md-12 col-sm-12 d-flex flex-column align-items-center">
                         <h3>Follow us</h3>
                         <ul>
                             <li>
@@ -43,6 +47,7 @@
                     <!-- End Social link -->
                 </div>
                 <!-- End Footer info -->
+                    </div>
 
             </div>
             <!-- End Col -->
@@ -85,7 +90,7 @@
                         <div class="footer-widget footer-left-widget">
                             <div class="section-heading">
                                 <h3>Useful Links</h3>
-                                <span class="animate-border border-black"></span>
+                                <span class="animate-border border-black" style="overflow:hidden;"></span>
                             </div>
                             <ul>
                                 <li>
@@ -113,7 +118,7 @@
                         <div class="footer-widget">
                             <div class="section-heading">
                                 <h3>Subscribe</h3>
-                                <span class="animate-border border-black"></span>
+                                <span class="animate-border border-black" style="overflow:hidden;"></span>
                             </div>
                             <p style="color: white">
                                 Don’t miss to subscribe to our new feeds, kindly fill the form below.

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -415,14 +416,15 @@ namespace Serviser.Web.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                ProfileImageUrl = user.ProfileImageUrl
             };
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(AccountEditViewModel accountEditViewModel)
+        public ActionResult Edit(AccountEditViewModel accountEditViewModel, HttpPostedFileBase profileImage)
         {
             ServiserDbContext db = new ServiserDbContext();
             User user = User.Identity.GetUser(true);
@@ -443,10 +445,38 @@ namespace Serviser.Web.Controllers
             {
             }
 
+
+            if (profileImage.ContentLength > 0)
+            {
+                string remoteDirectoryPath = "~/Data_Files/UserProfileImages/";
+
+                string remoteFilePath = remoteDirectoryPath + 
+                    Guid.NewGuid().ToString() + 
+                    Path.GetFileName(profileImage.FileName);
+
+                string localPath = Server.MapPath(remoteFilePath);
+
+                Directory.CreateDirectory(Server.MapPath(remoteDirectoryPath));
+
+                profileImage.SaveAs(localPath);
+
+                if(user.ProfileImageUrl!=null &&!String.IsNullOrWhiteSpace(user.ProfileImageUrl))
+                {
+                    string localFilePath = Server.MapPath(user.ProfileImageUrl);
+                    if (System.IO.File.Exists(localFilePath))
+                    {
+                        System.IO.File.Delete(localFilePath);
+                        user.ProfileImageUrl = null;
+                    }
+                }
+
+                user.ProfileImageUrl = remoteFilePath;
+            }
+
             db.Entry(user).State = EntityState.Modified;
             db.SaveChanges();
 
-            return View(accountEditViewModel);
+            return RedirectToAction("Index","Home");
         }
 
         //

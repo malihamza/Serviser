@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     var user = User.Identity.GetUser();
 }
 
@@ -53,16 +53,24 @@
                     }
                     <div class="position-relative mr-4" style="cursor:pointer;">
                         <a class="dropdown-toggle" data-toggle="dropdown">
-                            @user.FirstName
+                            @if (user.ProfileImageUrl != null && !String.IsNullOrWhiteSpace(user.ProfileImageUrl))
+                            {
+                                <img src="@Url.Content(user.ProfileImageUrl)" alt="Profile Picture" style="max-width:50px;max-height:50px; display: inline;" />
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/Data_Files/Placeholders/UserProfileImage.png")" alt="Profile Picture" style="max-width:50px;max-height:50px; display: inline;" />
+                            }
+                            <span>@user.FirstName</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-left" style="position:absolute;right:0;">
-                            @if(User.IsInRole(RoleService.ADMIN))
+                            @if (User.IsInRole(RoleService.ADMIN))
                             {
-                            <a class="dropdown-item" role="button" href="@Url.Action("Index","Dashboard",new { area = "Admin"})">Admin Panel</a>
+                                <a class="dropdown-item" role="button" href="@Url.Action("Index","Dashboard",new { area = "Admin"})">Admin Panel</a>
                             }
-                             @if(User.IsInRole(RoleService.MECHANIC))
+                            @if (User.IsInRole(RoleService.MECHANIC))
                             {
-                            <a class="dropdown-item" role="button" href="@Url.Action("Index","Mechanic")">Mechanic Panel</a>
+                                <a class="dropdown-item" role="button" href="@Url.Action("Index","Mechanic")">Mechanic Panel</a>
                             }
                             <a class="dropdown-item" role="button" href="@Url.Action("Edit","Account")">Account Settings</a>
 
