@@ -1,4 +1,5 @@
-﻿@using Serviser.DAL;
+﻿@model Serviser.Web.Models.Problems
+@using Serviser.DAL.Entity;
 @{
     ViewBag.Title = "GenerateBill";
     Layout = "~/Views/Shared/_MechanicLayout.cshtml";
@@ -55,8 +56,8 @@
     .modal {
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
-        z-index: 1; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
+        z-index: 2; /* Sit on top */
+        padding-top: 1vh; /* Location of the box */
         left: 0;
         top: 0;
         width: 100%; /* Full width */
@@ -73,7 +74,7 @@
         margin: auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 50%;
+        width: 80%;
     }
 
     /* The Close Button */
@@ -120,7 +121,7 @@
 
     <div class="container-fluid ">
 
-        <div class="row  justify-content-center w3-animate-zoom mt-5" style="position:relative;z-index:1;visibility:hidden"  id="loader">
+        <div class="row  justify-content-center w3-animate-zoom mt-5" style="position:relative;z-index:1;visibility:hidden" id="loader">
             <div class="col-lg-4  " style="background-color:white;border-radius:10px; box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);">
                 <div class="row  justify-content-center">
                     <div class="lds-ripple mt-4"><div></div><div></div></div>
@@ -175,49 +176,49 @@
 
     <div class="container-fluid " style="height:200px;z-index:1;position:relative;bottom:400px">
         <div class="col-lg-3  w3-animate-zoom" style="background-color:white;box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.19);border-radius:5px;visibility:hidden;padding:10px" id="info">
-@*            <div class="row  mt-3 " style="padding:10px">
-                <div class="col-lg-4 " style="padding:0px;">
-                    <img src="~/Assets/images/avatar2.jpg" class="img-fluid img-circle" style="height:120px;width:140px" />
+            @*            <div class="row  mt-3 " style="padding:10px">
+                    <div class="col-lg-4 " style="padding:0px;">
+                        <img src="~/Assets/images/avatar2.jpg" class="img-fluid img-circle" style="height:120px;width:140px" />
+                    </div>
+                    <div class="col-lg-7 ">
+                        <h5 class="mt-5">Ali Hamza</h5>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star checked"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
                 </div>
-                <div class="col-lg-7 ">
-                    <h5 class="mt-5">Ali Hamza</h5>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <div class="col-lg-auto  mt-5">
+                    <table class="table" style="font-size:14px">
+                        <tr>
+                            <th>Customer Name </th>
+                            <td>Ali Hamza</td>
+                        </tr>
+                        <!-- <tr>
+                             <th>Location </th>
+                             <td>Canal Road</td>
+                         </tr>
+                        <tr>
+                             <th>Distance </th>
+                             <td>7 min</td>
+                         </tr>
+                         <tr>
+                             <th>Problem </th>
+                             <td>Tyre Puncture</td>
+                         </tr>-->
+                        <tr>
+                            <th>Contact No.</th>
+                            <td>0321-4238228</td>
+                        </tr>
+                    </table>
                 </div>
-            </div>
-            <div class="col-lg-auto  mt-5">
-                <table class="table" style="font-size:14px">
-                    <tr>
-                        <th>Customer Name </th>
-                        <td>Ali Hamza</td>
-                    </tr>
-                    <!-- <tr>
-                         <th>Location </th>
-                         <td>Canal Road</td>
-                     </tr>
-                    <tr>
-                         <th>Distance </th>
-                         <td>7 min</td>
-                     </tr>
-                     <tr>
-                         <th>Problem </th>
-                         <td>Tyre Puncture</td>
-                     </tr>-->
-                    <tr>
-                        <th>Contact No.</th>
-                        <td>0321-4238228</td>
-                    </tr>
-                </table>
-            </div>
 
 
-            <div class="row  mt-3 justify-content-center">
-                <button class="btn btn-success">Call Now <span class="fa fa-phone"></span></button>
+                <div class="row  mt-3 justify-content-center">
+                    <button class="btn btn-success">Call Now <span class="fa fa-phone"></span></button>
 
-            </div>*@
+                </div>*@
             <div class="row  mt-1 justify-content-center" style="padding:20px">
                 <button class="btn btn-info btn-block" id="myBtn">Generate Bill <span class="fa fa-list"></span></button>
 
@@ -245,102 +246,24 @@
                         <tr>
                             <th>Check</th>
                             <th>Problem</th>
-                            <th>Rate in PKR</th>
+                            <th>Price</th>
 
 
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p1" name="p1">
-                                    <label class="custom-control-label" for="p1"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p2" name="p2">
-                                    <label class="custom-control-label" for="p2"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p3" name="p3">
-                                    <label class="custom-control-label" for="p3"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p4" name="p4">
-                                    <label class="custom-control-label" for="p4"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p5" name="p5">
-                                    <label class="custom-control-label" for="p5"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p4" name="p4">
-                                    <label class="custom-control-label" for="p4"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p5" name="p5">
-                                    <label class="custom-control-label" for="p5"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p4" name="p4">
-                                    <label class="custom-control-label" for="p4"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="p5" name="p5">
-                                    <label class="custom-control-label" for="p5"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-
+                        @{ int i = 0; }
+                        @foreach (VehicleProblem prob in Model.BikeProblems)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="pb_@i" name="Problems" value="@prob.Id" data-problem-price="@prob.EstimatedPrice">
+                                        <label class="custom-control-label" for="pb_@i"></label>
+                                    </div>
+                                </td>
+                                <td>@prob.Name</td>
+                                <td>@prob.EstimatedPrice Rs</td>
+                            </tr>
+                        }
 
                     </table>
 
@@ -363,116 +286,47 @@
                         <tr>
                             <th>Check</th>
                             <th>Problem</th>
-                            <th>Rate in PKR</th>
+                            <th>Price</th>
 
 
                         </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="c1" name="c1">
-                                    <label class="custom-control-label" for="c1"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="c2" name="c2">
-                                    <label class="custom-control-label" for="c2"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="c3" name="c3">
-                                    <label class="custom-control-label" for="c3"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="c4" name="c4">
-                                    <label class="custom-control-label" for="c4"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="c5" name="c5">
-                                    <label class="custom-control-label" for="c5"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="c4" name="c4">
-                                    <label class="custom-control-label" for="c4"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="c5" name="c5">
-                                    <label class="custom-control-label" for="c5"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="c4" name="c4">
-                                    <label class="custom-control-label" for="c4"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="c5" name="c5">
-                                    <label class="custom-control-label" for="c5"></label>
-                                </div>
-                            </td>
-                            <td>Brake Failure</td>
-                            <td>Rs/- 500</td>
-                        </tr>
-
+                        @{ i = 0; }
+                        @foreach (VehicleProblem prob in Model.BikeProblems)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="pc_@i" name="Problems" value="@prob.Id" data-problem-price="@prob.EstimatedPrice">
+                                        <label class="custom-control-label" for="pc_@i"></label>
+                                    </div>
+                                </td>
+                                <td>@prob.Name</td>
+                                <td>@prob.EstimatedPrice Rs</td>
+                            </tr>
+                        }
 
                     </table>
 
                 </div>
             </div>
 
-            <div class="row mt-1 ">
-                <h3><b>Total Bill :</b> 2000 PKR /-</h3>
+            <div class="row mt-1">
+                <h3><b>Total Bill :</b><span id="TotalBill"> 0</span> PKR</h3>
             </div>
-
+            <script>
+                function onCheckChange() {
+                    
+                    var sum = 0;
+                    $("input[name='Problems']:checked").each(function () {
+                        sum += Number($(this).attr("data-problem-price"));
+                    });
+                    $("#TotalBill").text(sum);
+                }
+            </script>
 
         </div>
         <div class="row justify-content-end">
-            <button class="btn btn-success col-lg-4 mt-3">Confirm Bill</button>
+            <button class="btn btn-success col-lg-4 m-3">Confirm Bill</button>
         </div>
     </div>
 
