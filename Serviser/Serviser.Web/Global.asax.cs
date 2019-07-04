@@ -17,5 +17,18 @@ namespace Serviser.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Application_BeginRequest()
+        {
+            if (!Context.Request.IsSecureConnection
+                && !Context.Request.IsLocal // to avoid switching to https when local testing
+                )
+            {
+                Response.Clear();
+                Response.Status = "301 Moved Permanently";
+                Response.AddHeader("Location", Context.Request.Url.ToString().Insert(4, "s"));
+                Response.End();
+            }
+        }
     }
 }
