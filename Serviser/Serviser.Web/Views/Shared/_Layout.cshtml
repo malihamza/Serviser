@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width">
     <link runat="server" rel="shortcut icon" href="~/logo.ico" type="image/x-icon" />
     <link runat="server" rel="icon" href="~/logo.ico" type="image/ico" />
     <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css">
@@ -9,29 +10,27 @@
     <link rel="stylesheet" type="text/css" href="~/Content/css/calander.css">
     <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
 
-     <link rel="stylesheet" href="~/Content/elegant_font/style.css" />
-        <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
-        <script type="text/javascript" src="~/Scripts/jquery.js"></script>
-        <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
-        <script type="text/javascript" src="~/Scripts/owl.carousel.min.js"></script>
-        
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        
+    <link rel="stylesheet" href="~/Content/elegant_font/style.css" />
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css" />
+    <script type="text/javascript" src="~/Scripts/jquery.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/owl.carousel.min.js"></script>
+
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 
     @*@Styles.Render("/Content/css")*@
     @*@Styles.Render("~/bundles/bootstrap")*@
     <style>
-        
     </style>
 
-   <style>
-       .row
-       {
-           margin:0px;
-       }
-   </style>
+    <style>
+        .row {
+            margin: 0px;
+        }
+    </style>
 
 </head>
 
@@ -39,7 +38,7 @@
     <a id="top"></a>
     @{Html.RenderPartial("_NavbarPartial");}
 
-    @RenderBody();
+    @RenderBody()
 
 
 
