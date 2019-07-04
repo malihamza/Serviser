@@ -9,7 +9,7 @@ var my_marker;
 
 hub.start()
     .done(function () {
-        alert("Hoagaya");
+        //alert("Hoagaya");
     })
     .fail(function () {
         alert("Failed TO start a realtime connection");
@@ -113,6 +113,7 @@ function addMarker(longi, lati, map, title, icon1) {
 
 setInterval(function () {
     mechanicHub.server.saveMyLocationAndTime(my_position, userId);
+    mechanicHub.server.getMechanics(my_position);
 }, 5000);
 
 
