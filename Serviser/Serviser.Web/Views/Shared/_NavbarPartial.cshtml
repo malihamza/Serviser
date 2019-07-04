@@ -56,11 +56,16 @@
                             @user.FirstName
                         </a>
                         <div class="dropdown-menu dropdown-menu-left" style="position:absolute;right:0;">
-                            @*<button class="dropdown-item" type="button">Action</button>*@
-                            @if(User.IsInRole("Admin"))
+                            @if(User.IsInRole(RoleService.ADMIN))
                             {
                             <a class="dropdown-item" role="button" href="@Url.Action("Index","Dashboard",new { area = "Admin"})">Admin Panel</a>
                             }
+                             @if(User.IsInRole(RoleService.MECHANIC))
+                            {
+                            <a class="dropdown-item" role="button" href="@Url.Action("Index","Mechanic")">Mechanic Panel</a>
+                            }
+                            <a class="dropdown-item" role="button" href="@Url.Action("Edit","Account")">Account Settings</a>
+
                             <a class="dropdown-item" role="button" href="javascript:document.getElementById('logoutForm').submit()">Log Off</a>
                         </div>
                     </div>
