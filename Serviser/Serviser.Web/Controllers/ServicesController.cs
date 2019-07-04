@@ -11,6 +11,7 @@ using System.Data.Entity;
 
 namespace Serviser.Web.Controllers
 {
+    [Authorize]
     public class ServicesController : Controller
     {
         private ServiserDbContext db = new ServiserDbContext();
@@ -20,6 +21,7 @@ namespace Serviser.Web.Controllers
         {
             return View();
         }
+        [AllowAnonymous]
         public JsonResult getMechanics(Location loc)
         {
             List<User> lis = new List<User>();
