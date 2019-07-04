@@ -39,7 +39,7 @@ if (navigator.geolocation) {
     }
 
     function failure() {
-        alert("failed");
+       // alert("failed");
     }
 
 }
@@ -68,8 +68,8 @@ function addMarker(longi, lati, map, title, icon1) {
         {
             position: { lat: lati, lng: longi },
             title: title,
-            map: map,
-            animation: google.maps.Animation.DROP
+            map: map
+            //animation: google.maps.Animation.DROP
         });
     
    
@@ -82,9 +82,4 @@ mechanicHub.client.showCustomerRequest = function (data)
     $("#customerName").html(data.FirstName + " " + data.LastName);
     $("#customerNumber").html(data.PhoneNumber);
     document.getElementById("loader").style.visibility = "visible";
-}
-
-mechanicHub.client.showLocation = function (data)
-{
-   // alert(data.Latitude + "  " + data.Longitude);
 }

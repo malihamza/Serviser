@@ -19,7 +19,7 @@ namespace Serviser.Web.Real_Time_Service
         }
 
 
-        public void saveMyLocationAndTime(Location location,string userId)
+        public void SaveMyLocationAndTime(Location location,string userId)
         {
 
             User customer = serviserDb.Users.Find(userId);
@@ -39,19 +39,16 @@ namespace Serviser.Web.Real_Time_Service
             List<User> lis = new List<User>();
 
             List<User> mechanics = serviserDb.Users.Where(
-                                                        x => x.MechanicProfile.Id != null 
-                                                        &&x.Latitude!=null &&(x.Longitude>=
-                                                        (location.Longitude - 3 / 100)
-                                                        || x.Longitude <=
-                                                        (location.Longitude + 3 / 100)
-                                                        || x.Latitude >=
-                                                        (location.Latitude - 3 / 100)
-                                                        || x.Latitude <=
-                                                        (location.Latitude + 3 / 100))).ToList();
+                                                        x => x.MechanicProfile.Id != null
+                                                         && (x.Longitude <= (location.Longitude + 3 / 1000)
+                                                   || x.Longitude >= (location.Longitude - 3 / 1000)
+                                                   || x.Latitude <= (location.Latitude + 3 / 1000)
+                                                   || x.Latitude >= (location.Latitude - 3 / 1000))).ToList();
 
             foreach(User user in mechanics)
             {
-                if(user.Longitude!=null&& user.Latitude != null)
+                if(user.Longitude!=null&& user.Latitude != null
+                    &&(DateTime.Now-(DateTime)user.LastOnlineTime).TotalSeconds<10)
                 {
                     lis.Add(user);
                 }
@@ -60,16 +57,23 @@ namespace Serviser.Web.Real_Time_Service
         }
 
 
-        public void PutRequestToMechanic(string id)
+        public void GetSingleMecahnic(string id)
         {
             User customer = serviserDb.Users.Find(id);
-            User mechanic = serviserDb.Users.Where(x => x.MechanicProfile.Id!=null
-                                                    &&(x.Longitude <= (customer.Longitude + 3 / 100)
+            User mechanic = serviserDb.Users.Where(x => x.MechanicProfile.Id != null
+                                                    && (x.Longitude <= (customer.Longitude + 3 / 100)
                                                    || x.Longitude >= (customer.Longitude - 3 / 100)
                                                    || x.Latitude <= (customer.Latitude + 3 / 100)
                                                    || x.Latitude >= (customer.Latitude - 3 / 100))).FirstOrDefault();
 
-            Clients.All.ShowCustomerRequest(customer);
+            Clients.Caller.ShowMechanicInfo(mechanic);
+        }
+
+
+        public void PutRequestToMechanic(string userId,string mechanicId)
+        {
+            User customer = serviserDb.Users.Find(userId);
+            Clients.User(mechanicId).ShowCustomerRequest(customer);
         }
 
     }

@@ -26,11 +26,11 @@ namespace Serviser.DAL.Console
             //}
             //System.Console.WriteLine("Seeding...");
             ServiserDbContext db = new ServiserDbContext();
-            double d = 5;
-           List<User> user = db.Users.Where(x=>((DateTime)DateTime.Now-(DateTime)x.RegisterationDateTime).TotalSeconds>d).ToList();
-            foreach(User user1 in user)
+           // double d = 5;
+           //List<User> user = db.Users.Where(x=>((DateTime)DateTime.Now-(DateTime)x.RegisterationDateTime).TotalSeconds>d).ToList();
+            //foreach(User user1 in user)
             {
-                System.Console.WriteLine(user1.FirstName);
+              //  System.Console.WriteLine(user1.FirstName);
             }
             
             //System.Console.WriteLine((DateTime.Now-user.RegisterationDateTime).TotalSeconds);
@@ -42,7 +42,7 @@ namespace Serviser.DAL.Console
             //    System.Console.ReadLine();
             // }
 
-             //new ServiserDbInitialSeed().Run();
+             new ServiserDbInitialSeed().Run();
 
                //System.Console.WriteLine("Seeding Done.");
             //System.Console.ReadLine();

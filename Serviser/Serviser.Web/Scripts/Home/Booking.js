@@ -5,14 +5,14 @@ var mechanic_markers = [];
 var problem_id_list = [];
 var my_position = { Latitude: 0, Longitude: 0 };
 var my_marker;
-
+var mechanicId;
 
 hub.start()
     .done(function () {
         //alert("Hoagaya");
     })
     .fail(function () {
-        alert("Failed TO start a realtime connection");
+       // alert("Failed TO start a realtime connection");
     });
 
 
@@ -35,7 +35,7 @@ if (navigator.geolocation) {
         map = new google.maps.Map(document.getElementById('map_div'),
             {
                 center: { lat: lati, lng: longi },
-                zoom: 17,
+                zoom: 18,
                 zoomControl: false,
                 gestureHandling: 'none',
                 scaleControl: false
@@ -51,7 +51,7 @@ if (navigator.geolocation) {
                 mechanicHub.server.saveMyLocationAndTime(my_position, userId);
             })
             .fail(function () {
-                alert("Failed1 TO start a realtime connection");
+         //       alert("Failed1 TO start a realtime connection");
             });
 
 
@@ -62,7 +62,7 @@ if (navigator.geolocation) {
 
     function failure()
     {
-        alert("failed");
+        //alert("failed");
     }
 
 }
@@ -90,9 +90,10 @@ mechanicHub.client.updateMechanics = function (data) {
     mechanic_markers.splice(0, mechanic_markers.length);
 
     for (var mechanic in data) {
+        
         addMarker(data[mechanic].Longitude, data[mechanic].Latitude, map, 'Mechanic', 'a');
     }
-    //alert(mechanic_markers.length);
+    alert(mechanic_markers.length);
 }
 
 
@@ -103,7 +104,7 @@ function addMarker(longi, lati, map, title, icon1) {
             position: { lat: lati, lng: longi },
             title: title,
             map: map
-            //animation: google.maps.Animation.DROP
+           //animation: google.maps.Animation.DROP
         });
     if (icon1 != null) {
         marker.setIcon(document.getElementById('ico').getAttribute('src'));
@@ -113,12 +114,13 @@ function addMarker(longi, lati, map, title, icon1) {
 }
 
 
-setInterval(function () {
+setInterval(function ()
+{
     hub.start().done(function () { mechanicHub.server.saveMyLocationAndTime(my_position, userId); });
     hub.start().done(function () { mechanicHub.server.getMechanics(my_position); });
     //hub.start().done(function () { mechanicHub.server.getMechanics(my_position); });
 
-}, 1000);
+}, 5000);
 
 
 
@@ -126,15 +128,37 @@ function next_view() {
     document.getElementById("problem").style.visibility = "hidden";
     document.getElementById("bill").style.visibility = "hidden";
     document.getElementById("map_div").style.height = "800px";
-    document.getElementById("loader").style.visibility = "visible";
+
 
     $('html, body').animate({ scrollTop: 0 }, '300');
     $("#loader").fadeIn('slow').delay(5000).fadeOut('slow');
-    setTimeout(display, 6000);
+    setTimeout(display, 2000);
 
     hub.start().done(function () { mechanicHub.server.saveMyLocationAndTime(my_position, userId); });
-
+    hub.start().done(function () { mechanicHub.server.getSingleMecahnic(userId); });
 }
+
+
+mechanicHub.client.showMechanicInfo = function (data)
+{
+
+    $("#mechanicName").html(data.FirstName + " " + data.LastName);
+    $("#phoneNumber").html(data.PhoneNumber);
+    document.getElementById("loader").style.visibility = "visible";   
+}
+//hub.start().done(function () { mechanicHub.server.putRequestToMechanic(userId, data.Id) });
+
+
+
+
+
+
+
+
+
+
+
+
 
 function display() {
     document.getElementById("info").style.visibility = "visible";
@@ -180,5 +204,6 @@ $(document).ready(function () {
 
 $("#callMechanic").click(function ()
 {
-    hub.start().done(function () { mechanicHub.server.putRequestToMechanic(userId); });  
+
+    hub.start().done(function () { mechanicHub.server.putRequestToMechanic(userId,mechanicId); });  
 });
