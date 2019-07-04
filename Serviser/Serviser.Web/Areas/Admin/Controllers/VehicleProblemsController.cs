@@ -8,10 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using Serviser.DAL.Context;
 using Serviser.DAL.Entity;
+using Serviser.DAL.Service;
 
 namespace Serviser.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = RoleService.ADMIN)]
     public class VehicleProblemsController : Controller
     {
         private ServiserDbContext db = new ServiserDbContext();

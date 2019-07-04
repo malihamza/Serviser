@@ -12,7 +12,7 @@ using System.Web.Mvc;
 
 namespace Serviser.Web.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = RoleService.ADMIN)]
     public class MechanicController : Controller
     {
         private ServiserDbContext db = new ServiserDbContext();
@@ -20,7 +20,7 @@ namespace Serviser.Web.Areas.Admin.Controllers
         // GET: Admin/Mechanic
         public ActionResult Index()
         {
-            IdentityRole role = RoleService.GetRoleByName("Mechanic");
+            IdentityRole role = RoleService.GetRoleByName(RoleService.MECHANIC);
 
             List<User> mechanics = new ServiserDbContext().Users
                 .Where(x => x.Roles.Select(y => y.RoleId).Contains(role.Id)).ToList();
@@ -41,7 +41,7 @@ namespace Serviser.Web.Areas.Admin.Controllers
                 }
             }
 
-            model.RoleName = "Mechanic";
+            model.RoleName = RoleService.MECHANIC;
             return View(model);
         }
 

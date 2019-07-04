@@ -191,7 +191,7 @@ namespace Serviser.Web.Controllers
         public ActionResult Register()
         {
             RegisterViewModel model = new RegisterViewModel();
-            model.RoleName = "BasicUser";
+            model.RoleName = RoleService.BASIC_USER;
             return View(model);
         }
 
@@ -246,7 +246,7 @@ namespace Serviser.Web.Controllers
         public ActionResult RegisterMechanic()
         {
             RegisterMechanicViewModel model = new RegisterMechanicViewModel();
-            model.RoleName = "Mechanic";
+            model.RoleName = RoleService.MECHANIC;
             return View("~/Areas/Admin/Views/Mechanic/Register", model);
         }
 
