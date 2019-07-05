@@ -290,6 +290,7 @@
     <Content Include="Assets\Images\mechanic-with-wrench-logo-1-white.svg" />
     <Content Include="Assets\Images\mechanic-with-wrench-logo-1.svg" />
     <Content Include="Assets\Images\mech_pic.png" />
+    <Content Include="Assets\Images\mech_pic_back.png" />
     <Content Include="Assets\Images\mystic machanic.png" />
     <Content Include="Assets\Images\mystic-mechanic-1.svg" />
     <Content Include="Assets\Images\phone-with-app.png" />
@@ -327,6 +328,7 @@
     <Content Include="Content\Home\bootstrap.min.css" />
     <Content Include="Content\Home\calander.css" />
     <Content Include="Content\sb-admin.css" />
+    <Content Include="Data_Files\Placeholders\UserProfileImage.png" />
     <Content Include="logo.ico" />
     <Content Include="Scripts\datatables.min.js" />
     <Content Include="Content\elegant_font\fonts\ElegantIcons.svg" />
@@ -551,7 +553,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Services\Booking.cshtml" />
     <Content Include="Views\Mechanic\Index.cshtml" />
-    <Content Include="Views\Shared\_Mechanicheader.cshtml" />
     <Content Include="Views\Mechanic\Profile.cshtml" />
     <Content Include="Views\Mechanic\GenerateBill.cshtml" />
     <Content Include="Views\Shared\_MechanicLayout.cshtml" />
