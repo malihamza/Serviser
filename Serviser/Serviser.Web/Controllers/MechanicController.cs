@@ -1,4 +1,5 @@
 ﻿using Serviser.DAL.Context;
+using Serviser.DAL.Entity;
 using Serviser.DAL.Service;
 using Serviser.Web.Models;
 using System;
@@ -36,6 +37,14 @@ namespace Serviser.Web.Controllers
             return View(problemsModel);
         }
 
+        public void VerifySelectedProblems(int[] Problems)
+        {
+            ServiserDbContext db = new ServiserDbContext();
+            List<VehicleProblem> vehicleProblems = db.VehicleProblems.Where(x => Problems.Contains(x.Id)).ToList();
+
+
+
+        }
 
     }
 }

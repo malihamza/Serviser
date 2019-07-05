@@ -227,6 +227,7 @@
 
     </div>
 </div>
+<form id = "verifyProblemsForm" onsubmit="return postVerifySelectedProblems(event)" href="">
 
 <div id="myModal" class="modal">
 
@@ -327,12 +328,26 @@
                         $("#TotalBill").text(sum);
 
                     }
+
+                    function postVerifySelectedProblems(event) {
+                        event.preventDefault();
+                        $.ajax({
+                            method: "post",
+                            url: "@Url.Action("VerifySelectedProblems", "Mechanic")",
+                            data: $("#verifyProblemsForm").serialize(),
+                            success: function () { alert("Transaction Was a success."); location.reload(); },
+                            error: function () { alert("The Request Has been Canceled"); location.reload(); },
+                            complete: function () { $("#consfirmBillButton").attr("disabled", false); alert("Transaction Was a Complete."); },
+                            beforeSend: function () { $("#consfirmBillButton").attr("disabled", true); alert("Transaction is sending."); }
+                        });
+                        return false;
+                    }
                 </script>
             </div>
 
         </div>
         <div class="row justify-content-end">
-            <button class="btn btn-success col-lg-4 m-3">Confirm Bill</button>
+            <button class="btn btn-success col-lg-4 m-3" id="consfirmBillButton">Confirm Bill</button>
         </div>
     </div>
 
@@ -366,6 +381,7 @@
     </script>
 </div>
 
+</form>
 
 <script>
     function accept() {
@@ -374,4 +390,3 @@
         document.getElementById("info").style.visibility = "visible";
     }
 </script>
-</body>
