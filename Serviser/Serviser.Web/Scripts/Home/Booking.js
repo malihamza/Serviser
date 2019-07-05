@@ -90,10 +90,10 @@ mechanicHub.client.updateMechanics = function (data) {
     mechanic_markers.splice(0, mechanic_markers.length);
 
     for (var mechanic in data) {
-        
-        addMarker(data[mechanic].Longitude, data[mechanic].Latitude, map, 'Mechanic', 'a');
+
+        addMarker(data[mechanic].Longitude, data[mechanic].Latitude, map, data[mechanic].FirstName + " " + data[mechanic].LastName, 'a');
     }
-    alert(mechanic_markers.length);
+  //  alert(mechanic_markers.length);
 }
 
 
