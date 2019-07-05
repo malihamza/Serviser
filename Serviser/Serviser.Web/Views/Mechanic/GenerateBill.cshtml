@@ -240,7 +240,7 @@
                     <h4 class="text-center mt-3" style="color: white"><i class="fa fa-motorcycle"></i> Bike</h4>
 
                 </div>
-                <div class="row card" style="overflow: auto;height:350px">
+                <div class="row card" style="overflow: auto;min-height:200px">
 
                     <table class="table  table-hover">
                         <tr>
@@ -256,13 +256,14 @@
                             <tr>
                                 <td>
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="pb_@i" name="Problems" value="@prob.Id" data-problem-price="@prob.EstimatedPrice">
+                                        <input type="checkbox" class="custom-control-input" id="pb_@i" name="Problems" value="@prob.Id" data-problem-price="@prob.EstimatedPrice" onclick="onCheckChange()">
                                         <label class="custom-control-label" for="pb_@i"></label>
                                     </div>
                                 </td>
                                 <td>@prob.Name</td>
                                 <td>@prob.EstimatedPrice Rs</td>
                             </tr>
+                            i++;
                         }
 
                     </table>
@@ -280,9 +281,9 @@
                     <h4 class="text-center mt-3" style="color: white"><i class="fa fa-car"></i> Car</h4>
 
                 </div>
-                <div class="row card" style="overflow: auto;height:350px">
+                <div class="row card" style="overflow: auto;min-height:200px">
 
-                    <table class="table table-responsive table-hover">
+                    <table class="table table-hover">
                         <tr>
                             <th>Check</th>
                             <th>Problem</th>
@@ -303,6 +304,7 @@
                                 <td>@prob.Name</td>
                                 <td>@prob.EstimatedPrice Rs</td>
                             </tr>
+                            i++;
                         }
 
                     </table>
@@ -310,19 +312,23 @@
                 </div>
             </div>
 
-            <div class="row mt-1">
-                <h3><b>Total Bill :</b><span id="TotalBill"> 0</span> PKR</h3>
+            <div class="container">
+
+                <div class="row mt-1 justify-content-center">
+                    <h3><b>Total Bill : </b><span id="TotalBill"> 0</span> PKR</h3>
+                </div>
+                <script>
+                    function onCheckChange() {
+
+                        var sum = 0;
+                        $("input[name='Problems']:checked").each(function () {
+                            sum += Number($(this).attr("data-problem-price"));
+                        });
+                        $("#TotalBill").text(sum);
+
+                    }
+                </script>
             </div>
-            <script>
-                function onCheckChange() {
-                    
-                    var sum = 0;
-                    $("input[name='Problems']:checked").each(function () {
-                        sum += Number($(this).attr("data-problem-price"));
-                    });
-                    $("#TotalBill").text(sum);
-                }
-            </script>
 
         </div>
         <div class="row justify-content-end">
