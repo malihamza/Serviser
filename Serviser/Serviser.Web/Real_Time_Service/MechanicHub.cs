@@ -73,7 +73,7 @@ namespace Serviser.Web.Real_Time_Service
         public void PutRequestToMechanic(string userId,string mechanicId)
         {
             User customer = serviserDb.Users.Find(userId);
-            Clients.User(mechanicId).ShowCustomerRequest(customer);
+            Clients.All.ShowCustomerRequest(customer);
         }
 
     }
